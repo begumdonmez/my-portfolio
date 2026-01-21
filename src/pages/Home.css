@@ -1,0 +1,46 @@
+.home {
+    width: 100%;
+    padding-top: 120px;
+}
+/* DEFAULT (desktop) */
+.home-content {
+    max-width: 1200px;   /* İstersen 1400px */
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.home-section {
+    margin-bottom: 80px;
+}
+
+.home-section h1 {
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+.home-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #444;
+}
+/* LARGE SCREENS (MacBook, iMac) */
+@media (min-width: 1440px) {
+    .home-content {
+        max-width: 1600px;
+    }
+}
+
+/* TABLET */
+@media (max-width: 1024px) {
+    .home-content {
+        max-width: 900px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .home-content {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+}

@@ -1,0 +1,48 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 12px 32px;
+    background-color: #0f0f0f;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.name {
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.header-right {
+    display: flex;
+    gap: 24px;
+}
+
+.header-right a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.header-right a:hover {
+    opacity: 0.7;
+}
