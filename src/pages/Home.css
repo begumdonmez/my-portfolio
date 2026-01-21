@@ -1,8 +1,8 @@
 .home {
     width: 100%;
-    padding-top: 120px;
+    padding-top: 10px;
 }
-/* DEFAULT (desktop) */
+
 .home-content {
     max-width: 1200px;   /* İstersen 1400px */
     margin: 0 auto;
@@ -16,12 +16,13 @@
 .home-section h1 {
     font-size: 32px;
     margin-bottom: 16px;
+    color: #A67C52;
 }
 
 .home-section p {
     font-size: 18px;
     line-height: 1.6;
-    color: #444;
+    color: #2D2D2D;
 }
 /* LARGE SCREENS (MacBook, iMac) */
 @media (min-width: 1440px) {
