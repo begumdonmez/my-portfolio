@@ -5,7 +5,7 @@
 
 /* Intro paragraf (üst açıklama) */
 .intro-text {
-    max-width: 700px;
+    max-width: 1200px;
     margin-bottom: 3rem;
     color: #94BFBE;
     line-height: 1.6;
@@ -54,12 +54,12 @@
 .doing-section h2 {
     margin-bottom: 0.8rem;
     font-size: 1.3rem;
-    color: #7B7554;
+    color: #8E6E53;
 }
 
 /* Metinler */
 .doing-section p {
-    color: #94BFBE;
+    color: #7A7265;
     line-height: 1.6;
     font-size: 0.95rem;
 }
@@ -73,7 +73,7 @@
 
 .doing-section li {
     margin-bottom: 0.4rem;
-    color: #94BFBE;
+    color: #7A7265;
     font-size: 0.95rem;
     position: relative;
     padding-left: 1.2rem;
@@ -88,7 +88,7 @@
     color: #7f5af0;
 }
 
-/* Mevcut dosyanın geri kalanını koruyarak sadece hover kısmını güncelle veya ekle */
+
 .doing-section:hover {
     transform: translateY(-6px);
     border-color: #F6AE2D; /* Çerçeve rengi değişir */
@@ -105,4 +105,42 @@
     .doing-section h2 {
         font-size: 1.15rem;
     }
+}
+.doing-section h3 {
+    margin: 1.2rem 0 0.5rem 0;
+    font-size: 1.1rem;
+    color: #F6AE2D; /* MagicText rengiyle uyumlu */
+    font-weight: 600;
+}
+/* Tarih ve detay başlıkları */
+.doing-section h4 {
+    margin: 0 0 0.8rem 0;
+    font-size: 0.85rem;
+    color: #F6AE2D;
+    font-weight: 500;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0 20px 0;
+}
+
+.skill-tag {
+    background: #ffffff;
+    border: 1px solid #e0e0e0; 
+    border-radius: 6px;
+    padding: 6px 12px;
+    color: #555555;
+    font-size: 0.85rem;
+    font-weight: 500;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+    border-color: #F6AE2D;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
