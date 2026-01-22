@@ -13,6 +13,11 @@ function AudioMaker() {
         if (audioRef.current) {
             audioRef.current.pause();
         }
+        if (currentIndex === playlist.length) {
+            console.log("Müzik durduruldu, bir sonraki tıklama listeyi başlatacak.");
+            setCurrentIndex(0); // Bir sonraki tıklama için indeksi başa sar
+            return; // Fonksiyondan çık, hiçbir şey çalma
+        }
 
         // Yeni şarkıyı seç ve oynat
         const soundFile = playlist[currentIndex];
@@ -22,8 +27,7 @@ function AudioMaker() {
         newAudio.play().catch(err => console.log("Müzik yüklenemedi:", err));
         audioRef.current = newAudio; // Yeni sesi referansa ata
 
-        // Bir sonraki tıklama için indeksi güncelle (liste bitince başa döner)
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % playlist.length);
+        setCurrentIndex(currentIndex + 1);
     };
 
     return (
