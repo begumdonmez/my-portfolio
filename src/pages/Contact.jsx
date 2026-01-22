@@ -1,6 +1,29 @@
 import "./Contact.css";
+import emailjs from "@emailjs/browser";
 
 function Contact() {
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm(
+            "service_fqn1bnf",        // ✅ Service ID
+            "template_9i3kknb",       // ✅ Template ID
+            e.target,
+            "J-bgRYzBlNYxEWwAs"       // ❗ EmailJS Public Key
+        )
+            .then(
+                () => {
+                    alert("Message sent successfully!");
+                    e.target.reset();
+                },
+                (error) => {
+                    console.log(error.text);
+                    alert("Failed to send message.");
+                }
+            );
+    };
+
     return (
         <div className="contact">
             <div className="container">
@@ -11,20 +34,34 @@ function Contact() {
                     possible.
                 </p>
 
-                <form className="contact-form">
+                <form className="contact-form" onSubmit={sendEmail}>
                     <div className="form-group">
                         <label>Your Name</label>
-                        <input type="text" placeholder="Enter your name" />
+                        <input
+                            type="text"
+                            name="from_name"
+                            placeholder="Enter your name"
+                            required
+                        />
                     </div>
 
                     <div className="form-group">
                         <label>Email Address</label>
-                        <input type="email" placeholder="Enter your email" />
+                        <input
+                            type="email"
+                            name="from_email"
+                            placeholder="Enter your email"
+                            required
+                        />
                     </div>
 
                     <div className="form-group">
                         <label>Message</label>
-                        <textarea placeholder="Write your message..." />
+                        <textarea
+                            name="message"
+                            placeholder="Write your message..."
+                            required
+                        />
                     </div>
 
                     <button type="submit">Send Message</button>

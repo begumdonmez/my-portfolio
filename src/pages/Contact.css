@@ -7,6 +7,7 @@
 .contact h1 {
     font-size: 36px;
     margin-bottom: 16px;
+    color: #F6AE2D;
 }
 
 .contact-text {
@@ -31,6 +32,7 @@
 .form-group label {
     margin-bottom: 8px;
     font-size: 16px;
+    color: #94BFBE;
 }
 
 .form-group input,
@@ -38,8 +40,11 @@
     padding: 12px 14px;
     font-size: 16px;
     border-radius: 8px;
+    background-color: #FFF1D0;
+    color: #7A7265;
     border: 1px solid #ccc;
     font-family: inherit;
+    
 }
 
 .form-group textarea {
@@ -54,7 +59,7 @@
     width: 100%;
     border: none;
     border-radius: 999px;
-    background-color: #0f0f0f;
+    background-color: #F6AE2D;
     color: white;
     font-size: 18px;
     cursor: pointer;
@@ -64,4 +69,11 @@
 .contact-form button:hover {
     transform: translateY(-2px);
     opacity: 0.85;
+}
+
+/* PLACEHOLDER */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #7A7265;   /* Enter your name rengi */
+    opacity: 1;       /* soluk görünmesin */
 }
