@@ -5,9 +5,10 @@ function MagicText({ text }) {
     const [animationKey, setAnimationKey] = useState(0);
 
     useEffect(() => {
+        // 20 saniyede bir (20000ms) animasyonu baştan başlatır
         const interval = setInterval(() => {
             setAnimationKey((prev) => prev + 1);
-        }, 10000); // 10 saniyede bir tetiklenir
+        }, 20000);
 
         return () => clearInterval(interval);
     }, []);
@@ -17,7 +18,6 @@ function MagicText({ text }) {
             {text.split("").map((char, index) => (
                 <span
                     key={index}
-                    /* 0.07s yaparak harflerin birbirini takip eden bir dalga gibi gelmesini sağladık */
                     style={{ animationDelay: `${index * 0.07}s` }}
                 >
                     {char === " " ? "\u00A0" : char}
