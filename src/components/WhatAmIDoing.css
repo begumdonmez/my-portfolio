@@ -88,11 +88,14 @@
     color: #7f5af0;
 }
 
-.doing-section li:hover {
-    transform: translateX(6px);
-    color: #ffffff;
+/* Mevcut dosyanın geri kalanını koruyarak sadece hover kısmını güncelle veya ekle */
+.doing-section:hover {
+    transform: translateY(-6px);
+    border-color: #F6AE2D; /* Çerçeve rengi değişir */
+    box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.15),
+            0 0 20px rgba(246, 174, 45, 0.2); /* Altın rengi parlama */
 }
-
 /* Responsive */
 @media (max-width: 768px) {
     .doing-section {
