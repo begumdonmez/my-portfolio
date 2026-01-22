@@ -2,6 +2,11 @@ import "./WhatAmIDoing.css";
 import MagicText from "./MagicText";
 
 function WhatAmIDoing() {
+    const playSound = (soundFile) => {
+        const audio = new Audio(`/sounds/${soundFile}`);
+        audio.volume = 0.15;
+        audio.play().catch(err => console.log("Ses yüklenemedi:", err));
+    };
     return (
         <section className="home-section what-i-do">
             <MagicText text="What am I doing?" />
@@ -69,9 +74,12 @@ function WhatAmIDoing() {
                 <div className="skill-group">
                     <h3>Art</h3>
                     <div className="skill-tags">
-                        <span className="skill-tag">Blender</span> <span className="skill-tag">Adobe After Effects</span> 
-                        <span className="skill-tag">Adobe Illustrator</span> <span className="skill-tag">Adobe Photoshop</span> 
-                        <span className="skill-tag">Autodesk Maya</span> <span className="skill-tag">Procreate</span> 
+                        <span className="skill-tag" onMouseEnter={() => playSound("woice1.mp3")}>Blender</span> 
+                        <span className="skill-tag" onMouseEnter={() => playSound("woice3.mp3")}>Adobe After Effects</span> 
+                        <span className="skill-tag" onMouseEnter={() => playSound("woice2.mp3")}>Adobe Illustrator</span> 
+                        <span className="skill-tag" onMouseEnter={() => playSound("woice1.mp3")}>Adobe Photoshop</span> 
+                        <span className="skill-tag" onMouseEnter={() => playSound("woice3.mp3")}>Autodesk Maya</span> 
+                        <span className="skill-tag" onMouseEnter={() => playSound("woice2.mp3")}>Procreate</span> 
                     </div>
                 </div>
                 <div className="skill-group">

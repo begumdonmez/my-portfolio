@@ -1,5 +1,7 @@
 import "./Home.css";
 import WhatAmIDoing from "../components/WhatAmIDoing";
+import AudioMaker from "../components/AudioMaker";
+
 
 function Home() {
     return (
@@ -15,7 +17,8 @@ function Home() {
                     </p>
                 </section>
 
-                <WhatAmIDoing />
+                <WhatAmIDoing/>
+                <AudioMaker/>
 
             </div>
         </div>

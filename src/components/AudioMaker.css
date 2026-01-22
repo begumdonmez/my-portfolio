@@ -1,0 +1,26 @@
+.music-fab {
+    position: fixed;
+    bottom: 20px;   
+    right: 20px;     
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    z-index: 1000; 
+}
+
+.music-fab:hover {
+    transform: scale(1.1);
+}
+
+.music-fab img {
+    width: 60px;
+    height: 60px;
+}
