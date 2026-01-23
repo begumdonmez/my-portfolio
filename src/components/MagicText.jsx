@@ -5,7 +5,7 @@ function MagicText({ text }) {
     const [animationKey, setAnimationKey] = useState(0);
 
     useEffect(() => {
-        // 20 saniyede bir (20000ms) animasyonu baştan başlatır
+        
         const interval = setInterval(() => {
             setAnimationKey((prev) => prev + 1);
         }, 20000);

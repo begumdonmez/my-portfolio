@@ -128,11 +128,11 @@
 }
 
 .skill-tag {
-    background: #ffffff;
-    border: 1px solid #e0e0e0; 
+    background: #659B5E;
+    border: 1px solid #556F44; 
     border-radius: 6px;
     padding: 6px 12px;
-    color: #555555;
+    color: white;
     font-size: 0.85rem;
     font-weight: 500;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);

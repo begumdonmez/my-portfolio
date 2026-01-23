@@ -5,7 +5,7 @@
     width: 100%;
 
     height: 80px; /* header yüksekliği */
-    background-color: white; /* veya senin rengin */
+    background-color: #210722; /* veya senin rengin */
 
     display: flex;
     align-items: center;
@@ -31,7 +31,7 @@
 }
 
 .name {
-    color: #250902;
+    color: ghostwhite;
     font-weight: 600;
     font-family: 'Irish Grover', cursive;
     font-size: 18px;
