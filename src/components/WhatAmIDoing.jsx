@@ -66,8 +66,10 @@ function WhatAmIDoing() {
                 <div className="skill-group">
                     <h3>Programming</h3>
                     <div className="skill-tags">
-                        <span className="skill-tag">Unity</span> <span className="skill-tag">C#</span> 
-                        <span className="skill-tag">JetBrains Rider</span> <span className="skill-tag">GitHub Desktop</span> 
+                        <span className="skill-tag" onMouseEnter={() => playSound("wrak1.mp3")}>Unity</span> 
+                        <span className="skill-tag" onMouseEnter={() => playSound("wrak2.mp3")}>C#</span> 
+                        <span className="skill-tag" onMouseEnter={() => playSound("wrak3.mp3")}>JetBrains Rider</span> 
+                        <span className="skill-tag" onMouseEnter={() => playSound("wrak4.mp3")}>GitHub Desktop</span> 
                     </div>
                 </div>
 
@@ -85,16 +87,18 @@ function WhatAmIDoing() {
                 <div className="skill-group">
                     <h3>Audio</h3>
                     <div className="skill-tags">
-                        <span className="skill-tag">Reaper</span> 
+                        <span className="skill-tag" onMouseEnter={() => playSound("coin.wav")}>Reaper</span> 
                     </div>
                 </div>
 
                 <div className="skill-group">
                     <h3>Management & Documentation & Design</h3>
                     <div className="skill-tags">
-                        <span className="skill-tag">Jira</span> <span className="skill-tag">Confluence</span>
-                        <span className="skill-tag">Notion</span>
-                        <span className="skill-tag">Google Suite</span> <span className="skill-tag">Canva</span>
+                        <span className="skill-tag" onMouseEnter={() => playSound("blip.wav")}>Jira</span> 
+                        <span className="skill-tag" onMouseEnter={() => playSound("iron.wav")}>Confluence</span>
+                        <span className="skill-tag" onMouseEnter={() => playSound("din.wav")}>Notion</span>
+                        <span className="skill-tag" onMouseEnter={() => playSound("whosh.wav")}>Google Suite</span> 
+                        <span className="skill-tag" onMouseEnter={() => playSound("pop.wav")}>Canva</span>
                         
                     </div>
                 </div>
