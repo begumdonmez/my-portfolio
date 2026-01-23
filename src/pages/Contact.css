@@ -1,7 +1,7 @@
 .contact {
-    width: 100%;
-    padding-top: 80px;
-    padding-left: 32px;
+    width: 90%;
+    padding-top: 10px;
+    padding-left:50px;
 }
 
 .contact h1 {
@@ -16,11 +16,6 @@
     max-width: 600px;
     margin-bottom: 48px;
     color: #7A7265;
-}
-
-/* FORM */
-.contact-form {
-    max-width: 500px;
 }
 
 .form-group {
@@ -74,6 +69,46 @@
 /* PLACEHOLDER */
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #7A7265;   /* Enter your name rengi */
-    opacity: 1;       /* soluk görünmesin */
+    color: #7A7265;   
+    opacity: 1;       
+}
+/* Bu kısım form ve görseli yan yana diziyor */
+.contact-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px; /* Aradaki boşluk */
+}
+.contact-left {
+    flex: 1;
+    max-width: 500px;
+}
+
+.contact-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.character-img {
+    max-width: 50%;
+    height: auto;
+    
+    animation: floating 3s ease-in-out infinite;
+}
+@media (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .contact-left {
+        max-width: 100%;
+    }
+}
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
 }

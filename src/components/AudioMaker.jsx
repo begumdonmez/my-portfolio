@@ -2,37 +2,41 @@ import React, { useState, useRef } from "react";
 import "./AudioMaker.css";
 
 function AudioMaker() {
-    
     const playlist = ["muzik1.mp3", "muzik2.mp3", "music3.mp3"];
-
     const [currentIndex, setCurrentIndex] = useState(0);
-    const audioRef = useRef(null); 
+    const [isPlaying, setIsPlaying] = useState(false);
+    const audioRef = useRef(null);
 
     const handleToggleMusic = () => {
-        // Eğer hali hazırda bir müzik çalıyorsa durdur
-        if (audioRef.current) {
+        if (isPlaying && audioRef.current) {
             audioRef.current.pause();
-        }
-        if (currentIndex === playlist.length) {
-            console.log("Müzik durduruldu, bir sonraki tıklama listeyi başlatacak.");
-            setCurrentIndex(0); // Bir sonraki tıklama için indeksi başa sar
-            return; // Fonksiyondan çık, hiçbir şey çalma
+            setIsPlaying(false);
+            return;
         }
 
-        // Yeni şarkıyı seç ve oynat
         const soundFile = playlist[currentIndex];
-        const newAudio = new Audio(`/musics/${soundFile}`);
-        newAudio.volume = 0.15;
+        const audio = new Audio(`/musics/${soundFile}`);
+        audio.volume = 0.15;
 
-        newAudio.play().catch(err => console.log("Müzik yüklenemedi:", err));
-        audioRef.current = newAudio; // Yeni sesi referansa ata
+        audio.play()
+            .then(() => setIsPlaying(true))
+            .catch(err => console.log("Müzik yüklenemedi:", err));
 
-        setCurrentIndex(currentIndex + 1);
+        audio.onended = () => {
+            setIsPlaying(false);
+            setCurrentIndex((prev) => (prev + 1) % playlist.length);
+        };
+
+        audioRef.current = audio;
     };
 
     return (
         <button className="music-fab" onClick={handleToggleMusic}>
-            <img src="/musictrack.png" alt="Müzik Çal" />
+            {isPlaying ? (
+                <img src="/musictrack2.gif" alt="Müzik Çalıyor" />
+            ) : (
+                <img src="/musictrack1.png" alt="Müzik Durduruldu" />
+            )}
         </button>
     );
 }

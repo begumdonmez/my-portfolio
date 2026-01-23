@@ -2,12 +2,12 @@
     position: fixed;
     bottom: 20px;   
     right: 20px;     
-    width: 60px;
-    height: 60px;
+    width:140px;
+    height: 140px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: transparent;
     border: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);*/
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -21,6 +21,6 @@
 }
 
 .music-fab img {
-    width: 60px;
-    height: 60px;
+    width: 140px;
+    height: 140px;
 }
