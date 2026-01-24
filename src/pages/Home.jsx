@@ -1,6 +1,5 @@
 import "./Home.css";
 import WhatAmIDoing from "../components/WhatAmIDoing";
-import AudioMaker from "../components/AudioMaker";
 
 
 function Home() {
@@ -18,7 +17,6 @@ function Home() {
                 </section>
 
                 <WhatAmIDoing/>
-                <AudioMaker/>
 
             </div>
         </div>

@@ -1,33 +1,59 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./AudioMaker.css";
 
 function AudioMaker() {
     const playlist = ["muzik1.mp3", "muzik2.mp3", "music3.mp3"];
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
-    const audioRef = useRef(null);
 
-    const handleToggleMusic = () => {
-        if (isPlaying && audioRef.current) {
-            audioRef.current.pause();
-            setIsPlaying(false);
-            return;
-        }
+    // Tek bir audio nesnesi oluşturuyoruz
+    const audioRef = useRef(new Audio());
 
-        const soundFile = playlist[currentIndex];
-        const audio = new Audio(`/musics/${soundFile}`);
+    // Şarkı kaynağını ve ses seviyesini yöneten efekt
+    useEffect(() => {
+        const audio = audioRef.current;
+        audio.src = `/musics/${playlist[currentIndex]}`;
         audio.volume = 0.15;
 
-        audio.play()
-            .then(() => setIsPlaying(true))
-            .catch(err => console.log("Müzik yüklenemedi:", err));
-
-        audio.onended = () => {
-            setIsPlaying(false);
-            setCurrentIndex((prev) => (prev + 1) % playlist.length);
+        // Otomatik geçiş: Şarkı biterse bir sonrakine geç
+        const handleAutoNext = () => {
+            if (currentIndex === playlist.length - 1) {
+                // Son şarkı bittiyse durdur ve başa sar
+                setIsPlaying(false);
+                setCurrentIndex(0);
+            } else {
+                // Değilse sonrakine geç
+                setCurrentIndex((prev) => prev + 1);
+            }
         };
 
-        audioRef.current = audio;
+        audio.addEventListener("ended", handleAutoNext);
+
+        if (isPlaying) {
+            audio.play().catch(err => console.log("Oynatma hatası:", err));
+        }
+
+        return () => audio.removeEventListener("ended", handleAutoNext);
+    }, [currentIndex, isPlaying]);
+
+    const handleToggleMusic = () => {
+        const audio = audioRef.current;
+
+        if (!isPlaying) {
+            // Müzik çalmıyorsa başlat (0. indexten başlar)
+            setIsPlaying(true);
+        } else {
+            // Müzik çalıyorsa:
+            if (currentIndex === playlist.length - 1) {
+                // 1. Eğer son şarkıdaysak: Durdur ve indeksi sıfırla
+                audio.pause();
+                setIsPlaying(false);
+                setCurrentIndex(0);
+            } else {
+                // 2. Eğer son şarkı değilse: Bir sonraki şarkıya geç
+                setCurrentIndex((prev) => prev + 1);
+            }
+        }
     };
 
     return (
