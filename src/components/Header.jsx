@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { ThemeContext } from "../ThemeContext";
 
 function Header() {
+    const { isDarkMode, toggleTheme } = useContext(ThemeContext);
     const [rotation, setRotation] = useState(0);
 
     useEffect(() => {
@@ -34,6 +36,12 @@ function Header() {
                 <Link to="/">Home</Link>
                 <Link to="/showcase">My Showcase</Link>
                 <Link to="/contact">Message Me</Link>
+
+                {/* Tema Değiştirme Butonu */}
+                <button onClick={toggleTheme} className="theme-toggle">
+                    {isDarkMode ? "🌙" : "☀️"}
+                </button>
+                
             </nav>
         </header>
     );

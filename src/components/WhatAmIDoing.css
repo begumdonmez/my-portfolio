@@ -7,7 +7,7 @@
 .intro-text {
     max-width: 1200px;
     margin-bottom: 3rem;
-    color: #94BFBE;
+    color: var(--p-color);
     line-height: 1.6;
     font-size: 1rem;
 }
@@ -17,7 +17,7 @@
     margin-bottom: 2rem;
     padding: 1.5rem;
     border-radius: 12px;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--section-bg);
     border: 1px solid rgba(255, 255, 255, 0.08);
 
     /* giriş animasyonu */
@@ -54,12 +54,12 @@
 .doing-section h2 {
     margin-bottom: 0.8rem;
     font-size: 1.3rem;
-    color: #8E6E53;
+    color: var(--h2-teal);
 }
 
 /* Metinler */
 .doing-section p {
-    color: #7A7265;
+    color: var(--p-color);
     line-height: 1.6;
     font-size: 0.95rem;
 }
@@ -73,7 +73,7 @@
 
 .doing-section li {
     margin-bottom: 0.4rem;
-    color: #7A7265;
+    color: var(--p-color);
     font-size: 0.95rem;
     position: relative;
     padding-left: 1.2rem;
@@ -85,13 +85,13 @@
     content: "•";
     position: absolute;
     left: 0;
-    color: #7f5af0;
+    color: var(--li);
 }
 
 
 .doing-section:hover {
     transform: translateY(-6px);
-    border-color: #F6AE2D; /* Çerçeve rengi değişir */
+    border-color: var(--h1-gold);
     box-shadow:
             0 10px 30px rgba(0, 0, 0, 0.15),
             0 0 20px rgba(246, 174, 45, 0.2); /* Altın rengi parlama */
@@ -109,14 +109,14 @@
 .doing-section h3 {
     margin: 1.2rem 0 0.5rem 0;
     font-size: 1.1rem;
-    color: #F6AE2D; /* MagicText rengiyle uyumlu */
+    color: var(--h3-brown);
     font-weight: 600;
 }
-/* Tarih ve detay başlıkları */
+
 .doing-section h4 {
     margin: 0 0 0.8rem 0;
     font-size: 0.85rem;
-    color: #F6AE2D;
+    color: var(--h4-brown);
     font-weight: 500;
 }
 
@@ -140,7 +140,7 @@
 }
 
 .skill-tag:hover {
-    border-color: #F6AE2D;
+    border-color: var(--button-hover);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }

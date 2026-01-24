@@ -9,7 +9,7 @@
 .showcase h1 {
     font-size: 42px;
     margin-bottom: 48px;
-    color: #F6AE2D;
+    color: var(--h1-gold);
 }
 
 .showcase-section {
@@ -19,7 +19,7 @@
 .showcase-section h2 {
     font-size: 28px;
     margin-bottom: 24px;
-    color: #94BFBE;
+    color: var(--h2-teal);
 }
 
 .project-list {
@@ -29,7 +29,7 @@
 }
 
 .project-card {
-    background-color: #480A34;
+    background-color: var(--section-bg);
     padding: 16px;
     border-radius: 16px;
 }
@@ -49,17 +49,17 @@
 }
 
 .project-card h3 {
-    color: #F6AE2D;
+    color: var(--h3-brown);
     margin-bottom: 8px;
 }
 
 .project-card p {
-    color: #7A7265;
+    color: var(--p-color);
     font-size: 15px;
     line-height: 1.5;
 }
 
 .text-only {
     background-color: transparent;
-    border: 1px solid #003B36;
+    border: 1px solid var(--text-color);
 }

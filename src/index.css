@@ -1,74 +1,54 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  
+  --bg-color: #250227;
+  --text-color: rgba(255, 255, 255, 0.87); 
+  /* mavi #94BFBE        koyu yesil #003B36*/
+ --p-color: #7A7265;
+  
+   --h1-gold: #F6AE2D;    
+   --h2-teal: #8E6E53;
+  /*  --h2-teal: #94BFBE; */
+    
+   --h3-brown: #A67C52;
+    --h4-brown:#F6AE2D;
+ 
+   --card-bg: #480A34;
+   --button-bg: #1a1a1a;
+ 
+  --section-bg:rgba(255, 255, 255, 0.03);
+  
+   --li:#7f5af0;
+  
+   --header-hover: #5A2E7A;
+   --button-hover: #F6AE2D;
+ }
+ 
+ .light-theme {
+   
+   --bg-color: #FDFCF0;
+   --text-color: #4A4A4A;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #250227;
+   --p-color: #7A7265;
+   
+   --h1-gold: #8E5DA9;    
+   --h2-teal: #003B36;    
+   --h3-brown: #654321;
+   --h4-brown:#F6AE2D;
+   
+   --card-bg: #ffffff;
+   --button-bg: #f9f9f9;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+   --section-bg:#ffffff;
+   
+   --li: #7A7265;
+   
+   --header-hover: #FFEA00;
+   --button-hover: #F6AE6D;
+ }
+ 
+ /* GENEL AYARLAR */
 * {
   margin: 0;
   padding: 0;
@@ -76,7 +56,25 @@ button:focus-visible {
 }
 
 body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
   font-family: 'Irish Grover', cursive;
-  overflow-x: hidden;
 }
 
+/* ThemeContext'ten gelen div */
+.dark-theme, .light-theme {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Başlıkların Atanması */
+h1 { color: var(--h1-gold); transition: color 0.3s ease; }
+h2 { color: var(--h2-teal); transition: color 0.3s ease; }
+h3 { color: var(--h1-gold); transition: color 0.3s ease; } /* Kart içindeki h3'ler de genelde sarıydı */
+
+button {
+  background-color: var(--button-bg);
+  color: var(--text-color);
+}
