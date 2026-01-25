@@ -1,89 +1,74 @@
-/* World2D.css */
-
 .world2d-grid {
     display: flex;
     flex-direction: column;
-    gap: 150px; 
+    gap: 150px;
 }
 
-.project-row {
-    display: flex;
-    gap: 80px;
-    align-items: flex-start;
+/* PROJECT */
+.project {
     width: 100%;
 }
 
-
-.project-details h3 {
+.project-title {
     color: var(--h3-brown);
     font-size: 38px;
     font-family: 'Irish Grover', cursive;
-    margin-bottom: 25px;
+    margin-bottom: 40px;
     letter-spacing: 1px;
 }
 
-/* Metin Bloğu */
-.text-content {
-    margin-bottom: 50px; /* Metin ile alt görsel/boşluk arası mesafe */
+/* ROW */
+.project-row {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    margin-bottom: 60px;
 }
 
-.text-content p {
+.project-row.image-only {
+    justify-content: center;
+}
+/* SAĞA YASLANAN */
+.project-row.image-only.right {
+    justify-content: flex-end;
+}
+
+/* SOLA YASLANAN (ileride lazım olur) */
+.project-row.image-only.left {
+    justify-content: flex-start;
+}
+/* TEXT */
+.project-text p {
     color: var(--p-color);
     font-size: 18px;
     line-height: 1.8;
     max-width: 550px;
 }
 
-/* Hizalamalar */
-.align-left {
-    align-items: flex-start;
-    text-align: left;
-}
-
-.align-right {
-    align-items: flex-end;
-    text-align: right;
-}
-
-.align-right .text-content p {
-    margin-left: auto;
-}
-
-
-.hero-visual {
-    flex: 1;
+/* VISUAL */
+.project-visual {
     display: flex;
     justify-content: center;
 }
 
-.hero-visual img, .project-video {
+.project-visual img,
+.project-visual video {
     width: 100%;
-    max-width: 350px;
+    max-width: 450px;
+    height: auto;
     border-radius: 12px;
+}
+
+/* ⭐ OPSİYONEL SHADOW */
+.with-shadow {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.sub-visual {
-    width: 100%;
-    max-width: 480px;
-}
-
-.sub-visual img {
-    width: 100%;
-    border-radius: 10px;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
-}
-
-
+/* RESPONSIVE */
 @media (max-width: 900px) {
     .project-row {
-        flex-direction: column !important;
-        align-items: center;
+        flex-direction: column;
         text-align: center;
-        gap: 40px;
-    }
-    .project-details {
-        align-items: center !important;
-        text-align: center !important;
+        gap: 30px;
     }
 }
