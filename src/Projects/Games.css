@@ -15,16 +15,14 @@
     background: rgba(255, 255, 255, 0.03);
     border-radius: 20px;
     padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 .game-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
-
 
 /* COVER IMAGE */
 .game-cover {
@@ -33,7 +31,12 @@
     object-fit: cover;
     border-radius: 14px;
     margin-bottom: 20px;
-    background-color: rgba(0,0,0,0.15);
+    background-color: rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease;
+}
+
+.game-card:hover .game-cover {
+    transform: scale(1.05);
 }
 
 /* TITLE */
@@ -66,20 +69,20 @@
     color: var(--p-color);
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
-    .game-cover {
-        height: 160px;
-    }
-}
+/* TABLET */
 @media (max-width: 1024px) {
     .games-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
+/* MOBILE */
 @media (max-width: 600px) {
     .games-grid {
         grid-template-columns: 1fr;
+    }
+
+    .game-cover {
+        height: 160px;
     }
 }
