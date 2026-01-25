@@ -2,7 +2,7 @@ import "./Showcase.css";
 import MagicText from "../components/MagicText";
 import World2D from "../projects/World2D";
 // import World3D from "../projects/World3D"; 
-// import Games from "../projects/Games";
+import Games from "../projects/Games";
 
 function Showcase() {
     return (
@@ -13,8 +13,9 @@ function Showcase() {
 
             {/* İleride bunları da açarsın:
             <World3D />
-            <Games /> 
             */}
+            <Games /> 
+            
 
         </div>
     );
