@@ -14,10 +14,15 @@ function World2D() {
 
                     <div className="project-row">
                         <div className="project-text">
-                            <p>
-                                Can sıkıntısı konulu çizgi animasyon. Hayatımız boyunca bir akışa kapılıp gidiyoruz.
-                                Hayat renklerle daha güzel. Akışa kapılma, akışı kendin oluştur.
+                            <p>Life passes by before we even realize it. 
+                                We are always rushing to keep up with something, doing what we’re told to do.</p>
+                            <p>But what do we actually want? What is our dream?</p>
+                            <p> For our 2D animation class, we were asked to create an animation based on the theme of boredom.
+                                I see dreams as the colors of our lives
+                                without them, we get stuck in a colorless, unhappy, ordinary, and boring world.
                             </p>
+                            <p>This is how I chose to express boredom.</p>
+
                         </div>
 
                         <div className="project-visual">
@@ -97,7 +102,7 @@ function World2D() {
                             <img
                                 src="/projects/baymax_main.gif"
                                 alt="Baymax"
-                                className="with-shadow"
+                                
                             />
                         </div>
 

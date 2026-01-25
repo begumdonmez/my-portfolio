@@ -48,6 +48,6 @@
         transform: scale(1) rotate(0deg);
         filter: blur(0px);
         text-shadow: 0 0 10px rgba(246, 174, 45, 0.4);
-        color: #F6AE2D;
+        color: var(--h1-gold);
     }
 }

@@ -1,4 +1,5 @@
 import "./Showcase.css";
+import MagicText from "../components/MagicText";
 import World2D from "../projects/World2D";
 // import World3D from "../projects/World3D"; 
 // import Games from "../projects/Games";
@@ -6,9 +7,8 @@ import World2D from "../projects/World2D";
 function Showcase() {
     return (
         <div className="showcase">
-            <h1>Showcase</h1>
-
-            {/* Her kategori ayrı bir dosyadan geliyor */}
+                <h1>My Showcase</h1>
+            
             <World2D />
 
             {/* İleride bunları da açarsın:
