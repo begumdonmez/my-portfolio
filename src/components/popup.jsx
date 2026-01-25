@@ -4,7 +4,8 @@ import "./popup.css";
 function Popup({ type, onClose }) {
     return (
         <div className="popup-overlay">
-            <div className="popup">
+            <div className={`popup ${type}`}>
+
                 {type === "welcome" && (
                     <>
                         <h3>Welcome ✨</h3>
@@ -15,12 +16,22 @@ function Popup({ type, onClose }) {
                     </>
                 )}
 
-                {type === "return" && (
+                {type === "welcomeBack" && (
+                    <>
+                        <h3>Welcome back 🤍</h3>
+                        <p>
+                            Glad to see you again.
+                            Let’s keep exploring where you left off 🎨
+                        </p>
+                    </>
+                )}
+
+                {type === "resume" && (
                     <>
                         <h3>Hey 👀</h3>
                         <p>
-                            Where did you go?
-                            You were in the middle of exploring 🎨
+                            You were right in the middle of something.
+                            Let’s continue ✨
                         </p>
                     </>
                 )}

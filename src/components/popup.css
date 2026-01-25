@@ -6,12 +6,79 @@
     align-items: center;
     justify-content: center;
     z-index: 9999;
+
+    /* fade in */
+    animation: fadeIn 0.4s ease forwards;
 }
 
 .popup {
-    background: var(--p-color);
     padding: 32px;
     border-radius: 16px;
     max-width: 400px;
     text-align: center;
+
+    /* popup animasyonu */
+    animation: popupIn 0.45s ease forwards;
+}
+.popup.welcome {
+    background: black;
+}
+
+.popup.welcomeBack {
+    background: black;
+}
+
+.popup.resume {
+    background: black;
+}
+
+
+.popup.welcome h3 {
+    color: #6b4f3f;
+}
+
+
+.popup.return h3 {
+    color: #3f5fb3;
+}
+
+/* BUTTON */
+.popup button {
+    margin-top: 24px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.popup.welcome button {
+    background: #a67c52;
+    color: white;
+}
+
+.popup.return button {
+    background: #5b7cfa;
+    color: white;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popupIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }

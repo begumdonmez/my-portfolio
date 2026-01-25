@@ -11,20 +11,31 @@ import { ThemeProvider } from "./ThemeContext";
 
 function App() {
     const [showPopup, setShowPopup] = useState(false);
-    const [popupType, setPopupType] = useState("welcome");
+    const [popupType, setPopupType] = useState(null);
 
     useEffect(() => {
         const hasVisited = localStorage.getItem("hasVisited");
+        const navigationType =
+            performance.getEntriesByType("navigation")[0]?.type;
 
         if (!hasVisited) {
+            // 🔰 İlk ziyaret
             setPopupType("welcome");
             localStorage.setItem("hasVisited", "true");
-        } else {
-            setPopupType("return");
+            setShowPopup(true);
         }
-
-        setShowPopup(true);
+        else if (navigationType === "reload") {
+            // 🔁 Sayfa yenilendi
+            setPopupType("resume");
+            setShowPopup(true);
+        }
+        else {
+            // 👋 Yeni tab / adres çubuğu / link
+            setPopupType("welcomeBack");
+            setShowPopup(true);
+        }
     }, []);
+
 
     return (
         <BrowserRouter>
