@@ -3,7 +3,7 @@
 .world2d-grid {
     display: flex;
     flex-direction: column;
-    gap: 150px; /* Projeler arası genişlik */
+    gap: 150px; 
 }
 
 .project-row {
@@ -13,99 +13,77 @@
     width: 100%;
 }
 
-/* Ters yerleşim için (Sağda görsel olanlar) */
-.right-visual {
-    flex-direction: row;
-}
 
-/* Ortak görsel/detay ayarları */
-.hero-visual {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    min-width: 300px; /* Yazı olmasa bile alan kaplaması için */
-}
-
-.hero-visual img {
-    width: 100%;
-    max-width: 350px;
-    height: auto;
-}
-
-.project-details {
-    flex: 1.5;
-    display: flex;
-    flex-direction: column;
-    gap: 60px; /* Yazı ile alt görsel arası */
-    min-height: 100px; /* Boş olsa bile yapıyı koruması için */
-}
-
-/* Yazı yoksa bile sub-visual'ın yerini koruması için */
-.text-content:empty {
-    display: none;
-}
-
-.sub-visual img {
-    width: 100%;
-    max-width: 500px;
-    border-radius: 10px;
-}
-
-/* SAĞDA RESİM olan blokta alt görseli sola yaslamak istersen */
-.right-visual .sub-visual {
-    align-self: flex-start;
-}
-
-/* SOLDURMA RESİM olan blokta alt görseli sağa yasla */
-.left-visual .sub-visual {
-    align-self: flex-end;
-}
-.text-content h3 {
-   
-    color: var(--h1-gold);
-    /* Boyut: Başlığı öne çıkarmak için */
-    font-size: 32px;
-
-    /* Font: Header'da kullandığın font ile aynı */
+.project-details h3 {
+    color: var(--h3-brown);
+    font-size: 38px;
     font-family: 'Irish Grover', cursive;
-
-    margin-bottom: 16px;
+    margin-bottom: 25px;
     letter-spacing: 1px;
+}
+
+/* Metin Bloğu */
+.text-content {
+    margin-bottom: 50px; /* Metin ile alt görsel/boşluk arası mesafe */
 }
 
 .text-content p {
     color: var(--p-color);
     font-size: 18px;
     line-height: 1.8;
-    max-width: 600px;
-    font-weight: 400;
-}
-.project-video {
-    width: 100%;
-    max-width: 350px; /* Resimlerin genişliği ile aynı yaptık */
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    object-fit: cover;
+    max-width: 550px;
 }
 
-/* Mobilde yazı boyutlarını biraz küçültmek istersen */
-@media (max-width: 768px) {
-    .text-content h3 {
-        font-size: 26px;
-    }
-    .text-content p {
-        font-size: 16px;
-    }
+/* Hizalamalar */
+.align-left {
+    align-items: flex-start;
+    text-align: left;
 }
-/* MOBİL AYARI */
+
+.align-right {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.align-right .text-content p {
+    margin-left: auto;
+}
+
+
+.hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-visual img, .project-video {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.sub-visual {
+    width: 100%;
+    max-width: 480px;
+}
+
+.sub-visual img {
+    width: 100%;
+    border-radius: 10px;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+}
+
+
 @media (max-width: 900px) {
-    .project-row, .right-visual {
+    .project-row {
         flex-direction: column !important;
         align-items: center;
         text-align: center;
         gap: 40px;
     }
-    .sub-visual {
-        align-self: center !important;
+    .project-details {
+        align-items: center !important;
+        text-align: center !important;
     }
 }

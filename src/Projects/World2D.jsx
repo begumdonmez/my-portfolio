@@ -7,79 +7,80 @@ function World2D() {
             <h2 className="section-title">2D WORLD</h2>
             <div className="world2d-grid">
 
-                {/* CUPHEAD: Video Sağda, Yazı ve Alt Görsel Solda */}
                 <div className="project-row right-visual">
-                    <div className="project-details">
+                    <div className="project-details align-left">
+                        <h3>Boredom</h3>
                         <div className="text-content">
-                            <h3>Cuphead</h3>
                             <p>
-                                1930'lar çizgi film estetiğiyle hazırladığım
-                                karakter tasarımları ve animasyon denemeleri.
+                                Can sıkıntısı konulu çizgi animasyon. Hayatımız boyunca bir akışa kapılıp gidiyoruz.
+                                Hayat renklerle daha güzel. Akışa kapılma akışı kendin oluştur.
                             </p>
                         </div>
-                        <div className="sub-visual">
-                            {/* Buraya Cuphead ile ilgili başka bir resim veya boş bırakabilirsin */}
-                            <img src="/projects/cuphead.gif" alt="Cuphead Background" />
-                        </div>
+                        {/* Alt görsel (sub-visual) eklenmediği için burası boş kalacak */}
                     </div>
                     <div className="hero-visual">
-                        {/* VIDEO BURADA */}
-                        <video
-                            className="project-video"
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                        >
-                            <source src="/projects/cuphead_video.mp4" type="video/mp4" />
-                            Tarayıcınız video oynatmayı desteklemiyor.
+                        <video className="project-video" autoPlay loop muted playsInline>
+                            <source src="/projects/Boredom.mp4" type="video/mp4" />
                         </video>
                     </div>
                 </div>
 
-                {/* BAYMAX: Ana Görsel Solda, Yazı ve Alt Görsel Sağda */}
-                <div className="project-row left-visual">
-                    <div className="hero-visual">
-                        <img src="/projects/baymax_main.gif" alt="Baymax Concept" />
-                    </div>
-                    <div className="project-details">
+                
+                <div className="project-row right-visual">
+                    <div className="project-details align-left">
+                        <h3>Cuphead</h3>
                         <div className="text-content">
-                            <h3>Baymax</h3>
-                            <p>Baymax karakter tasarımı ve izometrik oda kurgusu.</p>
+                            <p>
+                                A Cuphead running animation I created as part of a 2D animation course. 
+                                The animation was referenced from the character Dipper Pines from Gravity Falls. 
+                                The eye add-on was my own idea. The background was also designed by me using Cuphead characters and elements.
+                            </p>
+                        </div>
+                        <div className="sub-visual">
+                            <img src="/projects/cuphead.gif" alt="Cuphead Animation" />
+                        </div>
+                        
+                        <div className="text-content">
+                            <p>
+                                I focused on timing, squash and stretch, and keeping the animation flow playful
+                                to match the classic Cuphead style.
+                            </p>
+                        </div>
+
+                        {/* EKSTRA GÖRSEL */}
+                        <div className="sub-visual">
+                            <img src="/projects/cuphead_sketch.png" alt="Cuphead Sketches" />
+                        </div>
+                    </div>
+
+                
+                    
+                    <div className="hero-visual">
+                        <video className="project-video" autoPlay loop muted playsInline>
+                            <source src="/projects/cuphead_video.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                    
+                </div>
+
+                
+                <div className="project-row left-visual">
+                    <div className="sub-visual">
+                        <img src="/projects/baymax_main.gif" alt="Baymax" />
+                    </div>
+                    <div className="project-details align-right">
+                        <h3>Baymax</h3>
+                        <div className="text-content">
+                            <p>
+                                During our 2D animation class, I wanted to draw Baymax, one of my favorite characters from Big Hero 6. 
+                                It’s not fully finished, but I still wanted to share it because it turned out really cute. </p>
                         </div>
                         <div className="sub-visual">
                             <img src="/projects/baymax_room.gif" alt="Baymax Room" />
                         </div>
                     </div>
                 </div>
-
                 
-                <div className="project-row right-visual">
-                    <div className="project-details">
-                        <div className="text-content">
-                            <h3>Boredom</h3>
-                            <p>
-                                Can sıkıntısı konulu çizgi animasyon. Hayatımız boyunca bir akışa kapılıp gidiyoruz.
-                                Hayat renklerle daha güzel. Akışa kapılma akışı kendin oluştur.
-                            </p>
-                        </div>
-                      
-                    </div>
-                    <div className="hero-visual">
-                        
-                        <video
-                            className="project-video"
-                            autoPlay
-                            loop
-                            muted
-                            playsInline
-                        >
-                            <source src="/projects/Boredom.mp4" type="video/mp4" />
-                            Tarayıcınız video oynatmayı desteklemiyor.
-                        </video>
-                    </div>
-                </div>
-
             </div>
         </section>
     );
