@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 
 import Header from "./components/Header";
 import Home from "./pages/Home";
+import AboutMe from "./pages/AboutMe";
 import Contact from "./pages/Contact";
 import Showcase from "./pages/Showcase";
+
 import AudioMaker from "./components/AudioMaker";
 import Popup from "./components/Popup";
 import { ThemeProvider } from "./ThemeContext";
@@ -51,7 +53,9 @@ function App() {
                 )}
 
                 <Routes>
+
                     <Route path="/" element={<Home />} />
+                    <Route path="/aboutme" element={<AboutMe />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/showcase" element={<Showcase />} />
                 </Routes>
