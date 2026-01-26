@@ -4,10 +4,20 @@ import { Link } from "react-router-dom";
 function Home() {
     return (
         <div className="home-container">
-            {/* 3D Arka Plan Katmanları */}
+            {/* 3D ve Sihirli Arka Plan Katmanları */}
             <div className="background-3d">
                 <div className="grid-floor"></div>
                 <div className="horizon-glow"></div>
+
+                {/* Sihirli Parıltılar */}
+                <div className="magic-particles">
+                    <div className="particle"></div>
+                    <div className="particle"></div>
+                    <div className="particle"></div>
+                    <div className="particle"></div>
+                    <div className="particle"></div>
+                    <div className="particle"></div>
+                </div>
             </div>
 
             {/* Ana İçerik */}

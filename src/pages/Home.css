@@ -7,10 +7,10 @@
     padding: 0 5%;
     overflow: hidden;
     position: relative;
-    perspective: 1000px; /* 3D derinlik seviyesi */
+    perspective: 1000px;
 }
 
-/* 3D Arka Plan Yapısı */
+/* Arka Plan Katmanı */
 .background-3d {
     position: absolute;
     top: 0;
@@ -18,10 +18,9 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-    pointer-events: none;
 }
 
-/* Hareketli 3D Izgara */
+/* 3D Izgara Zemin */
 .grid-floor {
     position: absolute;
     bottom: -20%;
@@ -42,6 +41,42 @@
     100% { transform: rotateX(65deg) translateY(60px); }
 }
 
+/* Sihirli Parıltılar (Magic Particles) */
+.magic-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    filter: blur(1px);
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    animation: magicFloat 6s ease-in-out infinite;
+}
+
+/* Parıltıların Rastgele Konumları ve Gecikmeleri */
+.particle:nth-child(1) { left: 10%; bottom: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 30%; bottom: 5%; animation-delay: 1.5s; width: 4px; height: 4px; }
+.particle:nth-child(3) { left: 70%; bottom: 15%; animation-delay: 3s; }
+.particle:nth-child(4) { right: 15%; bottom: 10%; animation-delay: 0.5s; width: 8px; height: 8px; }
+.particle:nth-child(5) { left: 50%; bottom: 20%; animation-delay: 4.5s; }
+.particle:nth-child(6) { right: 40%; bottom: 5%; animation-delay: 2s; }
+
+@keyframes magicFloat {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    20% { opacity: 0.8; }
+    80% { opacity: 0.5; }
+    100% { transform: translateY(-300px) scale(0); opacity: 0; }
+}
+
 /* Ufuk Çizgisi Parlaması */
 .horizon-glow {
     position: absolute;
@@ -51,98 +86,40 @@
     height: 5px;
     background: #007bff;
     box-shadow: 0 0 40px 10px rgba(0, 123, 255, 0.6);
-    filter: blur(2px);
 }
 
-/* Metin Alanı */
-.hero-section {
+/* Metin ve Görsel Alanları */
+.hero-section, .image-wrapper {
     position: relative;
     z-index: 10;
-    max-width: 600px;
 }
 
 .glitch-text {
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 900;
-    letter-spacing: 8px;
-    margin-bottom: 10px;
     color: var(--text-color, #fff);
     text-shadow: 3px 3px 0px #ff00c1, -3px -3px 0px #007bff;
+    letter-spacing: 8px;
 }
 
 .subtitle {
     font-size: 1.4rem;
     font-family: 'Courier New', monospace;
     margin-bottom: 30px;
-    opacity: 0.9;
 }
 
 /* Butonlar */
-.hero-buttons {
-    display: flex;
-    gap: 20px;
-}
+.hero-buttons { display: flex; gap: 20px; }
+.btn-primary { background: #007bff; color: white; padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 5px; }
+.btn-secondary { border: 2px solid #007bff; color: #007bff; padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 5px; }
 
-.btn-primary, .btn-secondary {
-    padding: 12px 30px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    border: 2px solid #007bff;
-}
-
-.btn-primary {
-    background: #007bff;
-    color: white;
-}
-
-.btn-primary:hover {
-    box-shadow: 0 0 20px rgba(0, 123, 255, 0.8);
-    transform: translateY(-3px);
-}
-
-.btn-secondary {
-    color: #007bff;
-    background: transparent;
-}
-
-.btn-secondary:hover {
-    background: rgba(0, 123, 255, 0.1);
-    transform: translateY(-3px);
-}
-
-/* Karakter Görseli ve Animasyonu */
-.image-wrapper {
-    position: relative;
-    z-index: 10;
-}
-
+/* Karakter Animasyonu */
 .hero-image {
     max-width: 450px;
-    height: auto;
-    filter: drop-shadow(0 0 25px rgba(0, 123, 255, 0.3));
     animation: heroFloat 4s ease-in-out infinite;
 }
 
 @keyframes heroFloat {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-25px) rotate(2deg); }
-}
-
-/* Mobil Uyumluluk */
-@media (max-width: 768px) {
-    .home-container {
-        flex-direction: column-reverse;
-        justify-content: center;
-        text-align: center;
-        padding-top: 80px;
-    }
-    .hero-buttons {
-        justify-content: center;
-    }
-    .hero-image {
-        max-width: 300px;
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
 }
