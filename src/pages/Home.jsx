@@ -3,24 +3,23 @@ import { Link } from "react-router-dom";
 
 function Home() {
     return (
-        <div className="home-container">
-            {/* 3D ve Sihirli Arka Plan Katmanları */}
+        
+        <div className="home-container tv-on-effect">
+            
+            <div className="scanlines"></div>
+            <div className="vignette"></div>
+
             <div className="background-3d">
                 <div className="grid-floor"></div>
                 <div className="horizon-glow"></div>
 
-                {/* Sihirli Parıltılar */}
                 <div className="magic-particles">
-                    <div className="particle"></div>
-                    <div className="particle"></div>
-                    <div className="particle"></div>
-                    <div className="particle"></div>
-                    <div className="particle"></div>
-                    <div className="particle"></div>
+                    {[...Array(12)].map((_, i) => (
+                        <div key={i} className="particle"></div>
+                    ))}
                 </div>
             </div>
 
-            {/* Ana İçerik */}
             <div className="hero-section">
                 <h1 className="glitch-text">BEGÜM</h1>
                 <p className="subtitle">Digital Game Designer | Level 4</p>
@@ -31,7 +30,6 @@ function Home() {
                 </div>
             </div>
 
-            {/* Karakter Görseli */}
             <div className="image-wrapper">
                 <img src="/begu.png" alt="Begüm Character" className="hero-image" />
             </div>
