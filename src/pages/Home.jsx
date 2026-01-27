@@ -1,38 +1,51 @@
 import "./Home.css";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 function Home() {
+    useEffect(() => {
+        // TV açılış efekti bitince overlay otomatik kaybolur
+        const overlay = document.querySelector(".tv-overlay");
+        if (overlay) {
+            setTimeout(() => {
+                overlay.classList.add("tv-off");
+            }, 1200);
+        }
+    }, []);
+
     return (
-        
-        <div className="home-container tv-on-effect">
-            
-            <div className="scanlines"></div>
-            <div className="vignette"></div>
+        <div className="home-root">
+            {/* TV AÇILIŞ OVERLAY */}
+            <div className="tv-overlay" />
 
-            <div className="background-3d">
-                <div className="grid-floor"></div>
-                <div className="horizon-glow"></div>
-
-                <div className="magic-particles">
-                    {[...Array(12)].map((_, i) => (
-                        <div key={i} className="particle"></div>
-                    ))}
-                </div>
+            {/* 3D / PARTICLE ARKA PLAN */}
+            <div className="bg-3d">
+                <div className="particle p1" />
+                <div className="particle p2" />
+                <div className="particle p3" />
+                <div className="particle p4" />
+                <div className="particle p5" />
             </div>
 
-            <div className="hero-section">
-                <h1 className="glitch-text">BEGÜM</h1>
-                <p className="subtitle">Digital Game Designer | Level 4</p>
+            {/* HERO */}
+            <section className="hero-section">
+                <div className="image-wrapper">
+                    <img
+                        src="/begu.png"
+                        alt="Hero"
+                        className="hero-image"
+                    />
+                </div>
+
+                <h1 className="hero-title">Begüm Dönmez</h1>
+                <p className="hero-subtitle">
+                    Game Designer · Level Designer · Creative Technologist
+                </p>
 
                 <div className="hero-buttons">
-                    <Link to="/showcase" className="btn-primary">START GAME</Link>
-                    <Link to="/aboutme" className="btn-secondary">LOAD INFO</Link>
+                    <button className="primary-btn">Load Info</button>
+                    <button className="secondary-btn">View Projects</button>
                 </div>
-            </div>
-
-            <div className="image-wrapper">
-                <img src="/begu.png" alt="Begüm Character" className="hero-image" />
-            </div>
+            </section>
         </div>
     );
 }

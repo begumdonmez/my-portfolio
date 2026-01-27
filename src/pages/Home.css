@@ -1,192 +1,156 @@
-/* --- TEMEL YAPI VE TV AÇILIŞI --- */
-.home-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    min-height: 90vh;
-    padding: 0 5%;
-    overflow: hidden;
+/* ROOT */
+.home-root {
     position: relative;
-    perspective: 1000px;
-    background: #000; /* TV açılmadan önceki siyah ekran */
-}
-.body {
-    background: var(--bg-color);
-}
-
-/* TV Açılış Animasyonu */
-.tv-on-effect {
-    animation: tvOpen 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: black;
+    color: white;
 }
 
-@keyframes tvOpen {
+/* ============================= */
+/* TV AÇILIŞ EFEKTİ */
+/* ============================= */
+.tv-overlay {
+    position: fixed;
+    inset: 0;
+    background: black;
+    z-index: 9999;
+    animation: tvOn 1.2s ease-in-out forwards;
+}
+
+.tv-off {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes tvOn {
     0% {
-        transform: scaleX(0) scaleY(0.005);
+        transform: scaleY(0.01);
         opacity: 0;
-        filter: brightness(10);
-        background: #fff; /* İlk patlama beyaz olsun */
     }
     40% {
-        transform: scaleX(1) scaleY(0.005);
         opacity: 1;
-        background: black;
     }
     100% {
-        transform: scaleX(1) scaleY(1);
-        opacity: 1;
-        filter: brightness(1);
-        /* Animasyon bittiğinde arka planı şeffaf yap ki ThemeContext rengi görünsün */
-        background: transparent;
+        transform: scaleY(1);
+        opacity: 0;
     }
 }
 
-/* --- EKSTRA ATMOSFER EFEKTLERİ --- */
-.scanlines {
+/* ============================= */
+/* 3D BACKGROUND + PARTICLES */
+/* ============================= */
+.bg-3d {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: repeating-linear-gradient(
-            0deg,
-            rgba(0, 0, 0, 0.1) 0px,
-            rgba(0, 0, 0, 0.1) 1px,
-            transparent 1px,
-            transparent 2px
-    );
-    pointer-events: none;
-    z-index: 20;
-}
-
-.vignette {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.6) 100%);
-    pointer-events: none;
-    z-index: 15;
-}
-
-/* --- 3D ARKA PLAN --- */
-.background-3d {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    inset: 0;
+    perspective: 800px;
     z-index: 1;
-}
-
-.grid-floor {
-    position: absolute;
-    bottom: -20%;
-    left: -50%;
-    width: 200%;
-    height: 100%;
-    background-image:
-            linear-gradient(0deg, transparent 24%, rgba(0, 123, 255, 0.2) 25%, rgba(0, 123, 255, 0.2) 26%, transparent 27%),
-            linear-gradient(90deg, transparent 24%, rgba(0, 123, 255, 0.2) 25%, rgba(0, 123, 255, 0.2) 26%, transparent 27%);
-    background-size: 60px 60px;
-    transform: rotateX(65deg);
-    transform-origin: center bottom;
-    animation: moveGrid 3s linear infinite;
-}
-
-@keyframes moveGrid {
-    0% { transform: rotateX(65deg) translateY(0); }
-    100% { transform: rotateX(65deg) translateY(60px); }
-}
-
-.horizon-glow {
-    position: absolute;
-    top: 55%; left: 0; width: 100%; height: 5px;
-    background: #007bff;
-    box-shadow: 0 0 40px 10px rgba(0, 123, 255, 0.6);
-}
-
-/* --- SİHİRLİ PARILTILAR --- */
-.magic-particles {
-    position: absolute;
-    width: 100%; height: 100%;
 }
 
 .particle {
     position: absolute;
-    background: white;
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
-    filter: blur(1px);
-    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
-    opacity: 0;
-    animation: magicFloat 6s ease-in-out infinite;
+    animation: float 6s infinite ease-in-out;
 }
 
-/* Parıltı Çeşitliliği */
-.particle:nth-child(4n) { width: 8px; height: 8px; }
-.particle:nth-child(4n+1) { width: 4px; height: 4px; }
-.particle:nth-child(4n+2) { width: 2px; height: 2px; }
+.p1 { top: 20%; left: 30%; animation-delay: 0s; }
+.p2 { top: 60%; left: 70%; animation-delay: 1s; }
+.p3 { top: 40%; left: 50%; animation-delay: 2s; }
+.p4 { top: 75%; left: 25%; animation-delay: 3s; }
+.p5 { top: 30%; left: 80%; animation-delay: 4s; }
 
-/* Rastgele Konumlar */
-.particle:nth-child(1) { left: 10%; bottom: 10%; animation-delay: 0s; }
-.particle:nth-child(2) { left: 35%; bottom: 5%; animation-delay: 1.5s; }
-.particle:nth-child(3) { left: 75%; bottom: 15%; animation-delay: 3s; }
-.particle:nth-child(4) { right: 15%; bottom: 10%; animation-delay: 0.5s; }
-.particle:nth-child(5) { left: 55%; bottom: 20%; animation-delay: 4.5s; }
-.particle:nth-child(6) { right: 45%; bottom: 5%; animation-delay: 2s; }
-.particle:nth-child(7) { left: 20%; bottom: 15%; animation-delay: 1s; }
-.particle:nth-child(8) { right: 25%; bottom: 20%; animation-delay: 3.5s; }
-
-@keyframes magicFloat {
-    0% { transform: translateY(0) scale(1); opacity: 0; }
-    20% { opacity: 0.8; }
-    80% { opacity: 0.5; }
-    100% { transform: translateY(-400px) scale(0); opacity: 0; }
+@keyframes float {
+    0% {
+        transform: translateZ(0px);
+        opacity: 0.4;
+    }
+    50% {
+        transform: translateZ(80px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateZ(0px);
+        opacity: 0.4;
+    }
 }
 
-/* --- İÇERİK STİLLERİ --- */
-.hero-section, .image-wrapper {
+/* ============================= */
+/* HERO */
+/* ============================= */
+.hero-section {
     position: relative;
-    z-index: 10;
-    opacity: 0;
-    animation: fadeInContent 0.5s ease forwards;
-    animation-delay: 1s; /* TV açıldıktan sonra gelir */
+    z-index: 20;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-@keyframes fadeInContent {
-    to { opacity: 1; }
+.image-wrapper {
+    position: relative;
+    z-index: 20;
+    margin-bottom: 24px;
 }
-
-.glitch-text {
-    font-size: clamp(3rem, 8vw, 6rem);
-    font-weight: 900;
-    color: var(--text-color, #fff);
-    text-shadow: 3px 3px 0px #ff00c1, -3px -3px 0px #007bff;
-    letter-spacing: 8px;
-}
-
-.subtitle {
-    font-size: 1.4rem;
-    font-family: 'Courier New', monospace;
-    margin-bottom: 30px;
-}
-
-.hero-buttons { display: flex; gap: 20px; }
-.btn-primary { background: #007bff; color: white; padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.3s; }
-.btn-primary:hover { box-shadow: 0 0 15px #007bff; transform: translateY(-2px); }
-.btn-secondary { border: 2px solid #007bff; color: #007bff; padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.3s; }
-.btn-secondary:hover { background: rgba(0, 123, 255, 0.1); transform: translateY(-2px); }
 
 .hero-image {
-    max-width: 450px;
-    filter: drop-shadow(0 0 20px rgba(0, 123, 255, 0.4));
-    animation: heroFloat 4s ease-in-out infinite;
+    width: 220px;
+    height: auto;
+    filter: drop-shadow(0 0 25px rgba(255,255,255,0.25));
 }
 
-@keyframes heroFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+.hero-title {
+    font-size: 48px;
+    margin-bottom: 8px;
 }
 
-@media (max-width: 768px) {
-    .grid-floor {
-        animation: none;
-        opacity: 0.3;
-    }
+.hero-subtitle {
+    font-size: 18px;
+    opacity: 0.7;
+    margin-bottom: 32px;
+}
 
-    .scanlines,
-    .magic-particles {
-        display: none;
-    }
+/* ============================= */
+/* BUTTONS */
+/* ============================= */
+.hero-buttons {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    gap: 16px;
+}
+
+.primary-btn,
+.secondary-btn {
+    padding: 14px 28px;
+    font-size: 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.primary-btn {
+    background: white;
+    color: black;
+    border: none;
+}
+
+.primary-btn:hover {
+    transform: scale(1.05);
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.secondary-btn:hover {
+    background: white;
+    color: black;
 }
