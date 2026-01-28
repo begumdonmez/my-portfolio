@@ -1,42 +1,32 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import TarotCard from "./TarotCard";
 
 function AboutSection() {
     const ref = useRef(null);
+    const [visible, setVisible] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
-                    ref.current.classList.add("active");
-                }
+                setVisible(entry.isIntersecting);
             },
-            { threshold: 0.3 }
+            { threshold: 0.4 }
         );
 
         observer.observe(ref.current);
+        return () => observer.disconnect();
     }, []);
 
     return (
-        <section className="about-section">
-            <div ref={ref} className="about-cards reveal">
-                {/* BEN */}
-                <TarotCard
-                    open={true}
-                    title="The Seeker"
-                    subtitle="A game designer shaping systems and emotions through play."
-                />
+        <div className="about-cards">
+            <TarotCard variant="back" />
+            <TarotCard
+                title="The Seeker"
+                subtitle="Game designer crafting systems, emotions and quiet moments."
+                variant="front"
+            />
+        </div>
 
-                {/* DETAYLAR */}
-                <TarotCard
-                    open={false}
-                    title="The Chronicle"
-                    subtitle={`Digital Game Designer
-Level Design • Puzzle Systems
-Unity • C# • React`}
-                />
-            </div>
-        </section>
     );
 }
 

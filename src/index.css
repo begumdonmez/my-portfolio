@@ -10,7 +10,21 @@ body {
     font-family: "Georgia", serif;
 }
 
+/* ===================== */
+/* APP LAYOUT */
+/* ===================== */
+
 .app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===================== */
+/* TOP TAROT CARDS */
+/* ===================== */
+
+.hero {
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -23,7 +37,7 @@ body {
     perspective: 1400px;
 }
 
-/* OUTER — DRAMATIC MOVE */
+/* OUTER */
 .tarot-card {
     width: 200px;
     height: 340px;
@@ -36,7 +50,7 @@ body {
     z-index: 10;
 }
 
-/* INNER — FAST ROTATE */
+/* INNER */
 .tarot-inner {
     width: 100%;
     height: 100%;
@@ -56,7 +70,6 @@ body {
     border-radius: 14px;
     backface-visibility: hidden;
     border: 2px solid rgba(255, 255, 255, 0.95);
-    background-clip: padding-box;
 }
 
 /* BACK */
@@ -89,12 +102,72 @@ body {
 .tarot-front h2 {
     font-size: 21px;
     letter-spacing: 1.2px;
-    color: #f7f7f7;
     margin-bottom: 12px;
 }
 
 .tarot-front span {
     font-size: 12px;
     color: #f6ae2d;
-    opacity: 0.95;
+}
+
+/* ===================== */
+/* ABOUT / BEN SECTION */
+/* ===================== */
+
+.about-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* HAND HELD CARDS */
+.about-cards {
+    position: relative;
+    width: 420px;
+    height: 380px;
+}
+
+/* SCROLL VISIBILITY */
+.about-hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.about-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* DISABLE HOVER */
+.static-card {
+    pointer-events: none;
+}
+
+/* COMMON */
+.about-cards .tarot-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* LEFT — BACK CARD */
+.about-cards .tarot-card.back {
+    z-index: 2;
+    transform: translateX(0) translateY(0);
+}
+
+/* RIGHT — DETAIL CARD */
+.about-cards .tarot-card.front {
+    z-index: 1;
+    transform: translateX(120px) translateY(35px) rotate(8deg);
+}
+/* FORCE CARD STATES */
+.force-open .tarot-inner {
+    transform: rotateY(180deg);
+}
+
+.force-closed .tarot-inner {
+    transform: rotateY(0deg);
 }
