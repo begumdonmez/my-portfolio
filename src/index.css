@@ -2,7 +2,7 @@
 
 :root {
   
-  --bg-color: #250227;
+  --bg-color: black;
   --text-color: rgba(255, 255, 255, 0.87); 
   /* mavi #94BFBE        koyu yesil #003B36*/
  --p-color: #7A7265;
@@ -47,7 +47,30 @@
    --header-hover: #FFEA00;
    --button-hover: #F6AE6D;
  }
- 
+.witch-theme {
+
+    --bg-color: #250227;
+    --text-color: rgba(255, 255, 255, 0.87);
+    /* mavi #94BFBE        koyu yesil #003B36*/
+    --p-color: #7A7265;
+
+    --h1-gold: #F6AE2D;
+    --h2-teal: #8E6E53;
+    /*  --h2-teal: #94BFBE; */
+
+    --h3-brown: #A67C52;
+    --h4-brown:#F6AE2D;
+
+    --card-bg: #480A34;
+    --button-bg: #1a1a1a;
+
+    --section-bg:rgba(255, 255, 255, 0.03);
+
+    --li:#7f5af0;
+
+    --header-hover: #5A2E7A;
+    --button-hover: #F6AE2D;
+}
  /* GENEL AYARLAR */
 * {
   margin: 0;
