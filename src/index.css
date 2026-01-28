@@ -1,18 +1,15 @@
-/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* BODY */
 body {
     background: #000;
     color: white;
     font-family: "Georgia", serif;
 }
 
-/* APP WRAPPER */
 .app {
     min-height: 100vh;
     display: flex;
@@ -20,33 +17,32 @@ body {
     align-items: center;
 }
 
-/* TAROT ROW */
 .tarot-container {
     display: flex;
-    gap: 64px;
-    perspective: 1200px;
+    gap: 72px;
+    perspective: 1400px;
 }
 
-/* CARD OUTER (SLIGHT LIFT) */
+/* OUTER — DRAMATIC MOVE */
 .tarot-card {
     width: 200px;
     height: 340px;
-    transition: transform 0.4s ease;
+    transition: transform 0.35s ease;
+    filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.15));
 }
 
 .tarot-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    z-index: 5;
+    transform: translateY(-10px) scale(1.05);
+    z-index: 10;
 }
 
-/* INNER (ROTATES) */
+/* INNER — FAST ROTATE */
 .tarot-inner {
     width: 100%;
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.8s ease;
-    cursor: pointer;
+    transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tarot-card:hover .tarot-inner {
@@ -59,10 +55,8 @@ body {
     inset: 0;
     border-radius: 14px;
     backface-visibility: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.9);
-    box-shadow:
-            0 0 20px rgba(255, 255, 255, 0.15),
-            inset 0 0 30px rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    background-clip: padding-box;
 }
 
 /* BACK */
@@ -75,15 +69,15 @@ body {
 
 .tarot-back::before {
     content: "✦";
-    font-size: 48px;
-    opacity: 0.6;
+    font-size: 52px;
+    opacity: 0.55;
 }
 
 /* FRONT */
 .tarot-front {
-    background: linear-gradient(180deg, #0b0b0b, #111);
+    background: linear-gradient(180deg, #0a0a0a, #121212);
     transform: rotateY(180deg);
-    padding: 24px;
+    padding: 26px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -93,14 +87,14 @@ body {
 
 /* TEXT */
 .tarot-front h2 {
-    font-size: 20px;
-    letter-spacing: 1px;
-    color: #f5f5f5;
-    margin-bottom: 10px;
+    font-size: 21px;
+    letter-spacing: 1.2px;
+    color: #f7f7f7;
+    margin-bottom: 12px;
 }
 
 .tarot-front span {
     font-size: 12px;
     color: #f6ae2d;
-    opacity: 0.9;
+    opacity: 0.95;
 }
