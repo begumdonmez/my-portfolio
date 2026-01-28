@@ -1,9 +1,10 @@
 import "./Home.css";
 import { useEffect } from "react";
+import BackgroundEffects from '../components/BackgroundEffects';
 
 function Home() {
     useEffect(() => {
-        // TV açılış efekti bitince overlay otomatik kaybolur
+        // TV açılış efekti (Scanline / CRT etkisi)
         const overlay = document.querySelector(".tv-overlay");
         if (overlay) {
             setTimeout(() => {
@@ -14,24 +15,25 @@ function Home() {
 
     return (
         <div className="home-root">
-            {/* TV AÇILIŞ OVERLAY */}
+            {/* KATMAN 1: TV AÇILIŞ OVERLAY (En Üstte) */}
             <div className="tv-overlay" />
 
-            {/* 3D / PARTICLE ARKA PLAN */}
+            {/* KATMAN 2: SİNEMATİK ARKA PLAN (Blobs & Noise) */}
+            <BackgroundEffects />
+
+            {/* KATMAN 3: PARTICLE SİSTEMİ (Organik ve Dağınık) */}
             <div className="bg-3d">
-                <div className="particle p1" />
-                <div className="particle p2" />
-                <div className="particle p3" />
-                <div className="particle p4" />
-                <div className="particle p5" />
+                {[...Array(15)].map((_, i) => (
+                    <div key={i} className={`particle p${(i % 5) + 1}`} />
+                ))}
             </div>
 
-            {/* HERO */}
+            {/* KATMAN 4: ANA İÇERİK */}
             <section className="hero-section">
                 <div className="image-wrapper">
                     <img
                         src="/begu.png"
-                        alt="Hero"
+                        alt="Begüm Dönmez"
                         className="hero-image"
                     />
                 </div>
