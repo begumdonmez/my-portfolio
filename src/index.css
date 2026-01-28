@@ -1,103 +1,93 @@
-@import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
-
-:root {
-  
-  --bg-color: black;
-  --text-color: rgba(255, 255, 255, 0.87); 
-  /* mavi #94BFBE        koyu yesil #003B36*/
- --p-color: #7A7265;
-  
-   --h1-gold: #F6AE2D;    
-   --h2-teal: #8E6E53;
-  /*  --h2-teal: #94BFBE; */
-    
-    --h3-brown: #A67C52;
-    --h4-brown:#F6AE2D;
- 
-   --card-bg: #480A34;
-   --button-bg: #1a1a1a;
- 
-  --section-bg:rgba(255, 255, 255, 0.03);
-  
-   --li:#7f5af0;
-  
-   --header-hover: #5A2E7A;
-   --button-hover: #F6AE2D;
- }
- 
- .light-theme {
-   
-   --bg-color: #FDFCF0;
-   --text-color: #4A4A4A;
-
-   --p-color: #7A7265;
-   
-   --h1-gold: #8E5DA9;    
-   --h2-teal: #003B36;    
-   --h3-brown: #654321;
-   --h4-brown:#F6AE2D;
-   
-   --card-bg: #ffffff;
-   --button-bg: #f9f9f9;
-
-   --section-bg:#ffffff;
-   
-   --li: #7A7265;
-   
-   --header-hover: #FFEA00;
-   --button-hover: #F6AE6D;
- }
-.witch-theme {
-
-    --bg-color: #250227;
-    --text-color: rgba(255, 255, 255, 0.87);
-    /* mavi #94BFBE        koyu yesil #003B36*/
-    --p-color: #7A7265;
-
-    --h1-gold: #F6AE2D;
-    --h2-teal: #8E6E53;
-    /*  --h2-teal: #94BFBE; */
-
-    --h3-brown: #A67C52;
-    --h4-brown:#F6AE2D;
-
-    --card-bg: #480A34;
-    --button-bg: #1a1a1a;
-
-    --section-bg:rgba(255, 255, 255, 0.03);
-
-    --li:#7f5af0;
-
-    --header-hover: #5A2E7A;
-    --button-hover: #F6AE2D;
-}
- /* GENEL AYARLAR */
+/* RESET */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  font-family: 'Irish Grover', cursive;
+    background: #000;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: serif;
+    overflow: hidden;
 }
 
-/* ThemeContext'ten gelen div */
-.dark-theme, .light-theme {
-  min-height: 100vh;
-  width: 100%;
+.tarot-container {
+    display: flex;
+    gap: 64px; /* biraz açtık */
+    perspective: 1200px;
 }
 
-/* Başlıkların Atanması */
-h1 { color: var(--h1-gold); transition: color 0.3s ease; }
-h2 { color: var(--h2-teal); transition: color 0.3s ease; }
-h3 { color: var(--h1-gold); transition: color 0.3s ease; } /* Kart içindeki h3'ler de genelde sarıydı */
+.tarot-card {
+    width: 200px;
+    height: 340px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+    cursor: pointer;
+}
 
-button {
-  background-color: var(--button-bg);
-  color: var(--text-color);
+.tarot-card:hover {
+    transform: rotateY(180deg) translateY(-10px) scale(1.04);
+    z-index: 10;
+}
+
+/* FACES */
+.tarot-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    backface-visibility: hidden;
+    background: #111;
+    border: 1px solid #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+
+    box-shadow:
+            0 0 8px rgba(245, 245, 245, 0.25),
+            0 0 20px rgba(245, 245, 245, 0.08);
+}
+
+/* BACK */
+.tarot-back {
+    background: #0e0e0e;
+}
+
+.tarot-back::before {
+    content: "✶";
+    font-size: 64px;
+    opacity: 0.6;
+    color: #f5f5f5;
+}
+
+/* FRONT */
+.tarot-front {
+    transform: rotateY(180deg);
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tarot-front h2 {
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: #f5f5f5;
+}
+
+.tarot-front span {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* HOVER DEPTH */
+.tarot-card:hover .tarot-face {
+    box-shadow:
+            0 0 12px rgba(245, 245, 245, 0.35),
+            0 0 28px rgba(245, 245, 245, 0.12);
 }
