@@ -49,14 +49,19 @@ function App() {
                 }`}
             >
                 <div className="about-cards">
-                    <TarotCard variant="back" />
+                    {/* SOL — KAPALI */}
+                    <TarotCard variant="back" force="closed" />
+
+                    {/* SAĞ — AÇIK */}
                     <TarotCard
                         variant="front"
+                        force="open"
                         title="The Seeker"
                         subtitle="Game designer crafting systems, emotions and quiet moments."
                     />
                 </div>
             </section>
+
         </div>
     );
 }

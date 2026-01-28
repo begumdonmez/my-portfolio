@@ -1,10 +1,17 @@
-function TarotCard({ title, subtitle, variant = "interactive" }) {
+function TarotCard({
+                       title,
+                       subtitle,
+                       variant = "interactive",
+                       force = null,
+                   }) {
     const isStatic = variant === "back" || variant === "front";
 
     return (
         <div
             className={`tarot-card ${variant} ${
                 isStatic ? "static-card" : ""
+            } ${force === "open" ? "force-open" : ""} ${
+                force === "closed" ? "force-closed" : ""
             }`}
         >
             <div className="tarot-inner">
