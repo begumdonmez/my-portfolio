@@ -1,21 +1,27 @@
-function TarotCard({ title, subtitle }) {
+import TarotCard from "./TarotCard";
+import "./index.css";
+
+function App() {
     return (
-        <div className="tarot-card">
-            <div className="tarot-face tarot-back" />
-            <div className="tarot-face tarot-front">
-                <h2>{title}</h2>
-                <span>{subtitle}</span>
+        <div className="app">
+            <div className="tarot-container">
+                <TarotCard
+                    title="The Seeker"
+                    subtitle="Who I Am Beneath the Surface"
+                />
+
+                <TarotCard
+                    title="The Works"
+                    subtitle="What I Have Shaped"
+                />
+
+                <TarotCard
+                    title="The Call"
+                    subtitle="Reach Beyond Silence"
+                />
             </div>
         </div>
     );
 }
 
-export default function App() {
-    return (
-        <div className="tarot-container">
-            <TarotCard title="The Seeker" subtitle="About" />
-            <TarotCard title="The Works" subtitle="Projects" />
-            <TarotCard title="The Call" subtitle="Contact" />
-        </div>
-    );
-}
+export default App;
