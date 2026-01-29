@@ -23,30 +23,24 @@ function App() {
 
     return (
         <>
-            {/* ===================== */}
-            {/* FLOATING TAROT SYMBOLS */}
-            {/* ===================== */}
+            {/* FLOATING SYMBOLS */}
             <div className="tarot-symbol-layer">
-                {["☽", "✦", "✶", "☿", "♄", "♁", "♆"].map((symbol, i) => (
+                {["☽", "✦", "✶", "☿", "♄", "♁", "♆"].map((s, i) => (
                     <span
                         key={i}
                         className="tarot-symbol"
                         style={{
-                            left: `${8 + i * 12}%`,
-                            animationDelay: `${i * 4}s`,
+                            left: `${10 + i * 12}%`,
+                            animationDelay: `${i * 3}s`,
                             fontSize: `${16 + i * 4}px`
                         }}
                     >
-                        {symbol}
+                        {s}
                     </span>
                 ))}
             </div>
 
-            {/* ===================== */}
-            {/* APP CONTENT */}
-            {/* ===================== */}
             <div className="app">
-
                 {/* HERO */}
                 <section className="hero">
                     <div className="tarot-container">
@@ -73,10 +67,7 @@ function App() {
                     }`}
                 >
                     <div className="about-cards">
-                        {/* SOL — KAPALI */}
                         <TarotCard variant="back" force="closed" />
-
-                        {/* SAĞ — AÇIK */}
                         <TarotCard
                             variant="front"
                             force="open"
@@ -85,7 +76,6 @@ function App() {
                         />
                     </div>
                 </section>
-
             </div>
         </>
     );
