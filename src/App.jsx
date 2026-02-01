@@ -1,6 +1,14 @@
 import { useEffect, useState } from "react";
 import TarotCard from "./TarotCard";
 import "./index.css";
+import seekerFront from "./assets/tarots/seeker_front.png";
+import seekerBack from "./assets/tarots/seeker_back.png";
+import worksFront from "./assets/tarots/works_front.png";
+import worksBack from "./assets/tarots/works_back.png";
+import callFront from "./assets/tarots/call_front.png";
+import callBack from "./assets/tarots/call_back.png";
+
+
 
 function App() {
     const [aboutVisible, setAboutVisible] = useState(false);
@@ -53,15 +61,24 @@ function App() {
                         <TarotCard
                             title="The Seeker"
                             subtitle="Who I Am Beneath the Surface"
+                            frontImage={seekerFront}
+                            backImage={seekerBack}
                         />
+
                         <TarotCard
                             title="The Works"
                             subtitle="What I Have Shaped"
+                            frontImage={worksFront}
+                            backImage={worksBack}
                         />
+
                         <TarotCard
                             title="The Call"
                             subtitle="Reach Beyond Silence"
+                            frontImage={callFront}
+                            backImage={callBack}
                         />
+
                     </div>
                 </section>
 
@@ -73,16 +90,21 @@ function App() {
                     }`}
                 >
                     <div className="about-cards">
-                        {/* SOL — KAPALI */}
-                        <TarotCard variant="back" force="closed" />
-
-                        {/* SAĞ — AÇIK */}
                         <TarotCard
-                            variant="front"
-                            force="open"
+                            className="back static-card"
+                            backImage={seekerBack}
+                            force="closed"
+                        />
+
+                        {/* SAĞ — AÇIK (ön yüz görünüyor) */}
+                        <TarotCard
+                            className="front static-card"
+                            frontImage={seekerFront}
                             title="The Maker"
                             subtitle="I design systems, emotions, and quiet moments."
+                            force="open"
                         />
+
                     </div>
                 </section>
 

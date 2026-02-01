@@ -93,12 +93,14 @@ body {
     justify-content: center;
     align-items: center;
 }
-
+/* 
 .tarot-back::before {
     content: "✦";
     font-size: 52px;
     opacity: 0.55;
 }
+*/
+
 
 /* FRONT */
 .tarot-front {
@@ -110,6 +112,13 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+/* IMAGE SUPPORT */
+.tarot-front,
+.tarot-back {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* TEXT */
