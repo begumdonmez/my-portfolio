@@ -43,14 +43,14 @@ body {
     height: 340px;
     transition: transform 0.35s ease;
     /* Mavi bir parlama (glow) efekti eklendi */
-    filter: drop-shadow(0 0 15px rgba(0, 150, 255, 0.4));
+    filter: drop-shadow(0 0 14px rgba(72, 61, 139, 0.45));
 }
 
 /* Hover durumunda ışığın şiddetini artıralım */
 .tarot-card:hover {
     transform: translateY(-10px) scale(1.05);
     z-index: 10;
-    filter: drop-shadow(0 0 25px rgba(0, 191, 255, 0.8)); /* Daha parlak bir mavi */
+    filter: drop-shadow(0 0 22px rgba(72, 61, 139, 0.7));
 }
 /* INNER */
 .tarot-inner {
@@ -81,9 +81,9 @@ body {
     border-radius: 14px;
     backface-visibility: hidden;
     /* Kenarlarda hafif bir mavi neon çizgisi */
-    border: 2px solid rgba(0, 191, 255, 0.6);
-    /* Kartın içinden gelen hafif bir derinlik */
-    box-shadow: inset 0 0 20px rgba(0, 191, 255, 0.2);
+    border: 2px solid rgba(72, 61, 139, 0.55);
+    box-shadow: inset 0 0 18px rgba(72, 61, 139, 0.25);
+
 }
 
 /* BACK */
