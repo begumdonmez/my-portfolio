@@ -80,8 +80,8 @@ function App() {
                         <TarotCard
                             variant="front"
                             force="open"
-                            title="The Seeker"
-                            subtitle="Game designer crafting systems, emotions and quiet moments."
+                            title="The Maker"
+                            subtitle="I design systems, emotions, and quiet moments."
                         />
                     </div>
                 </section>

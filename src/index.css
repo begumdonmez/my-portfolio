@@ -175,7 +175,7 @@ body {
 /* RIGHT — DETAIL CARD */
 .about-cards .tarot-card.front {
     z-index: 1;
-    transform: translateX(120px) translateY(35px) rotate(8deg);
+    transform: translateX(160px) translateY(35px) rotate(16deg);
 }
 /* FORCE CARD STATES */
 .force-open .tarot-inner {
