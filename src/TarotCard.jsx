@@ -5,6 +5,8 @@ function TarotCard({
                        backImage,
                        className = "",
                        force, // "open" | "closed"
+                       onMouseEnter,
+                       onMouseLeave,
                    }) {
     const forceClass =
         force === "open"
@@ -14,7 +16,11 @@ function TarotCard({
                 : "";
 
     return (
-        <div className={`tarot-card ${className} ${forceClass}`}>
+        <div
+            className={`tarot-card ${className} ${forceClass}`}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+        >
             <div className="tarot-inner">
                 {/* BACK */}
                 <div

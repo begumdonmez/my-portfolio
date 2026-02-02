@@ -13,6 +13,8 @@ import makerBack from "./assets/tarots/maker_front.png";
 
 
 function App() {
+    const [cardHovered, setCardHovered] = useState(false);
+
     const [aboutVisible, setAboutVisible] = useState(false);
 
     useEffect(() => {
@@ -59,13 +61,18 @@ function App() {
 
                 {/* HERO */}
                 <section className="hero">
-                    <h1 className="hero-title">Choose Your Destiny</h1>
+                    <h1 className={`hero-title ${cardHovered ? "title-active" : ""}`}>
+                        Choose Your Destiny
+                    </h1>
+
                     <div className="tarot-container">
                         <TarotCard
                             title=""
                             subtitle=""
                             frontImage={seekerFront}
                             backImage={back}
+                            onMouseEnter={() => setCardHovered(true)}
+                            onMouseLeave={() => setCardHovered(false)}
                         />
 
                         <TarotCard
@@ -73,6 +80,8 @@ function App() {
                             subtitle=""
                             frontImage={worksFront}
                             backImage={back}
+                            onMouseEnter={() => setCardHovered(true)}
+                            onMouseLeave={() => setCardHovered(false)}
                         />
 
                         <TarotCard
@@ -80,6 +89,8 @@ function App() {
                             subtitle=""
                             frontImage={callFront}
                             backImage={back}
+                            onMouseEnter={() => setCardHovered(true)}
+                            onMouseLeave={() => setCardHovered(false)}
                         />
 
                     </div>
