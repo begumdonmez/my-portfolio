@@ -19,9 +19,40 @@ body {
     display: flex;
     flex-direction: column;
 }
+/* ===================== */
+/* HERO TITLE */
+/* ===================== */
+
+
+.hero-title {
+    position: absolute;
+    top: 12%;
+    text-align: center;
+    width: 100%;
+    font-size: 42px;
+    letter-spacing: 4px;
+    font-weight: 400;
+    color: #f5f1e8;
+    text-transform: uppercase;
+    pointer-events: none;
+
+    /* Mistical glow */
+    text-shadow:
+            0 0 12px rgba(72, 61, 139, 0.55),
+            0 0 28px rgba(72, 61, 139, 0.35);
+}
 
 /* ===================== */
-/* TOP TAROT CARDS */
+/* TOP TAROT CARDS 
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+*/
 /* ===================== */
 
 .hero {
@@ -78,7 +109,7 @@ body {
 .tarot-side {
     position: absolute;
     inset: 0;
-    border-radius: 14px;
+    /*  border-radius: 14px; */
     backface-visibility: hidden;
     /* Kenarlarda hafif bir mavi neon çizgisi */
     border: 2px solid rgba(72, 61, 139, 0.55);
@@ -209,7 +240,8 @@ body {
 .tarot-symbol {
     position: absolute;
     bottom: -10%;
-    color: rgba(255, 255, 255, 0.25);
+    color: antiquewhite;
+    /*  color: rgba(255, 255, 255, 0.25); */
     animation: floatSymbol 18s linear infinite;
     opacity: 0;
     user-select: none;

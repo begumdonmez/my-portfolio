@@ -7,6 +7,8 @@ import worksFront from "./assets/tarots/works_front.png";
 import worksBack from "./assets/tarots/works_back.png";
 import callFront from "./assets/tarots/call_front.png";
 import callBack from "./assets/tarots/call_back.png";
+import back from "./assets/tarots/try.png";
+import makerBack from "./assets/tarots/maker_front.png";
 
 
 
@@ -57,26 +59,27 @@ function App() {
 
                 {/* HERO */}
                 <section className="hero">
+                    <h1 className="hero-title">Choose Your Destiny</h1>
                     <div className="tarot-container">
                         <TarotCard
-                            title="The Seeker"
-                            subtitle="Who I Am Beneath the Surface"
+                            title=""
+                            subtitle=""
                             frontImage={seekerFront}
-                            backImage={seekerBack}
+                            backImage={back}
                         />
 
                         <TarotCard
-                            title="The Works"
-                            subtitle="What I Have Shaped"
+                            title=""
+                            subtitle=""
                             frontImage={worksFront}
-                            backImage={worksBack}
+                            backImage={back}
                         />
 
                         <TarotCard
-                            title="The Call"
-                            subtitle="Reach Beyond Silence"
+                            title=""
+                            subtitle=""
                             frontImage={callFront}
-                            backImage={callBack}
+                            backImage={back}
                         />
 
                     </div>
@@ -92,16 +95,16 @@ function App() {
                     <div className="about-cards">
                         <TarotCard
                             className="back static-card"
-                            backImage={seekerBack}
+                            backImage={back}
                             force="closed"
                         />
 
                         {/* SAĞ — AÇIK (ön yüz görünüyor) */}
                         <TarotCard
                             className="front static-card"
-                            frontImage={seekerFront}
-                            title="The Maker"
-                            subtitle="I design systems, emotions, and quiet moments."
+                            frontImage={makerBack}
+                            title=""
+                            subtitle=""
                             force="open"
                         />
 
