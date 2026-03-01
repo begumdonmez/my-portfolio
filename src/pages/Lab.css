@@ -1,0 +1,99 @@
+.lab-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 120px 20px;
+    color: #e0e0e0;
+}
+
+.lab-intro {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.lab-intro h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #bb86fc, #03dac6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.lab-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    margin: 100px 0;
+}
+
+/* Sağ-Sol değişimi sağlayan sınıf */
+.lab-section.reverse {
+    flex-direction: row-reverse;
+}
+
+.lab-text {
+    flex: 1;
+}
+
+.badge {
+    font-size: 0.7rem;
+    color: #bb86fc;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.lab-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.lab-text p {
+    line-height: 1.6;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.tech-stack span {
+    display: inline-block;
+    background: #1e1e1e;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-right: 10px;
+    border: 1px solid #333;
+}
+
+.lab-game {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.game-wrapper {
+    background: #121212;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid #222;
+}
+
+.lab-divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #333, transparent);
+    margin: 40px 0;
+}
+
+.locked-section {
+    justify-content: center;
+    opacity: 0.5;
+    font-style: italic;
+}
+
+@media (max-width: 850px) {
+    .lab-section, .lab-section.reverse {
+        flex-direction: column !important;
+        text-align: center;
+    }
+}

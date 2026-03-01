@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import Showcase from "./pages/Showcase";
+import Lab from "./pages/Lab";
 import AudioMaker from "./components/AudioMaker";
 import Popup from "./components/Popup";
 import { ThemeProvider } from "./ThemeContext";
@@ -54,6 +55,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/showcase" element={<Showcase />} />
+                    <Route path="/lab" element={<Lab />} />
                 </Routes>
             </ThemeProvider>
         </BrowserRouter>

@@ -36,6 +36,7 @@ function Header() {
                 <Link to="/">Home</Link>
                 <Link to="/showcase">My Showcase</Link>
                 <Link to="/contact">Message Me</Link>
+                <Link to="/lab">Fun Lab</Link>
 
                 {/* Tema Değiştirme Butonu */}
                 <button onClick={toggleTheme} className="theme-toggle">
