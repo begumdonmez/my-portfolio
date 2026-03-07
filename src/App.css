@@ -1,42 +1,124 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Google Font zaten App.jsx içinde import edildi */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Source Code Pro", monospace;
+  background: transparent; /* Background component kontrol ediyor */
+  color: #f5f7ff;
+  overflow-x: hidden;
+}
+
+/* Ana içerik container */
+.content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* HERO */
+
+.hero {
+  max-width: 900px;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.8;
+  max-width: 600px;
+}
+
+/* NAVIGATION */
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 30px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 20;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.9;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-links {
+  display: flex;
+  gap: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.nav-links a {
+  text-decoration: none;
+  color: #f5f7ff;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  transition: 0.3s ease;
 }
 
-.card {
-  padding: 2em;
+.nav-links a:hover {
+  opacity: 1;
 }
 
-.read-the-docs {
-  color: #888;
+/* Project Card örneği */
+
+.project-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  border-radius: 12px;
+  transition: 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Alice Kapı Butonu (Hazır Altyapı) */
+
+.door-button {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.door-button:hover {
+  opacity: 1;
+  transform: translateY(-3px);
 }
