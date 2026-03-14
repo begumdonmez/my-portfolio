@@ -2,7 +2,8 @@ import React from "react";
 import Background from "./components/Background";
 import Cards from "./components/Cards";
 import Hero from "./components/Hero"; // Yeni bileşeni import ediyoruz
-import "./App.css"; // CSS dosyanın import edildiğinden emin ol
+import "./App.css";
+import About from "./components/About"; // CSS dosyanın import edildiğinden emin ol
 
 function App() {
     return (
@@ -16,11 +17,7 @@ function App() {
                 {/* Navigasyon Kartları */}
                 <Cards />
 
-                {/* Diğer bölümler */}
-                <section id="about" className="main-section">
-                    <h2>About</h2>
-                    <p>4. Sınıf Dijital Oyun Tasarımı öğrencisi olarak projelerimi burada sergiliyorum.</p>
-                </section>
+               <About />
 
                 <section id="projects" className="main-section">
                     <h2>Projects</h2>
