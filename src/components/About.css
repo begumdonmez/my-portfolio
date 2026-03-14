@@ -3,74 +3,52 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 80vh; /* Bölümün dolgun durması için */
+    min-height: 80vh;
 }
 
 .about-container {
-    display: flex;
-    align-items: center;
-    gap: 80px; /* Görsel ve metin arası boşluğu artırdık */
-    max-width: 1200px;
-    width: 100%;
+    background: rgba(255, 255, 255, 0.03); /* Sevdiğin şeffaf arka plan */
+    backdrop-filter: blur(10px); /* Cam efekti */
+    padding: 60px;
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 900px; /* Görsel olmadığı için genişliği biraz daraltıp metni topladık */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.about-image-side {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.about-pixel-art {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 30px;
-    /* Kartın içinden çıkardığımız için gölgeyi daha yumuşak yapalım */
-    filter: drop-shadow(0 0 20px rgba(167, 243, 208, 0.2));
-    animation: float 5s ease-in-out infinite;
-}
-
-.about-text-side {
-    flex: 1.5;
+.about-content {
     text-align: left;
 }
 
-.about-text-side h2 {
-    font-size: 3rem; /* Başlığı biraz daha büyüttük */
-    margin-bottom: 25px;
+.about-content h2 {
+    font-size: 3rem;
+    margin-bottom: 30px;
     color: var(--h2-green);
-    letter-spacing: -1px;
+    text-align: center; /* Başlığı ortaladık */
 }
 
-.about-text-side p {
+.about-content p {
     font-size: 1.15rem;
     line-height: 1.8;
     margin-bottom: 25px;
     color: var(--text-color);
-    max-width: 650px; /* Okunabilirliği artırmak için metin genişliğini sınırladık */
 }
 
-/* Güçlü vurgular için (Rektörlük belgesi vb.) */
-.about-text-side strong {
+.about-content strong {
     color: var(--h1-gold);
     font-weight: 600;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(2deg); }
-}
-
-/* Mobil ve Tablet */
-@media (max-width: 1024px) {
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
     .about-container {
-        flex-direction: column;
-        gap: 40px;
-        text-align: center;
+        padding: 30px;
+        margin: 0 15px;
     }
-    .about-text-side {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .about-content h2 {
+        font-size: 2.2rem;
+    }
+    .about-content p {
+        font-size: 1rem;
     }
 }
