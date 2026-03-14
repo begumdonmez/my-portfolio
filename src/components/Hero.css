@@ -1,0 +1,63 @@
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    min-height: 80vh;
+    padding: 0 10%;
+    margin-top: 60px; /* Header boşluğu için */
+}
+
+.hero-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero-image {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    /* İsteğe bağlı: Yıldızlarla uyumlu bir parlama */
+    box-shadow: 0 0 20px rgba(142, 110, 83, 0.2);
+}
+
+.hero-right {
+    flex: 1;
+    text-align: left;
+}
+
+.hero-name {
+    font-size: 3.5rem;
+    color: var(--h1-gold);
+    margin-bottom: 10px;
+}
+
+.hero-title {
+    font-size: 1.5rem;
+    color: var(--h2-green);
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    .hero-left, .hero-right {
+        justify-content: center;
+    }
+    .hero-right {
+        order: 2; /* Yazı mobilde resmin altına gelsin */
+    }
+}
