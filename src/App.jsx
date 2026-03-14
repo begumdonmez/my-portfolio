@@ -3,7 +3,8 @@ import Background from "./components/Background";
 import Cards from "./components/Cards";
 import Hero from "./components/Hero"; // Yeni bileşeni import ediyoruz
 import "./App.css";
-import About from "./components/About"; // CSS dosyanın import edildiğinden emin ol
+import About from "./components/About";
+import Projects from "./components/Projects.jsx"; // CSS dosyanın import edildiğinden emin ol
 
 function App() {
     return (
@@ -19,10 +20,7 @@ function App() {
 
                <About />
 
-                <section id="projects" className="main-section">
-                    <h2>Projects</h2>
-                    <p>Geliştirdiğim oyunlar ve deneyler.</p>
-                </section>
+               <Projects />
 
                 <section id="skills" className="main-section">
                     <h2>Skills</h2>
