@@ -6,7 +6,7 @@ const projectData = [
         title: "Ballerino",
         category: "Game Projects",
         role: "Game Developer",
-        desc: "2D pixel-art, online multiplayer football game with strategic card mechanics.",
+        desc: "A 2D pixel-art online multiplayer football game featuring strategic card mechanics. Developed using Photon for real-time synchronization and competitive gameplay.",
         tech: ["Unity", "C#"],
         video: "/videos/ballerino.mp4",
         link: "https://begumdonmez.itch.io/ballerino-online"
@@ -15,7 +15,7 @@ const projectData = [
         title: "Addiction",
         category: "Game Projects",
         role: "Game Developer",
-        desc: "2D bullet hell game developed to raise awareness about substance abuse.",
+        desc: "An impactful 2D bullet hell game developed to raise awareness about substance abuse, focusing on fast-paced mechanics and thematic storytelling.",
         tech: ["Unity", "C#"],
         video: "/videos/addiction.mp4",
         link: "#"
@@ -24,7 +24,7 @@ const projectData = [
         title: "Eco Guardian",
         category: "Game Projects",
         role: "Game Developer",
-        desc: "A top-down 2D game prototype aimed at raising awareness about environmental pollution.",
+        desc: "A top-down 2D prototype aimed at environmental advocacy, illustrating the impact of pollution on wildlife through interactive gameplay.",
         tech: ["Unity", "C#", "GitHub"],
         video: "/videos/eco-guardian.mp4",
         link: "#"
@@ -42,7 +42,9 @@ const projectData = [
         title: "Santa's House",
         category: "Game Projects",
         role: "Game Developer",
-        desc: "A Game Jam project developed within 48 hours, focusing on ice-breaking mechanics.",
+        desc: "A sweet game with Santa's elves at Ice Breaking Jam!\n" +
+            "\n" +
+            "Theme: Balance",
         tech: ["Unity", "C#", "Itch.io"],
         video: "/videos/santas-house.mp4",
         link: "https://begumdonmez.itch.io/noel-babann-evi"
@@ -51,16 +53,25 @@ const projectData = [
         title: "Kim Kam Olmak Ister?",
         category: "Game Projects",
         role: "Game Developer",
-        desc: "A Game Jam project developed within 48 hours, focusing on ice-breaking mechanics.",
+        desc: "An interactive trivia game inspired by Turkish Mythology, designed to blend educational content with engaging UI elements for a mythology course.",
         tech: ["Unity", "C#", "Itch.io"],
         video: "/videos/kimkam.mp4",
+        link: "#"
+    },
+    {
+        title: "Sultanahmet: Historical Layers",
+        category: "Game Projects",
+        role: "Developer",
+        desc: "An educational project for Urban Culture and Aesthetics, utilizing Unity to visualize the architectural evolution of Sultanahmet Square across different historical eras.",
+        tech: ["Unity", "C#", "Itch.io"],
+        video: "/videos/sultanahmet.mp4",
         link: "#"
     },
     {
         title: "Kadraj 1",
         category: "Fanzines",
         role: "Editor & Designer",
-        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
+        desc: "The debut issue of 'Kadraj', established as a student-led independent news source to foster campus media engagement and creative storytelling.",
         tech: ["Canva", "Fanzine"],
         images: ["/designs/kadraj1_dis.png", "/designs/kadraj1_ic.png"],
         link: "#"
@@ -69,7 +80,8 @@ const projectData = [
         title: "Kadraj 2 - Halloween",
         category: "Fanzines",
         role: "Editor & Designer",
-        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
+        desc: "We decided to release special issues for special occasions. We produced this issue for Halloween. We gathered illustrations and articles fitting the theme, and this is the issue that emerged.\n" +
+            "Trick or treat!",
         tech: ["Canva", "Fanzine"],
         images: ["/designs/hallowen_dis.png", "/designs/hallowen_dis_2.png", "/designs/hallowen_ic.png"],
         link: "#"
@@ -78,7 +90,7 @@ const projectData = [
         title: "Kadraj 3 - Oct 29th Republic Day",
         category: "Fanzines",
         role: "Editor & Designer",
-        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
+        desc: "This is our special issue celebrating Republic Day, a day of great importance to us. Today, we express our eternal gratitude to our ancestors who gave us our Republic.",
         tech: ["Canva", "Fanzine"],
         images: ["/designs/kadraj3_dis.png", "/designs/kadraj3_ic.png"],
         link: "#"
@@ -87,7 +99,8 @@ const projectData = [
         title: "Kadraj 4 - Mustafa Kemal Atatürk",
         category: "Fanzines",
         role: "Editor & Designer",
-        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
+        desc:"In memory of our precious leader Mustafa Kemal Atatürk. With respect and gratitude!\n" +
+            "1881 - 199∞",
         tech: ["Canva", "Fanzine"],
         images: ["/designs/1.png", "/designs/2.png", "/designs/3.png", "/designs/4.png", "/designs/5.png"],
         link: "#"
@@ -96,7 +109,7 @@ const projectData = [
         title: "Kadraj 5",
         category: "Fanzines",
         role: "Editor & Designer",
-        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
+        desc: "Our colorful autumn-themed issue.",
         tech: ["Canva", "Fanzine"],
         images: ["/designs/kadraj5_dis.png", "/designs/kadraj5_ic.png"],
         link: "#"
@@ -105,7 +118,7 @@ const projectData = [
         title: "Kadraj 6",
         category: "Fanzines",
         role: "Editor & Designer",
-        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
+        desc: "We did our best to make each issue more special. In this issue, I wanted to interact with people through our Spotify account.",
         tech: ["Canva", "Fanzine"],
         images: ["/designs/kadraj6_dis.png", "/designs/kadraj6_ic.png"],
         link: "#"
@@ -114,7 +127,7 @@ const projectData = [
         title: "Bumedya - Newspaper",
         category: "Designs",
         role: "Editor & Designer",
-        desc: "A collaborative newspaper design focusing on media culture and visual storytelling.",
+        desc: "This is a newspaper we published for Ramadan. We wanted to make the Ramadan culture, spanning from the Ottoman era to the Republic, both informative and entertaining.",
         tech: ["Canva", "Newspaper"],
         images: ["/designs/news1.png", "/designs/news2.png"],
         link: "#"
@@ -123,7 +136,7 @@ const projectData = [
         title: "Baymax",
         category: "2D Projects",
         role: "Drawer",
-        desc: "2D character and room design animations.",
+        desc: "During our 2D animation class, I wanted to draw Baymax, one of my favorite characters from Big Hero 6. It's not fully finished, but I still wanted to share it because it turned out really cute.",
         tech: ["Illustrator", "Art"],
         images: ["/projects/baymax_room.gif", "/projects/baymax_main.gif"],
         link: "#"
@@ -132,7 +145,9 @@ const projectData = [
         title: "Cuphead",
         category: "2D Projects",
         role: "Drawer",
-        desc: "Tribute animations and designs for Cuphead.",
+        desc: "A Cuphead running animation I created as part of a 2D animation\n" +
+            "Course. The animation was referenced from Dipper Pines from Gravity Falls. The eye add-on was my own idea." +
+            "I focused on timing, squash and stretch, and keeping the animation flow playful to match the classic Cuphead",
         tech: ["Illustrator", "Art"],
         images: ["/projects/cuphead_video.mp4", "/projects/cuphead.gif", "/projects/cupghost.gif"],
         link: "#"
@@ -141,7 +156,10 @@ const projectData = [
         title: "Boredom",
         category: "2D Projects",
         role: "Drawer",
-        desc: "A visual storytelling piece about moments of boredom.",
+        desc: "Life passes by before we even realize it. We are always rushing to keep up with something, doing what we're told to do.\n" +
+            "But what do we actually want? What is our dream?\n" +
+            "For our 2D animation class, we were asked to create an animation based on the theme of boredom. I see dreams as the colors of our lives without them, we get stuck in a colorless, unhappy, ordinary, and boring world.\n" +
+            "This is how I chose to express boredom.",
         tech: ["Illustrator", "Art"],
         images: ["/projects/Boredom.mp4"],
         link: "#"
