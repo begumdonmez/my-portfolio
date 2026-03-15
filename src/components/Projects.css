@@ -231,6 +231,43 @@
 }
 
 .dot.active { background: var(--h2-green); width: 12px; border-radius: 10px; }
+
+.active-filter-info {
+    margin-bottom: 20px;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9rem;
+}
+
+.clear-tag-btn {
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    color: #ff6b6b;
+    padding: 4px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.clear-tag-btn:hover {
+    background: rgba(255, 0, 0, 0.2);
+}
+
+.tech-tags span.active-tag {
+    background: var(--h2-green);
+    color: #080a18;
+    border-color: var(--h2-green);
+    font-weight: bold;
+}
+
+.no-results {
+    padding: 50px;
+    color: var(--text-color);
+    opacity: 0.7;
+}
 /* Mobil Düzenlemeler */
 @media (max-width: 768px) {
     .projects-grid {
