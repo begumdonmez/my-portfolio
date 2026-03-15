@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Projects.css";
 
 const projectData = [
@@ -218,7 +218,19 @@ const ProjectCard = ({ project, onTagClick, activeTag }) => {
 function Projects() {
     const [activeTab, setActiveTab] = useState("All");
     const [selectedTag, setSelectedTag] = useState(null);
+    const sectionRef = useRef(null); // Başlık için referans
+
     const tabs = ["All", "Game Projects", "2D Projects", "3D Projects", "Designs", "Fanzines"];
+
+    // Filtreleme değiştiğinde yukarı kaydır
+    useEffect(() => {
+        if (selectedTag || activeTab !== "All") {
+            sectionRef.current?.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+    }, [selectedTag, activeTab]);
 
     const filteredProjects = projectData.filter(project => {
         const categoryMatch = activeTab === "All" || project.category === activeTab;
@@ -226,8 +238,12 @@ function Projects() {
         return categoryMatch && tagMatch;
     });
 
+    const handleTagClick = (tag) => {
+        setSelectedTag(tag);
+    };
+
     return (
-        <section id="projects" className="projects-section">
+        <section id="projects" className="projects-section" ref={sectionRef}>
             <h2 className="section-title">My Projects</h2>
 
             {selectedTag && (
@@ -257,7 +273,7 @@ function Projects() {
                     <ProjectCard
                         key={index}
                         project={project}
-                        onTagClick={(tag) => setSelectedTag(tag)}
+                        onTagClick={handleTagClick}
                         activeTag={selectedTag}
                     />
                 ))}
