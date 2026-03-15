@@ -51,13 +51,84 @@ const projectData = [
         title: "Bumedya Fanzin",
         category: "Designs",
         role: "Editor & Designer",
-        desc: "A collaborative fanzine design focusing on media culture.",
+        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
         tech: ["Canva", "Photoshop"],
-        images: ["/designs/fanzin1.png", "/designs/fanzin2.png", "/designs/fanzin3.png"], // PNG'lerini buraya ekle
+        images: [
+            "/designs/hallowen_ic.png",
+            "/designs/hallowen_dis.png",
+            "/designs/hallowen_dis_2.png"
+        ],
         link: "#"
-    
     }
 ];
+
+const ProjectCard = ({ project }) => {
+    const [currentImg, setCurrentImg] = useState(0);
+
+    const nextImg = (e) => {
+        e.preventDefault();
+        e.stopPropagation(); // Butona tıklayınca kartın genel linkini tetiklememesi için
+        setCurrentImg((prev) => (prev + 1) % project.images.length);
+    };
+
+    const prevImg = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setCurrentImg((prev) => (prev - 1 + project.images.length) % project.images.length);
+    };
+
+    return (
+        <div className="project-card">
+            <div className="project-video-container">
+                {/* EĞER VİDEO VARSA */}
+                {project.video && (
+                    <video
+                        src={project.video}
+                        muted
+                        loop
+                        playsInline
+                        onMouseEnter={(e) => e.target.play()}
+                        onMouseLeave={(e) => { e.target.pause(); e.target.currentTime = 0; }}
+                        className="project-video"
+                    />
+                )}
+
+                {/* EĞER KAYDIRMALI RESİMLER VARSA */}
+                {project.images && (
+                    <div className="carousel-container">
+                        <img
+                            src={project.images[currentImg]}
+                            alt={`${project.title} - ${currentImg + 1}`}
+                            className="project-image"
+                        />
+                        <button className="carousel-btn prev" onClick={prevImg}>‹</button>
+                        <button className="carousel-btn next" onClick={nextImg}>›</button>
+                        <div className="carousel-dots">
+                            {project.images.map((_, i) => (
+                                <div key={i} className={`dot ${currentImg === i ? 'active' : ''}`} />
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {/* HİÇBİRİ YOKSA */}
+                {!project.video && !project.images && (
+                    <div className="no-video-placeholder"><span>Preview Coming Soon</span></div>
+                )}
+            </div>
+
+            <div className="project-info">
+                <h3>{project.title}</h3>
+                <h4>{project.role}</h4>
+                <p>{project.desc}</p>
+                <div className="tech-tags">
+                    {project.tech.map((t, i) => <span key={i}>{t}</span>)}
+                </div>
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-button">View Project</a>
+            </div>
+        </div>
+    );
+};
 
 function Projects() {
     const [activeTab, setActiveTab] = useState("All");
@@ -65,12 +136,11 @@ function Projects() {
 
     const filteredProjects = activeTab === "All"
         ? projectData
-        : projectData.filter(project => project.category === activeTab);
+        : projectData.filter(p => p.category === activeTab);
 
     return (
         <section id="projects" className="projects-section">
             <h2 className="section-title">My Projects</h2>
-
             <div className="project-tabs">
                 {tabs.map((tab) => (
                     <button
@@ -82,40 +152,9 @@ function Projects() {
                     </button>
                 ))}
             </div>
-
             <div className="projects-grid">
                 {filteredProjects.map((project, index) => (
-                    <div key={index} className="project-card">
-                        <div className="project-video-container">
-                            {project.video ? (
-                                <video
-                                    src={project.video}
-                                    muted
-                                    loop
-                                    playsInline
-                                    onMouseEnter={(e) => e.target.play()}
-                                    onMouseLeave={(e) => {
-                                        e.target.pause();
-                                        e.target.currentTime = 0;
-                                    }}
-                                    className="project-video"
-                                />
-                            ) : (
-                                <div className="no-video-placeholder">
-                                    <span>Preview Coming Soon</span>
-                                </div>
-                            )}
-                        </div>
-                        <div className="project-info">
-                            <h3>{project.title}</h3>
-                            <h4>{project.role}</h4>
-                            <p>{project.desc}</p>
-                            <div className="tech-tags">
-                                {project.tech.map((t, i) => <span key={i}>{t}</span>)}
-                            </div>
-                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-button">View Project</a>
-                        </div>
-                    </div>
+                    <ProjectCard key={index} project={project} />
                 ))}
             </div>
         </section>

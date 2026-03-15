@@ -179,7 +179,58 @@
     background: var(--h2-green);
     color: #080a18;
 }
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    z-index: 5;
+}
+
+.carousel-btn:hover { background: var(--h2-green); color: #000; }
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+.carousel-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.dot.active { background: var(--h2-green); width: 12px; border-radius: 10px; }
 /* Mobil Düzenlemeler */
 @media (max-width: 768px) {
     .projects-grid {
