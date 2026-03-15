@@ -6,7 +6,8 @@ import Hero from "./components/Hero"; // Yeni bileşeni import ediyoruz
 import "./App.css";
 import About from "./components/About";
 import Projects from "./components/Projects.jsx";
-import Skills from "./components/Skills.jsx"; // CSS dosyanın import edildiğinden emin ol
+import Skills from "./components/Skills.jsx";
+import Contact from "./components/Contact.jsx"; // CSS dosyanın import edildiğinden emin ol
 
 function App() {
     return (
@@ -26,10 +27,7 @@ function App() {
 
                <Skills/>
 
-                <section id="contact" className="main-section">
-                    <h2>Contact</h2>
-                    <p>Benimle iletişime geçin.</p>
-                </section>
+                <Contact/>
             </div>
         </div>
     );
