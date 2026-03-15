@@ -48,18 +48,101 @@ const projectData = [
         link: "https://begumdonmez.itch.io/noel-babann-evi"
     },
     {
-        title: "Bumedya Fanzin",
+        title: "Kadraj 1",
+        category: "Fanzines",
+        role: "Editor & Designer",
+        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
+        tech: ["Canva","Fanzine"],
+        images: [
+
+            "/designs/kadraj1_dis.png",
+            "/designs/kadraj1_ic.png"
+        ],
+        link: "#"
+    },
+    {
+        title: "Kadraj 2 - Halloween",
+        category: "Fanzines",
+        role: "Editor & Designer",
+        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
+        tech: ["Canva","Fanzine"],
+        images: [
+            
+            "/designs/hallowen_dis.png",
+            "/designs/hallowen_dis_2.png",
+            "/designs/hallowen_ic.png"
+        ],
+        link: "#"
+    },
+    {
+        title: "Kadraj 3 - Oct 29th Republic Day ",
+        category: "Fanzines",
+        role: "Editor & Designer",
+        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
+        tech: ["Canva","Fanzine"],
+        images: [
+
+            "/designs/kadraj3_dis.png",
+            "/designs/kadraj3_ic.png"
+        ],
+        link: "#"
+    },
+    {
+        title: "Kadraj 4 - Mustafa Kemal Atatürk ",
+        category: "Fanzines",
+        role: "Editor & Designer",
+        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
+        tech: ["Canva","Fanzine"],
+        images: [
+
+            "/designs/1.png",
+            "/designs/2.png",
+            "/designs/3.png",
+            "/designs/4.png",
+            "/designs/5.png"
+        ],
+        link: "#"
+    },
+    {
+        title: "Kadraj 5 ",
+        category: "Fanzines",
+        role: "Editor & Designer",
+        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
+        tech: ["Canva","Fanzine"],
+        images: [
+
+            "/designs/kadraj5_dis.png",
+            "/designs/kadraj5_ic.png"
+        ],
+        link: "#"
+    },
+    {
+        title: "Kadraj 6 ",
+        category: "Fanzines",
+        role: "Editor & Designer",
+        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
+        tech: ["Canva","Fanzine"],
+        images: [
+
+            "/designs/kadraj6_dis.png",
+            "/designs/kadraj6_ic.png"
+        ],
+        link: "#"
+    },
+    {
+        title: "Bumedya - Newspaper",
         category: "Designs",
         role: "Editor & Designer",
         desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
-        tech: ["Canva", "Photoshop"],
+        tech: ["Canva","Newspaper"],
         images: [
-            "/designs/hallowen_ic.png",
-            "/designs/hallowen_dis.png",
-            "/designs/hallowen_dis_2.png"
+
+            "/designs/news1.png",
+            "/designs/news2.png"
         ],
         link: "#"
     }
+    
 ];
 
 const ProjectCard = ({ project }) => {
@@ -132,7 +215,7 @@ const ProjectCard = ({ project }) => {
 
 function Projects() {
     const [activeTab, setActiveTab] = useState("All");
-    const tabs = ["All", "Game Projects", "2D Projects", "3D Projects", "Designs"];
+    const tabs = ["All", "Game Projects", "2D Projects", "3D Projects", "Designs","Fanzines"];
 
     const filteredProjects = activeTab === "All"
         ? projectData
