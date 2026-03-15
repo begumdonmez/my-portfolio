@@ -48,6 +48,15 @@ const projectData = [
         link: "https://begumdonmez.itch.io/noel-babann-evi"
     },
     {
+        title: "Kim Kam Olmak Ister?",
+        category: "Game Projects",
+        role: "Game Developer",
+        desc: "A Game Jam project developed within 48 hours, focusing on ice-breaking mechanics.",
+        tech: ["Unity", "C#", "Itch.io"],
+        video: "/videos/kimkam.mp4",
+        link: "#"
+    },
+    {
         title: "Kadraj 1",
         category: "Fanzines",
         role: "Editor & Designer",
