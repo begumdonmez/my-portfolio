@@ -1,0 +1,38 @@
+.social-sidebar {
+    position: fixed; /* Sayfa kaydıkça sabit kalmasını sağlar */
+    left: 30px; /* Sol kenardan uzaklık */
+    bottom: 20px; /* Ekranın altından başlar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    z-index: 100; /* Diğer her şeyin üstünde durması için */
+}
+
+.social-icon {
+    width: 50px; /* Logolarının boyutu */
+    height: 50px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px) scale(1.1); /* Hover olunca yukarı zıplar */
+    filter: drop-shadow(0 0 10px rgba(167, 243, 208, 0.5)); /* Hafif parlama efekti */
+}
+
+/* Logoların altındaki o dikey çizgi (Profesyonel bir dokunuş) */
+.sidebar-line {
+    width: 2px;
+    height: 150px; /* Boyunu buradan ayarlayabilirsin */
+    background: linear-gradient(to bottom, var(--h2-green), transparent); /* Yeşilden şeffafa gider */
+    margin-top: 20px;
+    opacity: 0.5; /* Daha sönük ve şık durması için */
+}
+
+/* Mobilde ekran çok daralırsa logoları gizleyebilir veya alta alabiliriz */
+@media (max-width: 768px) {
+    .social-sidebar {
+        display: none; /* Mobilde temiz bir görüntü için gizlemek yaygın bir tercihtir */
+    }
+}
