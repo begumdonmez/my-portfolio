@@ -3,7 +3,7 @@ import './SocialSidebar.css';
 import githubIcon from '../assets/GitHub.png';
 import itchioIcon from '../assets/Itchio.png';
 import linkedinIcon from '../assets/Linkedin.png';
-
+import cvButtonIcon from '../assets/cvdownload.png';
 function SocialSidebar() {
     return (
         <div className="social-sidebar">
@@ -16,7 +16,14 @@ function SocialSidebar() {
             <a href="https://www.linkedin.com/in/hatice-begüm-dönmez-84b723258/" target="_blank" rel="noopener noreferrer">
                 <img src={linkedinIcon} alt="LinkedIn" className="social-icon" />
             </a>
-           
+            <a
+                href="/Begum_Donmez_CV.pdf"
+                download="hatice_begum_donmezCV.pdf"
+                className="cv-download-btn"
+                title="Download CV"
+            >
+                <img src={cvButtonIcon} alt="Download CV" className="social-icon cv-icon" />
+            </a>
         </div>
     );
 }

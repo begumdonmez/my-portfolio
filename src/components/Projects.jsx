@@ -161,6 +161,7 @@ const ProjectCard = ({ project, onTagClick, activeTag }) => {
                     <video
                         src={project.video}
                         muted loop playsInline
+                        preload="metadata"
                         onMouseEnter={(e) => e.target.play()}
                         onMouseLeave={(e) => { e.target.pause(); e.target.currentTime = 0; }}
                         className="project-video"

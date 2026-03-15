@@ -29,7 +29,29 @@
     margin-top: 20px;
     opacity: 0.5; /* Daha sönük ve şık durması için */
 }
+.cv-rocket-link {
+    background: none !important; /* Arka planı tamamen sildik */
+    border: none !important;       /* Çerçeveyi sildik */
+    padding: 0;
+    margin-top: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
 
+.cv-rocket-icon {
+    width: 60px; /* Boyutu diğer ikonlarla uyumlu olacak şekilde ayarlayabilirsin */
+    height: auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Hover olunca roketin havalanma efekti */
+.cv-rocket-link:hover .cv-rocket-icon {
+    transform: translateY(-8px) scale(1.1);
+    filter: drop-shadow(0 0 15px rgba(167, 243, 208, 0.7)); /* Yeşilimsi bir parlama */
+}
 /* Mobilde ekran çok daralırsa logoları gizleyebilir veya alta alabiliriz */
 @media (max-width: 768px) {
     .social-sidebar {
