@@ -141,6 +141,45 @@ const projectData = [
             "/designs/news2.png"
         ],
         link: "#"
+    },
+    {
+        title: "Baymax",
+        category: "2D Projects",
+        role: "Drawer",
+        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
+        tech: ["Illustrator","Art"],
+        images: [
+
+            "/projects/baymax_room.gif",
+            "/projects/baymax_main.gif"
+        ],
+        link: "#"
+    },
+    {
+        title: "Cuphead",
+        category: "2D Projects",
+        role: "Drawer",
+        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
+        tech: ["Illustrator","Art"],
+        images: [
+
+            "/projects/cuphead_video.mp4",
+            "/projects/cuphead.gif",
+            "/projects/cupghost.gif"
+        ],
+        link: "#"
+    },
+    {
+        title: "Boredom",
+        category: "2D Projects",
+        role: "Drawer",
+        desc: "A collaborative fanzine design focusing on media culture and visual storytelling.",
+        tech: ["Illustrator","Art"],
+        images: [
+
+            "/projects/Boredom.mp4"
+        ],
+        link: "#"
     }
     
 ];
