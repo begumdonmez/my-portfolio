@@ -20,7 +20,7 @@ link: "#"
 {
     title: "Eco Guardian",
         role: "Game Developer",
-    desc: "A top-down 2D game prototype aimed at raising awareness about environmental pollution and its impact on animals.",
+    desc: "A top-down 2D game prototype aimed at raising awareness about environmental pollution and its impact on animals h.",
     tech: ["Unity", "C#", "GitHub"],
     video: "/videos/eco-guardian.mp4",
     link: "#"
