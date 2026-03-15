@@ -48,15 +48,6 @@ const projectData = [
         link: "https://begumdonmez.itch.io/noel-babann-evi"
     },
     {
-        title: "Portfolio Designs",
-        category: "Game Projects",
-        role: "Designer",
-        desc: "A collection of visual assets, posters, and UI elements created using Canva and Illustrator.",
-        tech: ["Canva", "Illustrator", "Photoshop"],
-        video: null,
-        link: "#"
-    },
-    {
         title: "Bumedya Fanzin",
         category: "Designs",
         role: "Editor & Designer",
