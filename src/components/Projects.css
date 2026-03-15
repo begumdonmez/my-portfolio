@@ -40,7 +40,43 @@
     border-color: var(--h2-green); /* Hover anında yeşil vurgu */
 }
 
-/* Mevcut CSS'e ekle veya placeholder kısmını bununla değiştir */
+/* Sekme Menüsü Konteyneri */
+.project-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+/* Sekme Butonları */
+.tab-button {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    padding: 10px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.tab-button:hover {
+    border-color: var(--h2-green);
+    color: var(--h2-green);
+    background: rgba(167, 243, 208, 0.05);
+}
+
+.tab-button.active {
+    background: var(--h2-green);
+    color: #080a18;
+    border-color: var(--h2-green);
+    font-weight: 600;
+    box-shadow: 0 0 15px rgba(167, 243, 208, 0.3);
+}
+
+/* Mevcut CSS'inin geri kalanı (grid, card, video vb.) aynen kalabilir */
 
 .project-video-container {
     width: 100%;
