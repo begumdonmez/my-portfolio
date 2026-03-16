@@ -7,9 +7,13 @@ const projectData = [
         category: "Game Projects",
         role: "Game Developer",
         desc: "A 2D pixel-art online multiplayer football game featuring strategic card mechanics. Developed using Photon for real-time synchronization and competitive gameplay.",
-        tech: ["Unity", "C#"],
+        tech: ["Unity", "C#","Itch.io"],
         video: "/videos/ballerino4.mp4",
-        link: "https://begumdonmez.itch.io/ballerino-online"
+        link: "https://begumdonmez.itch.io/ballerino-online",
+        team: [
+            { name: "Bora Berk Coşgun",role: "Game Designer", link: "https://www.linkedin.com/in/bora-berk-coşgun-119a08202/" },
+            { name: "Yiğit Ibrahim Erkal",role: "2D Artist", link: "https://www.instagram.com/yigitibrahimerkal/" }
+        ]
     },
     {
         title: "Addiction",
@@ -18,25 +22,44 @@ const projectData = [
         desc: "An impactful 2D bullet hell game developed to raise awareness about substance abuse, focusing on fast-paced mechanics and thematic storytelling.",
         tech: ["Unity", "C#"],
         video: "/videos/addiction.mp4",
-        link: "#"
+        link: "#",
+        team: [
+            { name: "Fatma Beril Bilgen", role: "Game Designer",link: "https://www.linkedin.com/in/beril-bilgen-12a927333/" },
+            { name: "Bora Berk Coşgun", role: "Game Designer",link: "https://www.linkedin.com/in/bora-berk-coşgun-119a08202/" },
+            { name: "Yiğit Ibrahim Erkal", role: "2D Artist",link: "https://www.instagram.com/yigitibrahimerkal/" },
+            { name: "Eray Temel", role: "2D Artist",link: "#" }
+            
+        ]
     },
     {
         title: "Eco Guardian",
         category: "Game Projects",
         role: "Game Developer",
         desc: "A top-down 2D prototype aimed at environmental advocacy, illustrating the impact of pollution on wildlife through interactive gameplay.",
-        tech: ["Unity", "C#", "GitHub"],
+        tech: ["Unity", "C#","social project"],
         video: "/videos/eco-guardian.mp4",
-        link: "#"
+        link: "#",
+        team: [
+            { name: "Fatma Beril Bilgen",role: "Game Designer", link: "https://www.linkedin.com/in/beril-bilgen-12a927333/" },
+            { name: "Yiğit Ibrahim Erkal",role: "2D Artist", link: "https://www.instagram.com/yigitibrahimerkal/" }
+        ]
     },
     {
         title: "GStellar Recon: Kepler",
         category: "Game Projects",
         role: "Game Developer",
         desc: "A 2D top-down tower defense game featuring strategic gameplay improvements.",
-        tech: ["Unity", "C#", "Version Control"],
+        tech: ["Unity", "C#", "Tower Defence"],
         video: "/videos/gstellar.mp4",
-        link: "#"
+        link: "#",
+        team: [
+            { name: "Suha Tasci",role: "Game Designer", link: "https://www.linkedin.com/in/süha-taşcı-54a429283/" },
+            { name: "Bora Berk Coşgun",role: "Game Designer", link: "https://www.linkedin.com/in/bora-berk-coşgun-119a08202/" },
+            { name: "Fatma Beril Bilgen", role: "2D Artist",link: "https://www.linkedin.com/in/beril-bilgen-12a927333/" },
+            { name: "Yiğit Ibrahim Erkal",role: "2D Artist", link: "https://www.instagram.com/yigitibrahimerkal/" },
+            { name: "Enes Cerli",role: "2D Artist", link: "https://www.linkedin.com/in/enes-çerli-62b031280/" },
+            { name: "Emre Bilici",role: "Game Developer",link: "https://emrebilici.com" }
+        ]
     },
     {
         title: "Santa's House",
@@ -45,18 +68,27 @@ const projectData = [
         desc: "A sweet game with Santa's elves at Ice Breaking Jam!\n" +
             "\n" +
             "Theme: Balance",
-        tech: ["Unity", "C#", "Itch.io"],
+        tech: ["Unity", "C#", "Itch.io","Jam"],
         video: "/videos/santas-house.mp4",
-        link: "https://begumdonmez.itch.io/noel-babann-evi"
+        link: "https://begumdonmez.itch.io/noel-babann-evi",
+        team: [
+            { name: "Suha Tasci",role: "Game Designer", link: "https://www.linkedin.com/in/süha-taşcı-54a429283/" },
+            { name: "Fatma Beril Bilgen", role: "2D Artist",link: "https://www.linkedin.com/in/beril-bilgen-12a927333/" }
+        ]
     },
     {
         title: "Kim Kam Olmak Ister?",
         category: "Game Projects",
         role: "Game Developer",
         desc: "An interactive trivia game inspired by Turkish Mythology, designed to blend educational content with engaging UI elements for a mythology course.",
-        tech: ["Unity", "C#", "Itch.io"],
+        tech: ["Unity", "C#", "Quiz"],
         video: "/videos/kimkam.mp4",
-        link: "#"
+        link: "#",
+        team: [
+            { name: "Fatma Beril Bilgen", role: "Game Designer",link: "https://www.linkedin.com/in/beril-bilgen-12a927333/" },
+            { name: "Koray Inci",role: "Game Developer", link: "https://www.linkedin.com/in/koray-inci-017b9227a/" },
+            { name: "Muhammet Kerem Saraç",role: "2D Artist", link: "https://www.linkedin.com/in/kerem-saraç-5a0802368/" },
+        ]
     },
     {
         title: "Sultanahmet: Historical Layers",
@@ -65,7 +97,7 @@ const projectData = [
         desc: "An educational project for Urban Culture and Aesthetics, utilizing Unity to visualize the architectural evolution of Sultanahmet Square across different historical eras.",
         tech: ["Unity", "C#", "Itch.io"],
         video: "/videos/sultanahmet.mp4",
-        link: "#"
+        link: "https://begumdonmez.itch.io/sultanahmet"
     },
     {
         title: "Kadraj 1",
@@ -74,7 +106,11 @@ const projectData = [
         desc: "The debut issue of 'Kadraj', established as a student-led independent news source to foster campus media engagement and creative storytelling.",
         tech: ["Canva", "Fanzine"],
         images: ["/designs/kadraj1_dis.png", "/designs/kadraj1_ic.png"],
-        link: "#"
+        link: "#",
+        team: [
+            { name: "Emre Bilici",role: "Editor",link: "https://emrebilici.com" },
+            { name: "Yiğit Ibrahim Erkal",role: "2D Artist",link: "https://www.instagram.com/yigitibrahimerkal/" }
+        ]
     },
     {
         title: "Kadraj 2 - Halloween",
@@ -84,7 +120,11 @@ const projectData = [
             "Trick or treat!",
         tech: ["Canva", "Fanzine"],
         images: ["/designs/hallowen_dis.png", "/designs/hallowen_dis_2.png", "/designs/hallowen_ic.png"],
-        link: "#"
+        link: "#",
+        team: [
+            { name: "Emre Bilici",role: "Editor",link: "https://emrebilici.com" }
+        ],
+        
     },
     {
         title: "Kadraj 3 - Oct 29th Republic Day",
@@ -93,7 +133,10 @@ const projectData = [
         desc: "This is our special issue celebrating Republic Day, a day of great importance to us. Today, we express our eternal gratitude to our ancestors who gave us our Republic.",
         tech: ["Canva", "Fanzine"],
         images: ["/designs/kadraj3_dis.png", "/designs/kadraj3_ic.png"],
-        link: "#"
+        link: "#",
+        team: [
+            { name: "Emre Bilici",role: "Editor",link: "https://emrebilici.com" }
+        ]
     },
     {
         title: "Kadraj 4 - Mustafa Kemal Atatürk",
@@ -103,7 +146,7 @@ const projectData = [
             "1881 - 199∞",
         tech: ["Canva", "Fanzine"],
         images: ["/designs/1.png", "/designs/2.png", "/designs/3.png", "/designs/4.png", "/designs/5.png"],
-        link: "#"
+        link: "#",
     },
     {
         title: "Kadraj 5",
@@ -112,7 +155,10 @@ const projectData = [
         desc: "Our colorful autumn-themed issue.",
         tech: ["Canva", "Fanzine"],
         images: ["/designs/kadraj5_dis.png", "/designs/kadraj5_ic.png"],
-        link: "#"
+        link: "#",
+        team: [
+            { name: "Emre Bilici",role: "Editor",link: "https://emrebilici.com" }
+        ]
     },
     {
         title: "Kadraj 6",
@@ -121,7 +167,11 @@ const projectData = [
         desc: "We did our best to make each issue more special. In this issue, I wanted to interact with people through our Spotify account.",
         tech: ["Canva", "Fanzine"],
         images: ["/designs/kadraj6_dis.png", "/designs/kadraj6_ic.png"],
-        link: "#"
+        link: "#",
+        team: [
+            { name: "Emre Bilici",role: "Editor",link: "https://emrebilici.com" },
+            { name: "Fatma Beril Bilgen", role: "2D Artist",link: "https://www.linkedin.com/in/beril-bilgen-12a927333/" }
+        ]
     },
     {
         title: "Bumedya - Newspaper",
@@ -130,7 +180,10 @@ const projectData = [
         desc: "This is a newspaper we published for Ramadan. We wanted to make the Ramadan culture, spanning from the Ottoman era to the Republic, both informative and entertaining.",
         tech: ["Canva", "Newspaper"],
         images: ["/designs/news1.png", "/designs/news2.png"],
-        link: "#"
+        link: "#",
+        team: [
+            { name: "Emre Bilici",role: "Editor",link: "https://emrebilici.com" }
+        ]
     },
     {
         title: "Baymax",
@@ -237,6 +290,25 @@ const ProjectCard = ({ project, onTagClick, activeTag }) => {
                         </span>
                     ))}
                 </div>
+                {project.team && (
+                    <div className="project-team">
+                        <span className="team-title">Team: </span>
+                        {project.team.map((member, i) => (
+                            <React.Fragment key={i}>
+                                <a
+                                    href={member.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="team-member-link"
+                                >
+                                    {member.name}
+                                </a>
+                                <span className="member-role"> ({member.role})</span>
+                                {i < project.team.length - 1 ? " | " : ""}
+                            </React.Fragment>
+                        ))}
+                    </div>
+                )}
                 <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-button">View Project</a>
             </div>
         </div>
