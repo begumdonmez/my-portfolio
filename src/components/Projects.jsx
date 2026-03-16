@@ -9,7 +9,7 @@ const projectData = [
         desc: "A 2D pixel-art online multiplayer football game featuring strategic card mechanics. Developed using Photon for real-time synchronization and competitive gameplay.",
         tech: ["Unity", "C#","Itch.io"],
         video: "/videos/ballerino4.mp4",
-        poster: "/images/posters/ballerinocover.png",
+        poster: "ballerinocover.png",
         link: "https://begumdonmez.itch.io/ballerino-online",
         team: [
             { name: "Bora Berk Coşgun",role: "Game Designer", link: "https://www.linkedin.com/in/bora-berk-coşgun-119a08202/" },
