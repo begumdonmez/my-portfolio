@@ -9,6 +9,7 @@ const projectData = [
         desc: "A 2D pixel-art online multiplayer football game featuring strategic card mechanics. Developed using Photon for real-time synchronization and competitive gameplay.",
         tech: ["Unity", "C#","Itch.io"],
         video: "/videos/ballerino4.mp4",
+        poster: "/images/posters/ballerino_cover.png",
         link: "https://begumdonmez.itch.io/ballerino-online",
         team: [
             { name: "Bora Berk Coşgun",role: "Game Designer", link: "https://www.linkedin.com/in/bora-berk-coşgun-119a08202/" },
@@ -87,7 +88,7 @@ const projectData = [
         team: [
             { name: "Fatma Beril Bilgen", role: "Game Designer",link: "https://www.linkedin.com/in/beril-bilgen-12a927333/" },
             { name: "Koray Inci",role: "Game Developer", link: "https://www.linkedin.com/in/koray-inci-017b9227a/" },
-            { name: "Muhammet Kerem Saraç",role: "2D Artist", link: "https://www.linkedin.com/in/kerem-saraç-5a0802368/" },
+            { name: "Muhammet Kerem Saraç",role: "2D Artist", link: "www.behance.net/keremsarac" },
         ]
     },
     {
@@ -240,12 +241,13 @@ const ProjectCard = ({ project, onTagClick, activeTag }) => {
                 {project.video && (
                     <video
                         src={project.video}
-                        muted loop playsInline
+                        controls
                         preload="metadata"
-                        onMouseEnter={(e) => e.target.play()}
-                        onMouseLeave={(e) => { e.target.pause(); e.target.currentTime = 0; }}
+                        poster={project.poster || "/images/project-cover.png"}
                         className="project-video"
-                    />
+                    >
+                        Tarayıcınız video etiketini desteklemiyor.
+                    </video>
                 )}
 
                 {project.images && (
@@ -318,11 +320,10 @@ const ProjectCard = ({ project, onTagClick, activeTag }) => {
 function Projects() {
     const [activeTab, setActiveTab] = useState("All");
     const [selectedTag, setSelectedTag] = useState(null);
-    const sectionRef = useRef(null); // Başlık için referans
+    const sectionRef = useRef(null);
 
     const tabs = ["All", "Game Projects", "2D Projects", "3D Projects", "Designs", "Fanzines"];
 
-    // Filtreleme değiştiğinde yukarı kaydır
     useEffect(() => {
         if (selectedTag || activeTab !== "All") {
             sectionRef.current?.scrollIntoView({
