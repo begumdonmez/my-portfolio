@@ -8,8 +8,8 @@ const projectData = [
         role: "Game Developer",
         desc: "A 2D pixel-art online multiplayer football game featuring strategic card mechanics. Developed using Photon for real-time synchronization and competitive gameplay.",
         tech: ["Unity", "C#","Itch.io"],
-        video: "/videos/ballerino4.mp4",
-        poster: "ballerinocover.png",
+        video: "/videos/ballerino4.mov",
+        poster: "/images/posters/ballerinocover.png",
         link: "https://begumdonmez.itch.io/ballerino-online",
         team: [
             { name: "Bora Berk Coşgun",role: "Game Designer", link: "https://www.linkedin.com/in/bora-berk-coşgun-119a08202/" },
@@ -22,7 +22,8 @@ const projectData = [
         role: "Game Developer",
         desc: "An impactful 2D bullet hell game developed to raise awareness about substance abuse, focusing on fast-paced mechanics and thematic storytelling.",
         tech: ["Unity", "C#"],
-        video: "/videos/addiction.mp4",
+        video: "/videos/addiction.mov",
+        poster: "/images/posters/addiction_cover.png",
         link: "#",
         team: [
             { name: "Fatma Beril Bilgen", role: "Game Designer",link: "https://www.linkedin.com/in/beril-bilgen-12a927333/" },
@@ -39,6 +40,7 @@ const projectData = [
         desc: "A top-down 2D prototype aimed at environmental advocacy, illustrating the impact of pollution on wildlife through interactive gameplay.",
         tech: ["Unity", "C#","social project"],
         video: "/videos/eco-guardian.mp4",
+        poster: "/images/posters/ballerinocover.png",
         link: "#",
         team: [
             { name: "Fatma Beril Bilgen",role: "Game Designer", link: "https://www.linkedin.com/in/beril-bilgen-12a927333/" },
@@ -52,6 +54,7 @@ const projectData = [
         desc: "A 2D top-down tower defense game featuring strategic gameplay improvements.",
         tech: ["Unity", "C#", "Tower Defence"],
         video: "/videos/gstellar.mp4",
+        poster: "/images/posters/ballerinocover.png",
         link: "#",
         team: [
             { name: "Suha Tasci",role: "Game Designer", link: "https://www.linkedin.com/in/süha-taşcı-54a429283/" },
@@ -70,7 +73,7 @@ const projectData = [
             "\n" +
             "Theme: Balance",
         tech: ["Unity", "C#", "Itch.io","Jam"],
-        video: "/videos/santas-house.mp4",
+        images:[ "/images/posters/santas.png"],
         link: "https://begumdonmez.itch.io/noel-babann-evi",
         team: [
             { name: "Suha Tasci",role: "Game Designer", link: "https://www.linkedin.com/in/süha-taşcı-54a429283/" },
@@ -83,7 +86,8 @@ const projectData = [
         role: "Game Developer",
         desc: "An interactive trivia game inspired by Turkish Mythology, designed to blend educational content with engaging UI elements for a mythology course.",
         tech: ["Unity", "C#", "Quiz"],
-        video: "/videos/kimkam.mp4",
+        video: "/videos/kimkam.mov",
+        poster: "/images/posters/kimkam.png",
         link: "#",
         team: [
             { name: "Fatma Beril Bilgen", role: "Game Designer",link: "https://www.linkedin.com/in/beril-bilgen-12a927333/" },
@@ -97,7 +101,7 @@ const projectData = [
         role: "Developer",
         desc: "An educational project for Urban Culture and Aesthetics, utilizing Unity to visualize the architectural evolution of Sultanahmet Square across different historical eras.",
         tech: ["Unity", "C#", "Itch.io"],
-        video: "/videos/sultanahmet.mp4",
+        images:[ "/images/posters/sultanahmet_cover.png"],
         link: "https://begumdonmez.itch.io/sultanahmet"
     },
     {
@@ -242,7 +246,7 @@ const ProjectCard = ({ project, onTagClick, activeTag }) => {
                     <video
                         src={project.video}
                         controls
-                        preload="metadata"
+                        preload="none"
                         poster={project.poster || "/images/project-cover.png"}
                         className="project-video"
                     >
