@@ -52,7 +52,7 @@ const projectData = [
         role: "Game Developer",
         desc: "A 2D top-down tower defense game featuring strategic gameplay improvements.",
         tech: ["Unity", "C#", "Tower Defence"],
-        images:[ "/images/posters/kepler.png","/images/kepler2.png","/images/kepler3.png"],
+        images:[ "/images/posters/kepler.png","/images/kepler2.png","/images/kepler3.png","/images/kepler4.png"],
         link: "#",
         team: [
             { name: "Suha Tasci",role: "Game Designer", link: "https://www.linkedin.com/in/süha-taşcı-54a429283/" },
