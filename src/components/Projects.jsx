@@ -39,8 +39,7 @@ const projectData = [
         role: "Game Developer",
         desc: "A top-down 2D prototype aimed at environmental advocacy, illustrating the impact of pollution on wildlife through interactive gameplay.",
         tech: ["Unity", "C#","social project"],
-        video: "/videos/eco-guardian.mp4",
-        poster: "/images/posters/ballerinocover.png",
+        images:[ "/images/posters/ecoguardian.png"],
         link: "#",
         team: [
             { name: "Fatma Beril Bilgen",role: "Game Designer", link: "https://www.linkedin.com/in/beril-bilgen-12a927333/" },
@@ -53,8 +52,7 @@ const projectData = [
         role: "Game Developer",
         desc: "A 2D top-down tower defense game featuring strategic gameplay improvements.",
         tech: ["Unity", "C#", "Tower Defence"],
-        video: "/videos/gstellar.mp4",
-        poster: "/images/posters/ballerinocover.png",
+        images:[ "/images/posters/kepler.png","/images/kepler2.png","/images/kepler3.png"],
         link: "#",
         team: [
             { name: "Suha Tasci",role: "Game Designer", link: "https://www.linkedin.com/in/süha-taşcı-54a429283/" },
