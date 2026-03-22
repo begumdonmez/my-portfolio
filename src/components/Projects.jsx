@@ -197,6 +197,16 @@ const projectData = [
         images: ["/projects/baymax_room.gif", "/projects/baymax_main.gif"],
         link: "#"
     },
+    ,
+    {
+        title: "Cult of the Lamb",
+        category: "2D Projects",
+        role: "Drawer",
+        desc: "",
+        tech: ["Illustrator", "Art"],
+        images: ["/projects/cult1.png", "/projects/cult2.png", "/projects/cult3.png", "/projects/Cult4.png", "/projects/cult5.png"],
+        link: "https://www.behance.net/gallery/238375447/Cult-of-The-Lamb"
+    },
     {
         title: "Cuphead",
         category: "2D Projects",
@@ -206,7 +216,7 @@ const projectData = [
             "I focused on timing, squash and stretch, and keeping the animation flow playful to match the classic Cuphead",
         tech: ["Illustrator", "Art"],
         images: ["/projects/cuphead_video.mp4", "/projects/cuphead.gif", "/projects/cupghost.gif"],
-        link: "#"
+        link: "https://www.behance.net/gallery/238370241/Cuphead"
     },
     {
         title: "Boredom",
