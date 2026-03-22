@@ -193,7 +193,7 @@ const projectData = [
         category: "2D Projects",
         role: "Drawer",
         desc: "During our 2D animation class, I wanted to draw Baymax, one of my favorite characters from Big Hero 6. It's not fully finished, but I still wanted to share it because it turned out really cute.",
-        tech: ["Illustrator", "Art"],
+        tech: ["2D","Illustrator", "Art"],
         images: ["/projects/baymax_room.gif", "/projects/baymax_main.gif"],
         link: "#"
     },
@@ -202,8 +202,8 @@ const projectData = [
         title: "Cult of the Lamb",
         category: "2D Projects",
         role: "Drawer",
-        desc: "",
-        tech: ["Illustrator", "Art"],
+        desc: "For our 2D animation class, we designed characters for the game Cult of the Lamb. I designed one cult member and one boss.",
+        tech: ["2D","Illustrator", "Art"],
         images: ["/projects/cult1.png", "/projects/cult2.png", "/projects/cult3.png", "/projects/Cult4.png", "/projects/cult5.png"],
         link: "https://www.behance.net/gallery/238375447/Cult-of-The-Lamb"
     },
@@ -214,7 +214,7 @@ const projectData = [
         desc: "A Cuphead running animation I created as part of a 2D animation\n" +
             "Course. The animation was referenced from Dipper Pines from Gravity Falls. The eye add-on was my own idea." +
             "I focused on timing, squash and stretch, and keeping the animation flow playful to match the classic Cuphead",
-        tech: ["Illustrator", "Art"],
+        tech: ["2D","Photoshop", "Art"],
         images: ["/projects/cuphead_video.mp4", "/projects/cuphead.gif", "/projects/cupghost.gif"],
         link: "https://www.behance.net/gallery/238370241/Cuphead"
     },
@@ -226,7 +226,7 @@ const projectData = [
             "But what do we actually want? What is our dream?\n" +
             "For our 2D animation class, we were asked to create an animation based on the theme of boredom. I see dreams as the colors of our lives without them, we get stuck in a colorless, unhappy, ordinary, and boring world.\n" +
             "This is how I chose to express boredom.",
-        tech: ["Illustrator", "Art"],
+        tech: [ "2D","Photoshop", "Dreams", "Art"],
         images: ["/projects/Boredom.mp4"],
         link: "#"
     }
