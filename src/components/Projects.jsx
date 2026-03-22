@@ -197,7 +197,6 @@ const projectData = [
         images: ["/projects/baymax_room.gif", "/projects/baymax_main.gif"],
         link: "#"
     },
-    ,
     {
         title: "Cult of the Lamb",
         category: "2D Projects",
@@ -228,6 +227,16 @@ const projectData = [
             "This is how I chose to express boredom.",
         tech: [ "2D","Photoshop", "Dreams", "Art"],
         images: ["/projects/Boredom.mp4"],
+        link: "#"
+    },
+    {
+        title: "Atheria",
+        category: "Scenarios",
+        role: "Writer & Artist",
+        desc: "For our 2D drawing class, I created a story base, artboard, flag design, character drawing, and a map based on the given concept.",
+        tech: [ "2D","Photoshop", "Art", "Scenario"],
+        images: ["/projects/atheriaarayuz.png","/projects/nereja.png","/projects/glim.png","/projects/brondir.png","/projects/aelia.png","/projects/xgran.png","/projects/elara.png"
+            ,"/projects/flagcolor.png","/projects/flaguncolor.png", "/projects/atheriahikaye.png", "/projects/artboard1.png", "/projects/artboard2.png", "/projects/harita.png"],
         link: "#"
     }
 ];
@@ -334,7 +343,7 @@ function Projects() {
     const [selectedTag, setSelectedTag] = useState(null);
     const sectionRef = useRef(null);
 
-    const tabs = ["All", "Game Projects", "2D Projects", "3D Projects", "Designs", "Fanzines"];
+    const tabs = ["All", "Game Projects", "2D Projects", "3D Projects", "Designs", "Fanzines", "Scenarios"];
 
     useEffect(() => {
         if (selectedTag || activeTab !== "All") {

@@ -1,4 +1,3 @@
-
 /* Reset */
 * {
   margin: 0;
@@ -13,7 +12,7 @@ html, body {
 
 body {
   font-family: "Source Code Pro", monospace;
-  background: transparent; /* Background component kontrol ediyor */
+  background: transparent;
   color: #f5f7ff;
   overflow-x: hidden;
 }
@@ -31,7 +30,6 @@ body {
 }
 
 /* HERO */
-
 .hero {
   max-width: 900px;
 }
@@ -52,7 +50,6 @@ body {
 }
 
 /* NAVIGATION */
-
 .header {
   position: fixed;
   top: 0;
@@ -89,8 +86,7 @@ body {
   opacity: 1;
 }
 
-/* Project Card örneği */
-
+/* Project Card */
 .project-card {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(8px);
@@ -105,8 +101,7 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* Alice Kapı Butonu (Hazır Altyapı) */
-
+/* Portal Butonu */
 .door-button {
   position: fixed;
   right: 30px;
@@ -115,9 +110,153 @@ body {
   opacity: 0.6;
   cursor: pointer;
   transition: 0.3s ease;
+  z-index: 1000;
 }
 
 .door-button:hover {
   opacity: 1;
   transform: translateY(-3px);
+  color: #a7f3d0;
+}
+
+/* --- Tavşan Deliği Animasyonu (Giriş) --- */
+.rabbit-hole-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: 9999;
+  animation: fallingEffect 3s ease-in-out forwards;
+}
+
+@keyframes fallingEffect {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    clip-path: circle(50% at 50% 50%);
+  }
+  100% {
+    clip-path: circle(150% at 50% 50%);
+    opacity: 1;
+  }
+}
+
+/* --- Orderland Ekranı --- */
+.orderland-screen {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #080a18;
+}
+
+.orderland-welcome {
+  font-size: 4rem;
+  color: #a7f3d0;
+  text-shadow: 0 0 30px rgba(167, 243, 208, 0.4);
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+}
+
+.fade-in {
+  animation: fadeInEffect 1s ease-in forwards;
+}
+
+@keyframes fadeInEffect {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.back-button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.back-button:hover {
+  background: white;
+  color: black;
+}
+
+/* --- Dönüş Animasyonu (Dark Void -> Blinding Light) --- */
+.return-reality-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: 9999;
+  animation: fadeOutToBlackVoid 3s ease-in-out forwards;
+}
+
+@keyframes fadeOutToBlackVoid {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.return-reality-overlay::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250vmax;
+  height: 250vmax;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow:
+          0 0 30px #fff,
+          0 0 80px rgba(255, 255, 255, 0.9),
+          0 0 150px rgba(255, 255, 255, 0.7),
+          0 0 250px rgba(255, 255, 255, 0.5);
+  filter: blur(5px);
+  animation: blindingLightTunnell 3s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes blindingLightTunnell {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    filter: blur(0px);
+  }
+  39% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.001);
+    filter: blur(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(5px);
+  }
+}
+
+.loading-wonderland {
+  color: #a7f3d0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #000;
+  letter-spacing: 2px;
 }
