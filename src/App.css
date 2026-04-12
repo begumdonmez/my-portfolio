@@ -1,4 +1,4 @@
-/* Reset */
+/* --- Reset & Global --- */
 * {
   margin: 0;
   padding: 0;
@@ -29,8 +29,7 @@ body {
   justify-content: center;
 }
 
-
-/* NAVIGATION */
+/* --- Navigation --- */
 .header {
   position: fixed;
   top: 0;
@@ -67,7 +66,7 @@ body {
   opacity: 1;
 }
 
-/* Project Card */
+/* --- Project Card --- */
 .project-card {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(8px);
@@ -82,7 +81,7 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* Portal Butonu */
+/* --- Portal Butonu --- */
 .door-button {
   position: fixed;
   right: 30px;
@@ -100,7 +99,7 @@ body {
   color: #a7f3d0;
 }
 
-/* --- Tavşan Deliği Animasyonu (Giriş) --- */
+/* --- GİRİŞ: Tavşan Deliği Animasyonu (3s) --- */
 .rabbit-hole-overlay {
   position: fixed;
   top: 0;
@@ -113,66 +112,12 @@ body {
 }
 
 @keyframes fallingEffect {
-  0% {
-    clip-path: circle(0% at 50% 50%);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-    clip-path: circle(50% at 50% 50%);
-  }
-  100% {
-    clip-path: circle(150% at 50% 50%);
-    opacity: 1;
-  }
+  0% { clip-path: circle(0% at 50% 50%); opacity: 0; }
+  50% { opacity: 1; clip-path: circle(50% at 50% 50%); }
+  100% { clip-path: circle(150% at 50% 50%); opacity: 1; }
 }
 
-/* --- Orderland Ekranı --- */
-.orderland-screen {
-  position: relative;
-  z-index: 100;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #080a18;
-}
-
-.orderland-welcome {
-  font-size: 4rem;
-  color: #a7f3d0;
-  text-shadow: 0 0 30px rgba(167, 243, 208, 0.4);
-  letter-spacing: -2px;
-  margin-bottom: 20px;
-}
-
-.fade-in {
-  animation: fadeInEffect 1s ease-in forwards;
-}
-
-@keyframes fadeInEffect {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.back-button {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.back-button:hover {
-  background: white;
-  color: black;
-}
-
-/* --- Dönüş Animasyonu (Dark Void -> Blinding Light) --- */
+/* --- DÖNÜŞ: Siyah Boşluk -> Parlak Beyaz Işık (3s) --- */
 .return-reality-overlay {
   position: fixed;
   top: 0;
@@ -211,25 +156,10 @@ body {
 }
 
 @keyframes blindingLightTunnell {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0);
-    filter: blur(0px);
-  }
-  39% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0);
-  }
-  40% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(0.001);
-    filter: blur(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    filter: blur(5px);
-  }
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0); filter: blur(0px); }
+  39% { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+  40% { opacity: 1; transform: translate(-50%, -50%) scale(0.001); filter: blur(20px); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: blur(5px); }
 }
 
 .loading-wonderland {
@@ -240,27 +170,4 @@ body {
   height: 100vh;
   background: #000;
   letter-spacing: 2px;
-}
-/* --- Orderland Placeholder Grid --- */
-.placeholder-grid {
-  display: flex;
-  flex-direction: column; /* Kareleri alt alta dizer */
-  gap: 15px; /* Kareler arasındaki boşluk */
-  margin: 40px 0; /* Yazı ve buton ile arasındaki mesafe */
-}
-
-.placeholder-square {
-  width: 65px;
-  height: 65px;
-  background: rgba(167, 243, 208, 0.05); /* Yeşil temana uygun çok hafif bir dolgu */
-  border: 2px solid rgba(167, 243, 208, 0.2); /* OXO benzeri belirgin çerçeve */
-  border-radius: 12px;
-  transition: 0.3s ease;
-}
-
-/* Sadece nasıl duracağını görmek için küçük bir hover parıltısı */
-.placeholder-square:hover {
-  border-color: #a7f3d0;
-  box-shadow: 0 0 15px rgba(167, 243, 208, 0.3);
-  background: rgba(167, 243, 208, 0.1);
 }

@@ -9,7 +9,7 @@ import Projects from "./components/Projects.jsx";
 import Skills from "./components/Skills.jsx";
 import Contact from "./components/Contact.jsx";
 
-const Orderland = lazy(() => import("./components/Orderland"));
+const Orderland = lazy(() => import("./components/Orderland/Orderland"));
 
 function App() {
     const [isOrderland, setIsOrderland] = useState(false);
