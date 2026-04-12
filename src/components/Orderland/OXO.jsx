@@ -2,74 +2,91 @@ import React, { useState } from 'react';
 import './OXO.css';
 
 function OXO() {
-    const [board, setBoard] = useState(Array(9).fill(null));
-    const [xIsNext, setXIsNext] = useState(true);
-    const winnerInfo = calculateWinner(board);
-    const winner = winnerInfo ? winnerInfo.winner : null;
+        const [board, setBoard] = useState(Array(9).fill(null));
+        const [isXNext, setIsXNext] = useState(true);
 
-    const handleClick = (i) => {
-        if (winner || board[i]) return;
-        const newBoard = board.slice();
-        newBoard[i] = xIsNext ? 'X' : 'O';
-        setBoard(newBoard);
-        setXIsNext(!xIsNext);
-    };
+        // Kazananı hesaplayan fonksiyon
+        const calculateWinner = (squares) => {
+            const lines = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // Yatay
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // Dikey
+                [0, 4, 8], [2, 4, 6]             // Çapraz
+            ];
+            for (let i = 0; i < lines.length; i++) {
+                const [a, b, c] = lines[i];
+                if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+                    return squares[a];
+                }
+            }
+            return null;
+        };
 
-    const resetGame = () => {
-        setBoard(Array(9).fill(null));
-        setXIsNext(true);
-    };
+        const winner = calculateWinner(board);
+        const isDraw = !winner && board.every(square => square !== null);
 
-    const status = winner
-        ? `PROTOCOL_TERMINATED: ${winner} ASCENDANT`
-        : board.every(Boolean)
-            ? "SYSTEM_STALEMATE"
-            : `NEXT_SIGNAL: ${xIsNext ? 'X' : 'O'}`;
+        const handleClick = (i) => {
+            // Eğer oyun bittiyse veya hücre doluysa tıklamayı engelle
+            if (winner || board[i]) return;
 
-    return (
-        <div className="oxo-container">
-            <div className="game-header">
-                <span className="module-tag">MOD: 002 // GRID_COMBAT</span>
-                <h2 className="game-title">OXO</h2>
-            </div>
+            const newBoard = [...board];
+            newBoard[i] = isXNext ? "X" : "O";
+            setBoard(newBoard);
+            setIsXNext(!isXNext);
+        };
 
-            <div className="oxo-grid">
-                {board.map((cell, i) => (
-                    <button
-                        key={i}
-                        className={`oxo-cell ${cell} ${winnerInfo?.line.includes(i) ? 'highlight' : ''}`}
-                        onClick={() => handleClick(i)}
-                    >
-                        {cell}
-                    </button>
-                ))}
-            </div>
+        const resetGame = () => {
+            setBoard(Array(9).fill(null));
+            setIsXNext(true);
+        };
 
-            <p className="system-text oxo-status">{status}</p>
+        return (
+            <div style={{ textAlign: 'center' }}>
+                <div style={{ marginBottom: '10px', fontWeight: 'bold' }}>
+                    {winner ? `Kazanan: ${winner}` : isDraw ? "Berabere!" : `Sıra: ${isXNext ? 'X' : 'O'}`}
+                </div>
 
-            {(winner || board.every(Boolean)) && (
-                <button className="back-button reset-btn" onClick={resetGame}>
-                    REBOOT_PROTOCOL
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(3, 80px)',
+                    gap: '5px',
+                    justifyContent: 'center'
+                }}>
+                    {board.map((value, i) => (
+                        <button
+                            key={i}
+                            onClick={() => handleClick(i)}
+                            style={{
+                                width: '80px',
+                                height: '80px',
+                                fontSize: '24px',
+                                cursor: 'pointer',
+                                background: '#222',
+                                color: '#fff',
+                                border: '1px solid #444',
+                                borderRadius: '8px'
+                            }}
+                        >
+                            {value}
+                        </button>
+                    ))}
+                </div>
+
+                <button
+                    onClick={resetGame}
+                    style={{
+                        marginTop: '20px',
+                        padding: '8px 16px',
+                        cursor: 'pointer',
+                        background: '#a7f3d0',
+                        border: 'none',
+                        borderRadius: '4px',
+                        color: '#000',
+                        fontWeight: 'bold'
+                    }}
+                >
+                    Sıfırla
                 </button>
-            )}
-        </div>
-    );
-}
-
-// Kazananı hesaplayan yardımcı fonksiyon
-function calculateWinner(squares) {
-    const lines = [
-        ,,, // Yataylar
-        ,,, // Dikeyler
-        ,,             // Çaprazlar
-    ];
-    for (let i = 0; i < lines.length; i++) {
-        const [a, b, c] = lines[i];
-        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return { winner: squares[a], line: lines[i] };
-        }
-    }
-    return null;
-}
-
+            </div>
+        );
+    };
 export default OXO;

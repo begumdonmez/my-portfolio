@@ -27,7 +27,10 @@ function Orderland({ onBack }) {
                     <Wordle />
                 </div>
 
-           
+                {/* --- MODÜL 001: Kelime Protokolü --- */}
+                <div className="module-wrapper">
+                    <OXO />
+                </div>
 
                 {/* --- Çıkış Protokolü --- */}
                 <div className="exit-section">
