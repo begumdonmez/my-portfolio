@@ -154,7 +154,17 @@ body {
   animation: blindingLightTunnell 3s ease-in-out forwards;
   opacity: 0;
 }
+.door-star-icon {
+  width: 40px; /* Boyutu isteğine göre değiştirebilirsin */
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(167, 243, 208, 0.5)); /* Hafif yeşil parıltı */
+  transition: transform 0.3s ease;
+}
 
+.door-button:hover .door-star-icon {
+  transform: scale(1.2) rotate(15deg); /* Üzerine gelince hafif büyüsün ve dönsün */
+  filter: drop-shadow(0 0 20px #ff4d4d); /* Hover'da kırmızı anomali parıltısı */
+}
 @keyframes blindingLightTunnell {
   0% { opacity: 0; transform: translate(-50%, -50%) scale(0); filter: blur(0px); }
   39% { opacity: 0; transform: translate(-50%, -50%) scale(0); }

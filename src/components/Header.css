@@ -1,0 +1,55 @@
+.dynamic-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Başlangıçta gizli ve yukarıda */
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+}
+
+/* Kaydırınca ortaya çıkan stil */
+.dynamic-header.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+    background: rgba(10, 14, 26, 0.8); /* Orderland laciverti */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(167, 243, 208, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.header-logo {
+    font-family: 'Special Elite', monospace;
+    color: #a7f3d0;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.header-nav {
+    display: flex;
+    gap: 30px;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: #f5f7ff;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.header-nav a:hover {
+    opacity: 1;
+    color: #a7f3d0;
+    text-shadow: 0 0 8px rgba(167, 243, 208, 0.5);
+}

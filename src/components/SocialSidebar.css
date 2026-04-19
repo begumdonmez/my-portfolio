@@ -1,60 +1,72 @@
 .social-sidebar {
-    position: fixed; /* Sayfa kaydıkça sabit kalmasını sağlar */
-    left: 30px; /* Sol kenardan uzaklık */
-    bottom: 20px; /* Ekranın altından başlar */
+    position: fixed;
+    left: 30px;
+    bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    z-index: 100; /* Diğer her şeyin üstünde durması için */
+    z-index: 100;
+}
+
+/* Tooltip'in doğru konumlanması için a etiketini hizalıyoruz */
+.social-sidebar a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
 .social-icon {
-    width: 50px; /* Logolarının boyutu */
+    width: 50px;
     height: 50px;
     transition: transform 0.3s ease, filter 0.3s ease;
     cursor: pointer;
 }
 
 .social-icon:hover {
-    transform: translateY(-5px) scale(1.1); /* Hover olunca yukarı zıplar */
-    filter: drop-shadow(0 0 10px rgba(167, 243, 208, 0.5)); /* Hafif parlama efekti */
+    transform: translateY(-5px) scale(1.1);
+    filter: drop-shadow(0 0 10px rgba(167, 243, 208, 0.5));
 }
 
-/* Logoların altındaki o dikey çizgi (Profesyonel bir dokunuş) */
+/* --- TOOLTIP (Etiket) MANTIĞI --- */
+.social-sidebar a::after {
+    content: attr(data-label); /* data-label'deki metni buraya çeker */
+    position: absolute;
+    left: 65px; /* İkonun sağında belirmesi için mesafe */
+    background: rgba(10, 14, 26, 0.9); /* Orderland derin laciverti */
+    color: #a7f3d0; /* Sistem yeşili */
+    padding: 5px 12px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    border-left: 2px solid #ff4d4d; /* Kırmızı anomali çizgisi */
+    pointer-events: none; /* Mouse ile etkileşime girip titremesin */
+
+    /* Animasyon Başlangıç Durumu */
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Üzerine gelince Tooltip'i göster */
+.social-sidebar a:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 .sidebar-line {
     width: 2px;
-    height: 150px; /* Boyunu buradan ayarlayabilirsin */
-    background: linear-gradient(to bottom, var(--h2-green), transparent); /* Yeşilden şeffafa gider */
-    margin-top: 20px;
-    opacity: 0.5; /* Daha sönük ve şık durması için */
+    height: 10px;
+    background: linear-gradient(to bottom, #a7f3d0, transparent);
+    margin-top: 10px;
+    opacity: 0.5;
 }
-.cv-rocket-link {
-    background: none !important; /* Arka planı tamamen sildik */
-    border: none !important;       /* Çerçeveyi sildik */
+
+/* CV Butonu Özel Ayarı */
+.cv-download-btn {
+    border: none;
+    background: none;
     padding: 0;
-    margin-top: 15px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-}
-
-.cv-rocket-icon {
-    width: 60px; /* Boyutu diğer ikonlarla uyumlu olacak şekilde ayarlayabilirsin */
-    height: auto;
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-/* Hover olunca roketin havalanma efekti */
-.cv-rocket-link:hover .cv-rocket-icon {
-    transform: translateY(-8px) scale(1.1);
-    filter: drop-shadow(0 0 15px rgba(167, 243, 208, 0.7)); /* Yeşilimsi bir parlama */
-}
-/* Mobilde ekran çok daralırsa logoları gizleyebilir veya alta alabiliriz */
-@media (max-width: 768px) {
-    .social-sidebar {
-        display: none; /* Mobilde temiz bir görüntü için gizlemek yaygın bir tercihtir */
-    }
 }

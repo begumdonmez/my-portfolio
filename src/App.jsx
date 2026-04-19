@@ -8,6 +8,8 @@ import About from "./components/About";
 import Projects from "./components/Projects.jsx";
 import Skills from "./components/Skills.jsx";
 import Contact from "./components/Contact.jsx";
+import Header from './components/Header';
+import starIcon from './assets/star.png';
 
 const Orderland = lazy(() => import("./components/Orderland/Orderland"));
 
@@ -36,6 +38,8 @@ function App() {
         <div className="app-container">
             <Background />
 
+            {/* Orderland'de değilsek Header'ı göster */}
+            {!isOrderland && <Header />}
             {isTransitioning && <div className="rabbit-hole-overlay"></div>}
             {isReturning && <div className="return-reality-overlay"></div>}
 
@@ -52,7 +56,7 @@ function App() {
                     </div>
 
                     <div className="door-button" onClick={startTransition} style={{ zIndex: 1000 }}>
-                        Follow the Rabbit? 🐇
+                        <img src={starIcon} alt="Star Icon" className="door-star-icon" />
                     </div>
                 </>
             ) : (
