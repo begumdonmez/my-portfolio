@@ -9,6 +9,74 @@
     margin: 0 auto;
 }
 
+/* ---- Zorluk Seçici ---- */
+.sudoku-difficulty {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.diff-btn {
+    background: transparent;
+    border: 1px solid rgba(167, 243, 208, 0.15);
+    color: rgba(167, 243, 208, 0.4);
+    padding: 5px 16px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.diff-btn:hover { opacity: 0.8; }
+
+/* Renk: kolay=yeşil, orta=sarı, zor=kırmızı */
+.diff-btn.diff-easy        { border-color: rgba(167, 243, 208, 0.25); }
+.diff-btn.diff-easy.diff-active  {
+    border-color: #a7f3d0;
+    color: #a7f3d0;
+    background: rgba(167, 243, 208, 0.08);
+    box-shadow: 0 0 10px rgba(167, 243, 208, 0.15);
+}
+
+.diff-btn.diff-medium        { border-color: rgba(252, 211, 77, 0.25); color: rgba(252, 211, 77, 0.4); }
+.diff-btn.diff-medium.diff-active {
+    border-color: #fcd34d;
+    color: #fcd34d;
+    background: rgba(252, 211, 77, 0.08);
+    box-shadow: 0 0 10px rgba(252, 211, 77, 0.15);
+}
+
+.diff-btn.diff-hard        { border-color: rgba(255, 77, 77, 0.25); color: rgba(255, 77, 77, 0.4); }
+.diff-btn.diff-hard.diff-active {
+    border-color: #ff4d4d;
+    color: #ff4d4d;
+    background: rgba(255, 77, 77, 0.08);
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.15);
+}
+
+/* ---- Yükleniyor ---- */
+.sudoku-generating {
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gen-dots {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    color: rgba(167, 243, 208, 0.5);
+    animation: genBlink 1s infinite;
+}
+
+@keyframes genBlink {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
 /* ---- Üst Bilgi ---- */
 .sudoku-info-row {
     display: flex;
@@ -153,6 +221,21 @@
     background: rgba(255, 77, 77, 0.1);
     border-color: #ff4d4d;
     box-shadow: 0 0 10px rgba(255, 77, 77, 0.2);
+}
+
+/* Tükenmiş rakam — 9 kez yerleştirildi */
+.numpad-btn.exhausted {
+    opacity: 0.18;
+    cursor: not-allowed;
+    pointer-events: none;
+    text-decoration: line-through;
+    transition: opacity 0.4s ease;
+}
+
+.numpad-btn.exhausted:hover {
+    background: rgba(167, 243, 208, 0.06);
+    border-color: rgba(167, 243, 208, 0.2);
+    box-shadow: none;
 }
 
 /* ---- Kontroller ---- */
