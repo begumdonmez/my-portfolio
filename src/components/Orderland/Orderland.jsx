@@ -2,6 +2,8 @@ import React from 'react';
 import Wordle from './Wordle';
 import OXO from './OXO';
 import Sudoku from './Sudoku';
+import Library from './Library';
+import MediaArchive from './MediaArchive';
 import './Orderland.css';
 
 function Orderland({ onBack }) {
@@ -36,6 +38,16 @@ function Orderland({ onBack }) {
                 {/* --- MODÜL 003: Mantık Izgarası --- */}
                 <div className="module-wrapper">
                     <Sudoku />
+                </div>
+
+                {/* --- MODÜL 004: Codex (Kitaplık) --- */}
+                <div className="module-wrapper">
+                    <Library />
+                </div>
+
+                {/* --- MODÜL 005: Medya Arşivi --- */}
+                <div className="module-wrapper">
+                    <MediaArchive />
                 </div>
 
                 {/* --- Çıkış Protokolü --- */}
