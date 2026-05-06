@@ -70,3 +70,32 @@
     background: none;
     padding: 0;
 }
+
+@media (max-width: 768px) {
+    .social-sidebar {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        bottom: 12px;
+        flex-direction: row;
+        gap: 18px;
+        background: rgba(10, 14, 26, 0.75);
+        backdrop-filter: blur(10px);
+        padding: 10px 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(167, 243, 208, 0.15);
+    }
+
+    .social-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .social-sidebar a::after {
+        display: none;
+    }
+
+    .sidebar-line {
+        display: none;
+    }
+}

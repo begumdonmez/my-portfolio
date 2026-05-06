@@ -29,6 +29,17 @@ body {
   justify-content: center;
 }
 
+@media (max-width: 768px) {
+  .content {
+    padding: 0 4%;
+  }
+
+  .door-button {
+    right: 16px;
+    bottom: 70px;
+  }
+}
+
 /* --- Navigation --- */
 .header {
   position: fixed;

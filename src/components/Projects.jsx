@@ -277,6 +277,7 @@ const ProjectCard = ({ project, onTagClick, activeTag }) => {
                             src={project.images[currentImg]}
                             alt={`${project.title} - ${currentImg + 1}`}
                             className="project-image"
+                            loading="lazy"
                         />
                         {project.images.length > 1 && (
                             <>

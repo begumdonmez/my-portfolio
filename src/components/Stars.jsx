@@ -17,6 +17,8 @@ export default function Stars({ count = 100, speed = 0.5 }) {
     }, [count]);
 
     useEffect(() => {
+        if (window.matchMedia("(max-width: 768px)").matches) return;
+
         const handleMove = (e) => {
             if (!layerRef.current) return;
 
@@ -26,7 +28,7 @@ export default function Stars({ count = 100, speed = 0.5 }) {
             layerRef.current.style.transform = `translate(${x}px, ${y}px)`;
         };
 
-        window.addEventListener("mousemove", handleMove);
+        window.addEventListener("mousemove", handleMove, { passive: true });
         return () => window.removeEventListener("mousemove", handleMove);
     }, [speed]);
 

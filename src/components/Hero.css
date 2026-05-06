@@ -66,17 +66,39 @@
     max-width: 600px;
 }
 
-/* Mobil Uyumluluk */
 @media (max-width: 768px) {
     .hero-container {
         flex-direction: column;
         text-align: center;
-        gap: 30px;
+        gap: 24px;
+        padding: 0 5%;
+        min-height: 70vh;
+        margin-top: 40px;
     }
-    .hero-left, .hero-right {
+
+    .hero-left {
         justify-content: center;
     }
+
+    .hero-image {
+        max-width: 220px;
+    }
+
     .hero-right {
-        order: 2; /* Yazı mobilde resmin altına gelsin */
+        order: 2;
+        text-align: center;
+    }
+
+    .hero-name {
+        font-size: 2.2rem;
+    }
+
+    .hero-title {
+        font-size: 1.2rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+        max-width: 100%;
     }
 }
