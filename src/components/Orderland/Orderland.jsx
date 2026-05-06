@@ -1,6 +1,7 @@
 import React from 'react';
 import Wordle from './Wordle';
 import OXO from './OXO';
+import Sudoku from './Sudoku';
 import './Orderland.css';
 
 function Orderland({ onBack }) {
@@ -27,9 +28,14 @@ function Orderland({ onBack }) {
                     <Wordle />
                 </div>
 
-                {/* --- MODÜL 001: Kelime Protokolü --- */}
+                {/* --- MODÜL 002: XO Savaşı --- */}
                 <div className="module-wrapper">
                     <OXO />
+                </div>
+
+                {/* --- MODÜL 003: Mantık Izgarası --- */}
+                <div className="module-wrapper">
+                    <Sudoku />
                 </div>
 
                 {/* --- Çıkış Protokolü --- */}
