@@ -1,0 +1,80 @@
+/* ============================================================
+   base.css — shared foundation for every page
+   Design system: "Gece Yanığı" palette + Fraunces/Space Grotesk
+   ============================================================ */
+
+:root {
+  /* Colors — named by ROLE, not by hue (theme swap lives here) */
+  --color-bg: #F5F3EF;
+  --color-text: #14213D;
+  --color-accent: #FCA311;
+  --color-accent-dark: #D9880A;
+  --color-muted: #8D99AE;
+
+  /* Typography */
+  --font-heading: "Fraunces", Georgia, serif;
+  --font-body: "Space Grotesk", system-ui, sans-serif;
+
+  /* Spacing scale — stick to these, no magic numbers */
+  --space-xs: 0.5rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2.5rem;
+  --space-xl: 4rem;
+}
+
+/* ---------- Reset ---------- */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+/* ---------- Base typography ---------- */
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  line-height: 1.15;
+  font-weight: 600;
+}
+
+h1 { font-size: clamp(2.25rem, 5vw, 3.25rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 1.9rem); }
+h3 { font-size: 1.2rem; }
+
+/* ---------- Shared utilities ---------- */
+
+.container {
+  max-width: 72ch;
+  margin-inline: auto;
+  padding-inline: var(--space-m);
+}
+
+/* Motion respect — non-negotiable */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

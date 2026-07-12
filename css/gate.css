@@ -1,0 +1,100 @@
+/* ============================================================
+   gate.css — entry screen (red pill / blue pill)
+   ============================================================ */
+
+.gate-body {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-s);
+  padding: var(--space-l) var(--space-m);
+}
+
+.gate-kicker {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gate-subtitle {
+  color: var(--color-muted);
+  font-size: 1.15rem;
+}
+
+/* ---------- The pills ---------- */
+
+.gate-choices {
+  display: flex;
+  flex-direction: column;      /* mobile-first: stacked */
+  gap: var(--space-m);
+  margin-top: var(--space-l);
+}
+
+@media (min-width: 768px) {
+  .gate-choices {
+    flex-direction: row;
+  }
+}
+
+.pill {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  max-width: 21rem;
+  padding: var(--space-l) var(--space-l);
+  border-radius: 1.5rem;
+  text-decoration: none;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pill:hover,
+.pill:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgb(20 33 61 / 0.18);
+}
+
+.pill-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.pill-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.pill-hint {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* Variants — shared shape above, only identity differs */
+
+.pill--blue {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+.pill--red {
+  background: var(--color-accent);
+  color: var(--color-text);
+}
+
+.gate-footnote {
+  margin-top: var(--space-l);
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
