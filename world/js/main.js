@@ -32,7 +32,8 @@ const ui = {
 
 /* ---------- Mobile: capability check, not screen width ---------- */
 const touchOnly = matchMedia('(pointer: coarse)').matches && !matchMedia('(pointer: fine)').matches;
-if (touchOnly) {
+const forceDesktop = new URLSearchParams(location.search).has('force');   // testing escape hatch
+if (touchOnly && !forceDesktop) {
   ui.consent.hidden = true;
   ui.mobile.hidden = false;
   throw new Error('touch-only device: experience needs a keyboard'); // stop module cleanly
@@ -444,7 +445,7 @@ const player = { z: -0.5 };
 let dolly = null;
 
 function orbInReach() {
-  return Math.abs(player.z - orb.position.z) < 1.6;  // intro: any E near the start works
+  return Math.abs(player.z - orb.position.z) < 2.2;  // intro: any E near the start works
 }
 
 function touchTheOrb() {
@@ -589,3 +590,10 @@ function animate() {
 
 /* render one frame so the consent screen has a live backdrop */
 composer.render();
+
+/* dev-only debug hook (harmless in production, handy in the console) */
+window.__world = {
+  get state() { return state; },
+  player, orb, touchTheOrb, orbInReach, camera,
+  step: () => animate(),   // manual frame step for environments without rAF
+};

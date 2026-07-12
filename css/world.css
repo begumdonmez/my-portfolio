@@ -16,6 +16,10 @@
 
 * { box-sizing: border-box; margin: 0; }
 
+/* the hidden attribute must always win — .screen's display:flex would
+   otherwise override the UA's display:none (classic specificity trap) */
+[hidden] { display: none !important; }
+
 body {
   font-family: var(--font-body);
   background: #08080f;
