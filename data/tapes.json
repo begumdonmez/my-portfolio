@@ -1,0 +1,22 @@
+[
+  {
+    "id": "about-me",
+    "label": "about me",
+    "audio": null,
+    "captions": [
+      { "start": 0.0, "end": 4.0, "text": "Hi. If you're hearing this, you found my room." },
+      { "start": 4.0, "end": 9.0, "text": "I make games because play is how I understand the world." },
+      { "start": 9.0, "end": 14.0, "text": "(This is a placeholder — Begüm's real voice goes here.)" }
+    ]
+  },
+  {
+    "id": "my-journey",
+    "label": "my journey",
+    "audio": null,
+    "captions": [
+      { "start": 0.0, "end": 4.5, "text": "It started with a blinking cursor and too much curiosity." },
+      { "start": 4.5, "end": 9.5, "text": "Every project in this corridor taught me something I couldn't unlearn." },
+      { "start": 9.5, "end": 14.0, "text": "(Placeholder — record the real story, 30 to 90 seconds.)" }
+    ]
+  }
+]

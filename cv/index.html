@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/cv.css">
+  <link rel="stylesheet" href="/css/magic.css">
 </head>
 <body>
   <header class="site-header">
@@ -64,33 +65,18 @@
     <!-- ============ PROJECTS ============ -->
     <section id="projects" class="container">
       <h2>Selected Projects</h2>
-      <div class="projects-grid">
+      <!-- Single source of truth: cards render from /data/projects.json.
+           The 3D world's computer reads the SAME file. -->
+      <div class="projects-grid" id="projects-grid"></div>
 
+      <template id="project-template">
         <article class="project-card">
-          <img src="/assets/placeholder-cover.svg" alt="Ballerino Online gameplay"
-               width="800" height="450" loading="lazy">
-          <h3>Ballerino Online</h3>
-          <p>One tight paragraph: what it is, your role, the tech. No fluff.</p>
-          <a class="project-link" href="#">Play / View →</a>
+          <img src="" alt="" width="800" height="450" loading="lazy">
+          <h3></h3>
+          <p></p>
+          <a class="project-link" href="">Play / View →</a>
         </article>
-
-        <article class="project-card">
-          <img src="/assets/placeholder-cover.svg" alt="Santa's Workers gameplay"
-               width="800" height="450" loading="lazy">
-          <h3>Santa's Workers</h3>
-          <p>One tight paragraph: what it is, your role, the tech.</p>
-          <a class="project-link" href="#">Play / View →</a>
-        </article>
-
-        <article class="project-card">
-          <img src="/assets/placeholder-cover.svg" alt="Sultanahmet history layers experience"
-               width="800" height="450" loading="lazy">
-          <h3>Sultanahmet: Layers of History</h3>
-          <p>One tight paragraph: what it is, your role, the tech.</p>
-          <a class="project-link" href="#">Play / View →</a>
-        </article>
-
-      </div>
+      </template>
     </section>
 
     <!-- ============ EDUCATION ============ -->
@@ -119,5 +105,21 @@
   <footer class="container">
     <p>There's another side to this site… <a href="/world/">step through the door</a> 🚪</p>
   </footer>
+
+  <!-- ============ MASCOT (Layer B trigger) ============ -->
+  <div class="mascot-zone" data-state="hidden">
+    <div class="mascot-bubble" id="mascot-bubble" hidden>
+      <p id="mascot-text"></p>
+      <div class="mascot-choices" id="mascot-choices"></div>
+    </div>
+    <button class="mascot" id="mascot" aria-label="A message from the site mascot">
+      <span class="mascot-body" aria-hidden="true">
+        <span class="mascot-eye"></span><span class="mascot-eye"></span>
+      </span>
+    </button>
+  </div>
+
+  <script type="module" src="/js/projects-render.js"></script>
+  <script type="module" src="/js/mascot.js"></script>
 </body>
 </html>

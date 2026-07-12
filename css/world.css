@@ -1,0 +1,193 @@
+/* ============================================================
+   world.css — Layer C overlay UI
+   The 3D scene renders to <canvas>; ALL UI is real HTML on top.
+   Brand carries over: palette + Fraunces/Space Grotesk.
+   ============================================================ */
+
+:root {
+  --color-bg: #F5F3EF;
+  --color-text: #14213D;
+  --color-accent: #FCA311;
+  --color-accent-dark: #D9880A;
+  --color-muted: #8D99AE;
+  --font-heading: "Fraunces", Georgia, serif;
+  --font-body: "Space Grotesk", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  font-family: var(--font-body);
+  background: #08080f;
+  color: var(--color-bg);
+  overflow: hidden;
+}
+
+#scene { position: fixed; inset: 0; display: block; }
+
+kbd {
+  font-family: inherit;
+  border: 1px solid currentColor;
+  border-radius: 0.3rem;
+  padding: 0.05rem 0.45rem;
+}
+
+/* ---------- Skip link: always on top, always visible ---------- */
+
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 30;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  text-decoration: none;
+  border: 1px solid rgb(141 153 174 / 0.4);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+}
+
+.skip-link:hover { color: var(--color-bg); border-color: var(--color-bg); }
+
+/* ---------- Full screens (consent / mobile notice) ---------- */
+
+.screen {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem;
+  background: #08080f;
+}
+
+.screen h1 { font-family: var(--font-heading); font-size: clamp(1.6rem, 4vw, 2.4rem); }
+.screen p { color: var(--color-muted); max-width: 45ch; }
+.screen-note { font-size: 0.85rem; margin-top: 1.5rem; }
+
+.screen-choices { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 1rem; }
+
+.screen button, .button-link {
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  background: transparent;
+  color: var(--color-bg);
+  border: 1px solid rgb(245 243 239 / 0.5);
+  border-radius: 999px;
+  padding: 0.7rem 1.5rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.screen button:hover, .button-link:hover {
+  border-color: var(--color-accent);
+  background: rgb(252 163 17 / 0.12);
+}
+
+.orb-preview {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: #FFF2E0;
+  box-shadow: 0 0 22px 7px rgb(252 163 17 / 0.45);
+  animation: breathe 2.6s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50%      { transform: scale(1.4); opacity: 1; }
+}
+
+/* ---------- Invite text ---------- */
+
+.invite {
+  position: fixed;
+  bottom: 18%;
+  left: 50%;
+  translate: -50%;
+  z-index: 10;
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: #FFF2E0;
+  text-shadow: 0 0 18px rgb(252 163 17 / 0.5);
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.invite.visible { opacity: 1; }
+
+/* ---------- Interaction hint ---------- */
+
+.hint {
+  position: fixed;
+  bottom: 12%;
+  left: 50%;
+  translate: -50%;
+  z-index: 10;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  background: rgb(20 33 61 / 0.75);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- Captions ---------- */
+
+.captions {
+  position: fixed;
+  bottom: 5%;
+  left: 50%;
+  translate: -50%;
+  z-index: 10;
+  max-width: 60ch;
+  text-align: center;
+  background: rgb(20 33 61 / 0.8);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.05rem;
+}
+
+/* ---------- Computer overlay ---------- */
+
+.computer {
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  background: rgb(8 8 15 / 0.96);
+  overflow-y: auto;
+  padding: clamp(1rem, 4vw, 3rem);
+}
+
+.computer header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  max-width: 70ch;
+  margin: 0 auto 2rem;
+  color: var(--color-muted);
+}
+
+.computer h2 { font-family: var(--font-heading); color: var(--color-accent); }
+
+.computer-project {
+  max-width: 70ch;
+  margin: 0 auto 2rem;
+  border: 1px solid rgb(141 153 174 / 0.3);
+  border-radius: 0.8rem;
+  padding: 1.5rem;
+}
+
+.computer-project h3 { font-family: var(--font-heading); margin-bottom: 0.5rem; }
+.computer-project p { color: var(--color-muted); margin-bottom: 0.8rem; }
+.computer-project .tech { font-size: 0.85rem; color: var(--color-accent-dark); margin-bottom: 0.8rem; }
+.computer-project a { color: var(--color-accent); margin-right: 1.2rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

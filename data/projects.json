@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ballerino",
+    "title": "Ballerino Online",
+    "cover": "/assets/placeholder-cover.svg",
+    "summary": "One tight paragraph: what it is, your role, the tech. No fluff.",
+    "tech": ["Unity", "C#", "WebGL"],
+    "links": { "play": "#", "source": "#" }
+  },
+  {
+    "id": "santas-workers",
+    "title": "Santa's Workers",
+    "cover": "/assets/placeholder-cover.svg",
+    "summary": "One tight paragraph: what it is, your role, the tech.",
+    "tech": ["Unity", "C#"],
+    "links": { "play": "#" }
+  },
+  {
+    "id": "sultanahmet",
+    "title": "Sultanahmet: Layers of History",
+    "cover": "/assets/placeholder-cover.svg",
+    "summary": "One tight paragraph: what it is, your role, the tech.",
+    "tech": ["Unity", "WebGL"],
+    "links": { "play": "#" }
+  }
+]

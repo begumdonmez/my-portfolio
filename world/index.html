@@ -3,40 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Begum's World — coming soon</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Space+Grotesk:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/base.css">
-  <style>
-    body {
-      min-height: 100svh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0a0a12;              /* the dark before the light */
-      color: var(--color-bg);
-      text-align: center;
+  <title>Begum's World</title>
+  <meta name="description" content="An interactive world by Begum Donmez. Keyboard required — reach for the light.">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/world.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.166.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.166.0/examples/jsm/"
     }
-    .orb {
-      width: 14px; height: 14px;
-      border-radius: 50%;
-      background: #FFF2E0;
-      box-shadow: 0 0 24px 8px rgb(252 163 17 / 0.45);
-      margin: 0 auto var(--space-m);
-      animation: breathe 2.6s ease-in-out infinite;
-    }
-    @keyframes breathe {
-      0%, 100% { transform: scale(1); opacity: 0.85; }
-      50%      { transform: scale(1.35); opacity: 1; }
-    }
-    a { color: var(--color-accent); }
-  </style>
+  }
+  </script>
 </head>
 <body>
-  <main>
-    <div class="orb" aria-hidden="true"></div>
-    <h1>The world is still being built.</h1>
-    <p>Reach for the light — soon.</p>
-    <p><a href="/cv/">← back to the classic version</a></p>
-  </main>
+  <!-- Escape hatch: visible on EVERY screen. The experience is a gift, not a prison. -->
+  <a class="skip-link" href="/cv/">skip → straight to the site</a>
+
+  <!-- Audio consent gate (also solves the browser autoplay restriction) -->
+  <div id="consent" class="screen">
+    <div class="orb-preview" aria-hidden="true"></div>
+    <h1>This experience speaks.</h1>
+    <p>Sound on?</p>
+    <div class="screen-choices">
+      <button id="sound-on">🎧 Yes, sound on</button>
+      <button id="sound-off">💬 No — subtitles only</button>
+    </div>
+    <p class="screen-note">Arrow keys / WASD to walk · E to interact · ESC to step back</p>
+  </div>
+
+  <!-- Mobile notice: capability-detected, shown instead of the experience -->
+  <div id="mobile-notice" class="screen" hidden>
+    <h1>This world needs a keyboard.</h1>
+    <p>It's waiting for you on desktop. Meanwhile, the classic version has everything:</p>
+    <div class="screen-choices">
+      <a class="button-link" href="/cv/">Go to the classic version →</a>
+    </div>
+  </div>
+
+  <!-- Intro invitation text -->
+  <p id="invite" class="invite" hidden>reach for the light</p>
+
+  <!-- Interaction hint -->
+  <div id="hint" class="hint" hidden><kbd>E</kbd> <span id="hint-label"></span></div>
+
+  <!-- Captions strip: every voiced thing is subtitled, no exceptions -->
+  <p id="captions" class="captions" hidden></p>
+
+  <!-- Computer overlay: real HTML UI, never a texture inside the 3D scene -->
+  <div id="computer" class="computer" hidden>
+    <header>
+      <h2>~/projects</h2>
+      <p><kbd>ESC</kbd> to step back</p>
+    </header>
+    <main id="computer-list"><!-- filled from /data/projects.json --></main>
+  </div>
+
+  <canvas id="scene"></canvas>
+  <script type="module" src="/world/js/main.js"></script>
 </body>
 </html>
