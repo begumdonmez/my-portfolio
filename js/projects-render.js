@@ -17,7 +17,8 @@ async function loadProjects() {
       img.src = p.cover;
       img.alt = `${p.title} cover`;
       node.querySelector('h3').textContent = p.title;      // textContent, never innerHTML
-      node.querySelector('p').textContent = p.summary;
+      node.querySelector('.tech').textContent = p.tech.join(' · ');
+      node.querySelector('p:not(.tech)').textContent = p.summary;
       node.querySelector('a').href = p.links.play ?? Object.values(p.links)[0];
       grid.append(node);
     }
