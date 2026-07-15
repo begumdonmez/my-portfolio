@@ -12,7 +12,14 @@ const observer = new IntersectionObserver((entries) => {
   }
 }, { threshold: 0.12 });
 
-for (const section of document.querySelectorAll('main section:not(#hero)')) {
+const sections = document.querySelectorAll('main section:not(#hero)');
+for (const section of sections) {
   section.classList.add('reveal');
   observer.observe(section);
 }
+
+/* Failsafe: content must NEVER stay hidden. If the observer hasn't fired
+   within 3s (old browser, odd environment), reveal everything. */
+setTimeout(() => {
+  for (const section of sections) section.classList.add('visible');
+}, 3000);
