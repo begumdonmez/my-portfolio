@@ -1,26 +1,26 @@
 [
   {
-    "id": "ballerino",
-    "title": "Ballerino Online",
-    "cover": "/assets/placeholder-cover.svg",
-    "summary": "One tight paragraph: what it is, your role, the tech. No fluff.",
-    "tech": ["Unity", "C#", "WebGL"],
-    "links": { "play": "#", "source": "#" }
+    "id": "sultanahmet",
+    "title": "Sultanahmet: Historical Layers",
+    "cover": "/assets/sultanahmet-cover.jpg",
+    "summary": "An interactive WebGL experience exploring the historical layers of Sultanahmet through time — walk reconstructed streets, discover hidden details and interact with historical objects.",
+    "tech": ["Unity", "WebGL", "History"],
+    "links": { "play": "https://begumdonmez.itch.io" }
   },
   {
     "id": "santas-workers",
     "title": "Santa's Workers",
-    "cover": "/assets/placeholder-cover.svg",
-    "summary": "One tight paragraph: what it is, your role, the tech.",
-    "tech": ["Unity", "C#"],
-    "links": { "play": "#" }
+    "cover": "/assets/santas-workers-cover.jpg",
+    "summary": "A festive game-jam project: help Santa's helpers build toys, manage reindeer and solve holiday puzzles in quick interactive mini-games.",
+    "tech": ["Unity", "WebGL", "Game Jam"],
+    "links": { "play": "https://begumdonmez.itch.io" }
   },
   {
-    "id": "sultanahmet",
-    "title": "Sultanahmet: Layers of History",
-    "cover": "/assets/placeholder-cover.svg",
-    "summary": "One tight paragraph: what it is, your role, the tech.",
-    "tech": ["Unity", "WebGL"],
-    "links": { "play": "#" }
+    "id": "ballerino",
+    "title": "Ballerino Online",
+    "cover": "/assets/ballerino-cover.jpg",
+    "summary": "An online rhythm game where players compete in dance challenges — customize your dancer, join competitions and dance your way to the top.",
+    "tech": ["Unity", "WebGL", "Multiplayer"],
+    "links": { "play": "https://begumdonmez.itch.io" }
   }
 ]
