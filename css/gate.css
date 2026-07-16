@@ -1,5 +1,7 @@
 /* ============================================================
    gate.css — entry screen (red pill / blue pill)
+   Black, tense, cinematic. The site holds its breath here:
+   two glowing choices in the dark, nothing else.
    ============================================================ */
 
 .gate-body {
@@ -7,6 +9,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 42%, rgb(20 33 61 / 0.55), transparent 70%),
+    #050508;
+  color: #F5F3EF;
 }
 
 .gate {
@@ -14,87 +20,111 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: var(--space-s);
+  gap: var(--space-xs);
   padding: var(--space-l) var(--space-m);
 }
 
-.gate-kicker {
-  color: var(--color-muted);
-  font-size: 0.95rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.gate h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  animation: gate-in 1.4s ease both;
 }
 
 .gate-subtitle {
-  color: var(--color-muted);
-  font-size: 1.15rem;
+  color: rgb(141 153 174 / 0.7);
+  font-size: 0.95rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  animation: gate-in 1.4s ease 0.25s both;
 }
 
-/* ---------- The pills ---------- */
+.gate-line {
+  margin-top: var(--space-xl);
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: rgb(245 243 239 / 0.5);
+  animation: gate-in 1.6s ease 1.1s both;
+}
+
+/* ---------- The pills: two lights in the dark ---------- */
 
 .gate-choices {
   display: flex;
   flex-direction: column;      /* mobile-first: stacked */
   gap: var(--space-m);
-  margin-top: var(--space-l);
+  margin-top: var(--space-m);
+  animation: gate-in 1.8s ease 1.6s both;
 }
 
 @media (min-width: 768px) {
   .gate-choices {
     flex-direction: row;
+    gap: var(--space-l);
   }
 }
 
 .pill {
+  --glow: rgb(141 153 174 / 0.5);
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
-  max-width: 21rem;
-  padding: var(--space-l) var(--space-l);
-  border-radius: 1.5rem;
+  align-items: center;
+  gap: 0.4rem;
+  width: min(19rem, 80vw);
+  padding: var(--space-l) var(--space-m);
+  border: 1px solid rgb(245 243 239 / 0.12);
+  border-radius: 1rem;
+  background: rgb(245 243 239 / 0.02);
   text-decoration: none;
-  text-align: left;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #F5F3EF;
+  transition: border-color 0.4s ease, background 0.4s ease,
+              transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .pill:hover,
 .pill:focus-visible {
   transform: translateY(-4px);
-  box-shadow: 0 14px 28px rgb(20 33 61 / 0.18);
+  border-color: var(--glow);
+  background: rgb(245 243 239 / 0.04);
+  box-shadow: 0 0 42px -8px var(--glow);
 }
 
-.pill-label {
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.75;
+/* the small light inside each door */
+.pill-orb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--glow);
+  box-shadow: 0 0 16px 4px var(--glow);
+  margin-bottom: var(--space-s);
+  animation: orb-breathe 3.2s ease-in-out infinite;
+}
+
+.pill--red .pill-orb { animation-delay: 1.6s; }   /* out of sync — uneasy */
+
+@keyframes orb-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50%      { transform: scale(1.35); opacity: 1; }
 }
 
 .pill-title {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 600;
 }
 
 .pill-hint {
-  font-size: 0.95rem;
-  opacity: 0.85;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: rgb(245 243 239 / 0.45);
 }
 
-/* Variants — shared shape above, only identity differs */
+/* identities: cold blue calm vs warm ember pull */
+.pill--blue { --glow: rgb(120 158 235 / 0.75); }
+.pill--red  { --glow: rgb(252 130 17 / 0.8); }
 
-.pill--blue {
-  background: var(--color-text);
-  color: var(--color-bg);
-}
-
-.pill--red {
-  background: var(--color-accent);
-  color: var(--color-text);
-}
-
-.gate-footnote {
-  margin-top: var(--space-l);
-  color: var(--color-muted);
-  font-size: 0.9rem;
+@keyframes gate-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
