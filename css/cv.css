@@ -6,6 +6,21 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ---------- The whole page lives in the navy night ---------- */
+
+body {
+  background:
+    radial-gradient(ellipse 90% 40% at 20% 85%, rgb(252 163 17 / 0.04), transparent),
+    var(--color-text);
+  color: var(--color-bg);
+}
+
+/* on navy, the readable link color is the bright accent, not the dark one */
+main a:not(.cta),
+footer a {
+  color: var(--color-accent);
+}
+
 section {
   padding-block: var(--space-xl);
   scroll-margin-top: 4.5rem;   /* heading not hidden under sticky header */
@@ -190,7 +205,7 @@ h2::before {
 }
 
 .project-card .tech {
-  color: var(--color-accent-dark);
+  color: var(--color-accent);
   font-size: 0.8rem;
   letter-spacing: 0.04em;
   margin-top: 0.25rem;
@@ -264,17 +279,23 @@ article ul {
 }
 
 .project-card {
-  border: 1px solid rgb(141 153 174 / 0.3);
+  border: 1px solid rgb(245 243 239 / 0.14);
+  background: rgb(245 243 239 / 0.03);
   border-radius: 0.9rem;
   overflow: hidden;            /* image corners follow the radius */
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .project-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 22px rgb(20 33 61 / 0.12);
+  border-color: rgb(252 163 17 / 0.45);
+  box-shadow: 0 14px 30px rgb(0 0 0 / 0.35);
+}
+
+.project-card p {
+  color: rgb(245 243 239 / 0.72);
 }
 
 .project-card > img {
@@ -298,7 +319,7 @@ article ul {
 }
 
 .project-card .project-link {
-  color: var(--color-accent-dark);
+  color: var(--color-accent);
   font-weight: 500;
   text-decoration: none;
   padding-block: var(--space-s);
@@ -321,10 +342,11 @@ article ul {
 }
 
 .skills-list li {
-  border: 1px solid rgb(141 153 174 / 0.4);
+  border: 1px solid rgb(245 243 239 / 0.2);
   border-radius: 999px;
   padding: 0.35rem 0.9rem;
   font-size: 0.9rem;
+  color: rgb(245 243 239 / 0.85);
 }
 
 /* ---------- Footer ---------- */

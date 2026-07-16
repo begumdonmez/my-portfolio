@@ -29,10 +29,19 @@ body.magic {
   --color-muted: #8A7B66;
   --font-heading: "Caveat", cursive;
 
-  /* notebook paper: pure CSS, no image download */
-  background-image:
-    repeating-linear-gradient(transparent, transparent 30px, rgb(138 123 102 / 0.16) 31px);
+  /* the navy night gives way to notebook paper (overrides cv.css's dark body) */
+  background:
+    repeating-linear-gradient(transparent, transparent 30px, rgb(138 123 102 / 0.16) 31px)
+    var(--color-bg);
+  color: var(--color-text);
 }
+
+/* undo the dark-page card/text treatments under the paper theme */
+body.magic .project-card { background: #fff; }
+body.magic .project-card p { color: var(--color-text); }
+body.magic .skills-list li { color: var(--color-text); border-color: var(--color-muted); }
+body.magic main a:not(.cta),
+body.magic footer a { color: var(--color-accent-dark); }
 
 /* ---------- scrapbook shell ---------- */
 
