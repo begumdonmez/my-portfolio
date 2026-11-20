@@ -1,118 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
-
 :root {
-    /* Renk Paleti (Görsellerinle Uyumlu) */
-    --text-color: #F8FAFC;       /* Gövde metni (Yıldız Tozu Beyazı) */
-    --h1-gold: #FFE66D;          /* İsim ve Ana Başlıklar (Süpernova Sarısı) */
-    --h2-green: #A7F3D0;         /* Ünvan ve Bölüm Başlıkları (Gözlük Yeşili) */
-    --accent-pink: #F472B6;      /* Vurgular ve Linkler (Nebula Pembesi) */
-    --card-shadow: rgba(192, 132, 252, 0.4); /* Kart Parlaması */
-
-    /* Arka planın en koyu tonu (Zıplamalarda beyazlığı önlemek için) */
-    --bg-dark-base: #080a18;
+  --bg: #07080b;
+  --fg: #ecebe6;
+  --fg-muted: rgba(236, 235, 230, 0.45);
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --intro-ms: 1600ms;
+  color-scheme: dark;
 }
 
-/* GENEL SIFIRLAMA */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100%;
-    overscroll-behavior: none;
-    scroll-behavior: smooth;
-    background-color: var(--bg-dark-base); /* Beyaz boşlukları engeller */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 body {
-    color: var(--text-color);
-    font-family: 'Source Code Pro', monospace;
-    overflow-x: hidden;
-    background: transparent; /* Background.jsx'in görünmesi için */
-    line-height: 1.6;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
 }
 
-/* BAŞLIK VE METİN ATAMALARI */
-h1, .hero-name {
-    color: var(--h1-gold);
-    font-weight: 700;
+.scene {
+  position: fixed !important;
+  inset: 0;
 }
 
-h2, .hero-title, section h2 {
-    color: var(--h2-green);
-    font-weight: 600;
+.vignette,
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
-p, .hero-description, section p {
-    color: var(--text-color);
-    opacity: 0.9;
+.vignette {
+  background: radial-gradient(ellipse 120% 90% at 50% 45%, transparent 35%, rgba(0, 0, 0, 0.7) 100%);
 }
 
-/* SECTIONS */
-section {
-    padding: 100px 20px;
-    text-align: center;
-    position: relative;
-    z-index: 1;
+.grain {
+  inset: -50%;
+  opacity: 0.09;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 0.9s steps(6) infinite;
 }
 
-/* CARDS GRID */
-.cards-container {
-    display: grid;
-    grid-template-columns: repeat(4, 150px);
-    justify-content: center;
-    gap: 30px;
-    margin: 80px auto;
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -4%); }
+  60% { transform: translate(-4%, -1%); }
+  80% { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
 }
 
-/* CARD IMAGE & HOVER */
-.card img {
-    width: 100%;
-    border-radius: 14px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    cursor: pointer;
-}
-
-.card img:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 0 30px var(--card-shadow);
-}
-
-/* BUTONLAR (Genel Altyapı) */
-button {
-    font-family: 'Source Code Pro', monospace;
-    background-color: transparent;
-    color: var(--h2-green);
-    border: 2px solid var(--h2-green);
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-button:hover {
-    background-color: var(--h2-green);
-    color: var(--bg-dark-base);
-}
-
-/* RESPONSIVE (Mobil Uyumluluk) */
-@media (max-width: 1024px) {
-    .cards-container {
-        grid-template-columns: repeat(2, 160px);
-        gap: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .cards-container {
-        grid-template-columns: repeat(1, 180px);
-    }
-
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.5rem; }
+@media (prefers-reduced-motion: reduce) {
+  .grain {
+    animation: none;
+  }
 }

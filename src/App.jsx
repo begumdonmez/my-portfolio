@@ -1,71 +1,51 @@
-import React, { useState, Suspense, lazy } from "react";
-import Background from "./components/Background";
-import SocialSidebar from './components/SocialSidebar';
-import Cards from "./components/Cards";
-import Hero from "./components/Hero";
-import "./App.css";
-import About from "./components/About";
-import Projects from "./components/Projects.jsx";
-import Skills from "./components/Skills.jsx";
-import Contact from "./components/Contact.jsx";
-import Header from './components/Header';
-import starIcon from './assets/star.png';
+import { useEffect, useState } from 'react'
+import Scene from './scene/Scene'
+import Intro from './components/Intro'
+import Hero from './components/Hero'
 
-const Orderland = lazy(() => import("./components/Orderland/Orderland"));
+const INTRO_MS = 1600 // minimum time the black curtain stays up
+const FADE_MS = 1400 // curtain fade, matches .intro transition
+const HERO_DELAY_MS = 1900 // let the camera travel before text appears
 
-function App() {
-    const [isOrderland, setIsOrderland] = useState(false);
-    const [isTransitioning, setIsTransitioning] = useState(false);
-    const [isReturning, setIsReturning] = useState(false);
+const reducedMotion =
+  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches
 
-    const startTransition = () => {
-        setIsTransitioning(true);
-        setTimeout(() => {
-            setIsOrderland(true);
-            setIsTransitioning(false);
-        }, 3000);
-    };
+export default function App() {
+  const [sceneReady, setSceneReady] = useState(false)
+  const [minTimeDone, setMinTimeDone] = useState(false)
+  const [phase, setPhase] = useState('loading') // loading | leaving | gone
+  const [heroVisible, setHeroVisible] = useState(false)
 
-    const returnToReality = () => {
-        setIsReturning(true);
-        setTimeout(() => {
-            setIsOrderland(false);
-            setIsReturning(false);
-        }, 3000);
-    };
+  useEffect(() => {
+    const t = setTimeout(() => setMinTimeDone(true), reducedMotion ? 400 : INTRO_MS)
+    return () => clearTimeout(t)
+  }, [])
 
-    return (
-        <div className="app-container">
-            <Background />
+  useEffect(() => {
+    if (!sceneReady || !minTimeDone) return
+    setPhase('leaving')
+    const timers = [
+      setTimeout(() => setPhase('gone'), FADE_MS),
+      setTimeout(() => setHeroVisible(true), reducedMotion ? 300 : HERO_DELAY_MS),
+    ]
+    return () => timers.forEach(clearTimeout)
+  }, [sceneReady, minTimeDone])
 
-            {/* Orderland'de değilsek Header'ı göster */}
-            {!isOrderland && <Header />}
-            {isTransitioning && <div className="rabbit-hole-overlay"></div>}
-            {isReturning && <div className="return-reality-overlay"></div>}
-
-            {!isOrderland ? (
-                <>
-                    <SocialSidebar />
-                    <div className="content">
-                        <Hero />
-                        <Cards />
-                        <About />
-                        <Projects />
-                        <Skills />
-                        <Contact />
-                    </div>
-
-                    <div className="door-button" onClick={startTransition} style={{ zIndex: 1000 }}>
-                        <img src={starIcon} alt="Star Icon" className="door-star-icon" />
-                    </div>
-                </>
-            ) : (
-                <Suspense fallback={<div className="loading-wonderland">Falling through the hole...</div>}>
-                    <Orderland onBack={returnToReality} />
-                </Suspense>
-            )}
-        </div>
-    );
+  return (
+    <>
+      <Scene
+        entered={phase !== 'loading'}
+        onReady={() => setSceneReady(true)}
+        reducedMotion={reducedMotion}
+        isMobile={isMobile}
+      />
+      {/* Vignette + film grain over the canvas. Done in CSS so the grain also
+          dithers the dark gradients and avoids visible banding. */}
+      <div className="vignette" aria-hidden />
+      <div className="grain" aria-hidden />
+      <Hero visible={heroVisible} />
+      <Intro phase={phase} />
+    </>
+  )
 }
-
-export default App;
