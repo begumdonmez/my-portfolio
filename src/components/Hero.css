@@ -7,6 +7,7 @@
   padding: clamp(1.25rem, 3vw, 2.25rem);
   pointer-events: none;
   color: var(--fg);
+  opacity: var(--hero-fade, 1);
 }
 
 .hero__top {
@@ -71,8 +72,3 @@
 .hero--visible .hero__top { transition-delay: 0.5s; }
 .hero--visible .hero__hint { transition-delay: 0.9s; }
 
-@media (hover: none) {
-  .hero__hint {
-    display: none;
-  }
-}

@@ -15,11 +15,9 @@
 }
 
 html,
-body,
-#root {
+body {
   margin: 0;
   padding: 0;
-  height: 100%;
 }
 
 body {
@@ -27,7 +25,16 @@ body {
   color: var(--fg);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+}
+
+/* no scrolling until the intro has finished */
+body.is-locked {
   overflow: hidden;
+}
+
+/* invisible track that gives the page its scroll length; the scene is fixed */
+.scroll-track {
+  height: 600vh;
 }
 
 .scene {
@@ -66,5 +73,58 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .grain {
     animation: none;
+  }
+}
+
+/* black fade used when travelling between pages */
+.page-fade {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s ease;
+}
+
+.page-fade--on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.route-fallback {
+  position: fixed;
+  inset: 0;
+  background: #000;
+}
+
+/* quick way into the arcade from anywhere in the journey */
+.space-nav {
+  position: fixed;
+  right: clamp(1.25rem, 3vw, 2.25rem);
+  bottom: clamp(1.25rem, 3vw, 2.25rem);
+  z-index: 8;
+  padding: 0.7rem 1.1rem;
+  font: 500 0.85rem/1 var(--font-display);
+  letter-spacing: 0.06em;
+  color: var(--fg);
+  background: rgba(20, 12, 40, 0.55);
+  border: 1px solid rgba(214, 120, 255, 0.55);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  animation: space-nav-in 0.8s ease both;
+}
+
+.space-nav:hover {
+  background: rgba(177, 77, 255, 0.35);
+  box-shadow: 0 0 18px rgba(214, 120, 255, 0.5);
+}
+
+@keyframes space-nav-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
 }

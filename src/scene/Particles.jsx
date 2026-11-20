@@ -1,6 +1,7 @@
 import { useMemo, useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
+import { scroll, range } from './scroll'
 
 const vertexShader = /* glsl */ `
   attribute float aSize;
@@ -8,6 +9,7 @@ const vertexShader = /* glsl */ `
   attribute vec3 aColor;
   uniform float uTime;
   uniform float uPixelRatio;
+  uniform float uOpacity;
   varying float vAlpha;
   varying vec3 vColor;
 
@@ -25,7 +27,7 @@ const vertexShader = /* glsl */ `
     gl_PointSize = aSize * uPixelRatio * (40.0 / max(depth, 0.1));
 
     // fade out far away (fog) and right in front of the lens
-    vAlpha = twinkle * smoothstep(90.0, 12.0, depth) * smoothstep(0.4, 4.0, depth);
+    vAlpha = twinkle * smoothstep(90.0, 12.0, depth) * smoothstep(0.4, 4.0, depth) * uOpacity;
     vColor = aColor;
   }
 `
@@ -81,12 +83,15 @@ export default function Particles({ count = 3000 }) {
   }, [count])
 
   const uniforms = useMemo(
-    () => ({ uTime: { value: 0 }, uPixelRatio: { value: dpr } }),
+    () => ({ uTime: { value: 0 }, uPixelRatio: { value: dpr }, uOpacity: { value: 1 } }),
     [dpr]
   )
 
   useFrame((_, dt) => {
-    if (material.current) material.current.uniforms.uTime.value += dt
+    if (!material.current) return
+    material.current.uniforms.uTime.value += dt
+    // thin out as we approach Earth
+    material.current.uniforms.uOpacity.value = 1 - range(scroll.current, 0.45, 0.8) * 0.4
   })
 
   return (

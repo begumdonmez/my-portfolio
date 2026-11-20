@@ -15,7 +15,7 @@ export default function Hero({ visible }) {
         </h1>
       </div>
 
-      <p className="hero__hint">imleci gezdir</p>
+      <p className="hero__hint">aşağı kaydır ↓</p>
     </main>
   )
 }
