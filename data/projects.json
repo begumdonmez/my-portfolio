@@ -1,26 +1,32 @@
 [
   {
+    "id": "ballerino",
+    "title": "Ballerino",
+    "year": "2025",
+    "role": "Game Developer",
+    "cover": "/assets/ballerino-cover.jpg",
+    "summary": "A 2D pixel-art online multiplayer football game with strategic card mechanics. Inspired by Haxball: players build decks that change offense, defense and movement in real time, across 1v1, 2v2 and 3v3 matches.",
+    "tech": ["Unity", "C#", "Multiplayer"],
+    "links": { "play": "https://begumdonmez.itch.io" }
+  },
+  {
     "id": "sultanahmet",
     "title": "Sultanahmet: Historical Layers",
+    "year": "2025",
+    "role": "Developer",
     "cover": "/assets/sultanahmet-cover.jpg",
-    "summary": "An interactive WebGL experience exploring the historical layers of Sultanahmet through time — walk reconstructed streets, discover hidden details and interact with historical objects.",
-    "tech": ["Unity", "WebGL", "History"],
+    "summary": "An interactive WebGL experience exploring the historical layers of Sultanahmet: walk reconstructed streets, find hidden details and interact with historical objects.",
+    "tech": ["Unity", "WebGL"],
     "links": { "play": "https://begumdonmez.itch.io" }
   },
   {
-    "id": "santas-workers",
-    "title": "Santa's Workers",
+    "id": "santas-house",
+    "title": "Santa's House: Ice Breaking",
+    "year": "2024",
+    "role": "Developer · Game Jam 3",
     "cover": "/assets/santas-workers-cover.jpg",
-    "summary": "A festive game-jam project: help Santa's helpers build toys, manage reindeer and solve holiday puzzles in quick interactive mini-games.",
-    "tech": ["Unity", "WebGL", "Game Jam"],
-    "links": { "play": "https://begumdonmez.itch.io" }
-  },
-  {
-    "id": "ballerino",
-    "title": "Ballerino Online",
-    "cover": "/assets/ballerino-cover.jpg",
-    "summary": "An online rhythm game where players compete in dance challenges — customize your dancer, join competitions and dance your way to the top.",
-    "tech": ["Unity", "WebGL", "Multiplayer"],
-    "links": { "play": "https://begumdonmez.itch.io" }
+    "summary": "A three-day jam game built with my team during Game Jam 3.",
+    "tech": ["Unity", "Game Jam"],
+    "links": { "play": "https://begumdonmez.itch.io/noel-babann-evi" }
   }
 ]

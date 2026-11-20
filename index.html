@@ -3,34 +3,314 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Begum Donmez — Game Developer</title>
+  <title>Begüm Dönmez — Game Developer & Level Designer</title>
+  <meta name="description" content="Begüm Dönmez is a game developer and level designer in Istanbul, studying Digital Game Design at Beykoz University. Unity, C#, level design and narrative.">
+  <meta property="og:title" content="Begüm Dönmez — Game Developer & Level Designer">
+  <meta property="og:description" content="Driven by curiosity, fueled by imagination. Games, projects and contact.">
+  <meta property="og:image" content="/assets/ballerino-cover.jpg">
+  <meta name="theme-color" content="#79B9E4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#22325A" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <meta name="description" content="Portfolio of Begum Donmez, game developer and designer. Choose your path: the quick CV or the interactive world.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/base.css">
-  <link rel="stylesheet" href="/css/gate.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/site.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Begüm Dönmez","jobTitle":"Game Developer","address":{"@type":"PostalAddress","addressLocality":"Istanbul"},"alumniOf":"Beykoz University","sameAs":["https://begumdonmez.itch.io","https://github.com/begumdonmez","https://www.linkedin.com/in/hatice-begüm-dönmez-84b723258/"]}
+  </script>
 </head>
-<body class="gate-body">
-  <main class="gate">
-    <h1>Begüm Dönmez</h1>
-    <p class="gate-subtitle">Game Developer</p>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
 
-    <p class="gate-line">Choose.</p>
+  <!-- Shared drawing parts: painterly edge filter + cloud shapes -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="paint" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="7"/>
+        <feDisplacementMap in="SourceGraphic" scale="9"/>
+      </filter>
+      <symbol id="cloud-a" viewBox="0 0 420 220">
+        <g style="fill:var(--cloud-shade)" transform="translate(0 14)">
+          <circle cx="120" cy="125" r="58"/><circle cx="185" cy="92" r="70"/><circle cx="262" cy="104" r="60"/>
+          <circle cx="320" cy="135" r="44"/><circle cx="80" cy="148" r="36"/><ellipse cx="200" cy="158" rx="150" ry="30"/>
+        </g>
+        <g style="fill:var(--cloud)">
+          <circle cx="120" cy="125" r="58"/><circle cx="185" cy="92" r="70"/><circle cx="262" cy="104" r="60"/>
+          <circle cx="320" cy="135" r="44"/><circle cx="80" cy="148" r="36"/><ellipse cx="200" cy="155" rx="150" ry="28"/>
+        </g>
+        <g style="fill:var(--cloud-light)">
+          <circle cx="178" cy="78" r="44"/><circle cx="118" cy="114" r="34"/><circle cx="252" cy="92" r="32"/>
+        </g>
+      </symbol>
+      <symbol id="cloud-b" viewBox="0 0 300 150">
+        <g style="fill:var(--cloud-shade)" transform="translate(0 10)">
+          <circle cx="95" cy="88" r="40"/><circle cx="150" cy="68" r="48"/><circle cx="205" cy="90" r="38"/><ellipse cx="150" cy="108" rx="112" ry="22"/>
+        </g>
+        <g style="fill:var(--cloud)">
+          <circle cx="95" cy="88" r="40"/><circle cx="150" cy="68" r="48"/><circle cx="205" cy="90" r="38"/><ellipse cx="150" cy="106" rx="112" ry="20"/>
+        </g>
+        <g style="fill:var(--cloud-light)"><circle cx="146" cy="58" r="30"/><circle cx="96" cy="80" r="22"/></g>
+      </symbol>
+    </defs>
+  </svg>
 
-    <nav class="gate-choices" aria-label="Site version selection">
-      <a class="pill pill--blue" href="/cv/">
-        <span class="pill-orb" aria-hidden="true"></span>
-        <span class="pill-title">The story ends</span>
-        <span class="pill-hint">CV · projects · contact</span>
-      </a>
-      <a class="pill pill--red" href="/world/">
-        <span class="pill-orb" aria-hidden="true"></span>
-        <span class="pill-title">See how deep it goes</span>
-        <span class="pill-hint">an interactive world</span>
-      </a>
+  <header class="masthead">
+    <a class="masthead__name" href="/">Begüm Dönmez</a>
+    <nav aria-label="Sections">
+      <ul class="masthead__nav">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
+  </header>
+
+  <!-- The sky we descend through. Fixed behind the page; scrolling drives it (see site.js). -->
+  <div class="world" aria-hidden="true">
+    <div class="sky"></div>
+    <div class="sun"></div>
+    <div class="cloud-layer cloud-layer--far">
+      <svg class="cloud cloud--b" style="--top:16vh; --w:8rem;  --dur:170s; --delay:-20s"><use href="#cloud-b"/></svg>
+      <svg class="cloud cloud--a" style="--top:62vh; --w:14rem; --dur:210s; --delay:-120s"><use href="#cloud-a"/></svg>
+      <svg class="cloud cloud--b" style="--top:110vh; --w:10rem; --dur:160s; --delay:-80s"><use href="#cloud-b"/></svg>
+      <svg class="cloud cloud--a" style="--top:150vh; --w:13rem; --dur:200s; --delay:-40s"><use href="#cloud-a"/></svg>
+      <svg class="cloud cloud--b" style="--top:185vh; --w:9rem;  --dur:180s; --delay:-140s"><use href="#cloud-b"/></svg>
+    </div>
+    <div class="cloud-layer cloud-layer--mid">
+      <svg class="cloud cloud--a" style="--top:8vh;   --w:clamp(16rem,32vw,28rem); --dur:160s; --delay:-40s"><use href="#cloud-a"/></svg>
+      <svg class="cloud cloud--b" style="--top:48vh;  --w:14rem; --dur:130s; --delay:-95s"><use href="#cloud-b"/></svg>
+      <svg class="cloud cloud--a" style="--top:120vh; --w:24rem; --dur:180s; --delay:-10s"><use href="#cloud-a"/></svg>
+      <svg class="cloud cloud--b" style="--top:175vh; --w:15rem; --dur:140s; --delay:-60s"><use href="#cloud-b"/></svg>
+      <svg class="cloud cloud--a" style="--top:230vh; --w:26rem; --dur:170s; --delay:-110s"><use href="#cloud-a"/></svg>
+    </div>
+    <div class="cloud-layer cloud-layer--near">
+      <svg class="cloud cloud--a" style="--top:95vh;  --w:clamp(22rem,50vw,44rem); --dur:120s; --delay:-50s"><use href="#cloud-a"/></svg>
+      <svg class="cloud cloud--a" style="--top:230vh; --w:clamp(20rem,45vw,40rem); --dur:110s; --delay:-15s"><use href="#cloud-a"/></svg>
+      <svg class="cloud cloud--b" style="--top:340vh; --w:clamp(16rem,36vw,30rem); --dur:100s; --delay:-70s"><use href="#cloud-b"/></svg>
+    </div>
+    <canvas class="leaves"></canvas>
+  </div>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="intro-title">
+      <div class="hero__content wrap">
+        <p class="label">Game developer &amp; level designer — Istanbul</p>
+        <h1 id="intro-title" class="hero__title">
+          Driven by curiosity, <em>fueled by imagination.</em>
+        </h1>
+        <div class="hero__foot">
+          <p class="hero__lede">
+            Digital Game Design student at Beykoz University. Previously a level designer on a
+            Match-3 title at Carousel Game; now developing <a href="#ballerino">Ballerino</a>, an online
+            card-driven football game.
+          </p>
+          <p class="note"><span class="note__dot" aria-hidden="true"></span>Open to internships &amp; junior roles</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="section panel wrap" aria-labelledby="work-title">
+      <header class="section__head">
+        <span class="section__no">01</span>
+        <h2 id="work-title">Selected work</h2>
+      </header>
+
+      <div class="features">
+        <article class="feature" id="ballerino">
+          <a class="feature__media" href="https://begumdonmez.itch.io" target="_blank" rel="noopener" aria-label="Ballerino on itch.io">
+            <img src="/assets/ballerino-cover.jpg" alt="Ballerino cover art" loading="lazy">
+          </a>
+          <div class="feature__body">
+            <p class="meta">2025 — present · Game Developer</p>
+            <h3>Ballerino</h3>
+            <p>A 2D pixel-art online football game where your card deck is your tactic. Players build
+              decks that bend offense, defense and movement in real time, across 1v1, 2v2 and 3v3 matches.</p>
+            <ul class="tags"><li>Unity</li><li>C#</li><li>Multiplayer</li><li>Pixel art</li></ul>
+          </div>
+        </article>
+
+        <article class="feature">
+          <a class="feature__media" href="https://begumdonmez.itch.io" target="_blank" rel="noopener" aria-label="Sultanahmet: Historical Layers on itch.io">
+            <img src="/assets/sultanahmet-cover.jpg" alt="Sultanahmet: Historical Layers cover art" loading="lazy">
+          </a>
+          <div class="feature__body">
+            <p class="meta">2025 · Developer</p>
+            <h3>Sultanahmet: Historical Layers</h3>
+            <p>An explorable WebGL piece about one square and many centuries. Walk reconstructed streets,
+              notice hidden details, handle objects from the past.</p>
+            <ul class="tags"><li>Unity</li><li>WebGL</li><li>History</li></ul>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="index-title label">Also made</h3>
+      <ol class="ledger">
+        <li class="ledger__row">
+          <span class="ledger__year">2025</span>
+          <span class="ledger__title">Addiction</span>
+          <span class="ledger__desc">2D bullet hell about the harm of substance abuse. Team of five, developer.</span>
+        </li>
+        <li class="ledger__row">
+          <span class="ledger__year">2025</span>
+          <span class="ledger__title">Eco Guardian</span>
+          <span class="ledger__desc">Top-down 2D game on pollution and its cost to animals. Team of three, developer.</span>
+        </li>
+        <li class="ledger__row">
+          <span class="ledger__year">2025</span>
+          <span class="ledger__title">GStellar Recon: Kepler</span>
+          <span class="ledger__desc">2D top-down tower defense. Team of five, one of two developers.</span>
+        </li>
+        <li class="ledger__row">
+          <span class="ledger__year">2024</span>
+          <a class="ledger__title" href="https://begumdonmez.itch.io/noel-babann-evi" target="_blank" rel="noopener" data-preview="/assets/santas-workers-cover.jpg">Santa's House: Ice Breaking <span aria-hidden="true">↗</span></a>
+          <span class="ledger__desc">Made in three days at Game Jam 3. Playable on itch.io.</span>
+        </li>
+      </ol>
+      <img class="preview" alt="" aria-hidden="true" hidden>
+    </section>
+
+    <section id="experience" class="section panel wrap" aria-labelledby="exp-title">
+      <header class="section__head">
+        <span class="section__no">02</span>
+        <h2 id="exp-title">Experience</h2>
+      </header>
+
+      <ol class="timeline">
+        <li>
+          <p class="meta">Aug 2025 — present</p>
+          <div>
+            <h3>Founder &amp; President <span class="at">Beykoz University Media Club</span></h3>
+            <p>Started and run the campus media platform: a student fanzine, radio broadcasts, podcasts,
+              content for cafeteria screens, and Game Nights.</p>
+          </div>
+        </li>
+        <li>
+          <p class="meta">Jun 2024 — Feb 2025</p>
+          <div>
+            <h3>Level Designer <span class="at">Carousel Game</span></h3>
+            <p>Designed and tested levels for a Match-3 game. Ran meeting notes, planning and team
+              reporting, and owned the task-management side of Jira.</p>
+          </div>
+        </li>
+        <li>
+          <p class="meta">Nov 2024 — Mar 2025</p>
+          <div>
+            <h3>Board Member <span class="at">City &amp; Culture Club</span></h3>
+            <p>Planned events and cultural programming for members.</p>
+          </div>
+        </li>
+        <li>
+          <p class="meta">2022 — present</p>
+          <div>
+            <h3>B.A. Digital Game Design <span class="at">Beykoz University</span></h3>
+            <p>Rector's Certificate of Honor twice (GPA&nbsp;&gt;&nbsp;3.8), Dean's Certificate of Honor
+              three semesters (GPA&nbsp;≥&nbsp;3.6).</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="toolkit">
+        <div><h3 class="label">Engines &amp; code</h3><p>Unity, C#, Unreal Engine, Rider, Git</p></div>
+        <div><h3 class="label">Art</h3><p>Blender, Photoshop, Illustrator, After Effects, Procreate, Maya</p></div>
+        <div><h3 class="label">Sound</h3><p>Reaper</p></div>
+        <div><h3 class="label">Production</h3><p>Jira, Confluence, Google Workspace, Canva</p></div>
+        <div><h3 class="label">Languages</h3><p>Turkish (native), English (B1)</p></div>
+      </div>
+    </section>
+
+    <section id="about" class="section panel wrap" aria-labelledby="about-title">
+      <header class="section__head">
+        <span class="section__no">03</span>
+        <h2 id="about-title">About</h2>
+      </header>
+
+      <div class="about">
+        <figure class="about__photo">
+          <img src="/assets/profile.jpg" alt="Illustrated self-portrait of Begüm Dönmez holding a cat" width="600" height="600" loading="lazy">
+        </figure>
+        <div class="about__text">
+          <p>I am a Digital Game Design student at Beykoz University, where my academic
+            journey has been honored with multiple Rector's and Dean's Certificates for
+            high achievement. My passion for creation goes beyond code; it started with a lifelong love
+            for writing and storytelling.</p>
+          <p>In the industry, I've gained experience as a Level Designer for Match-3
+            titles and as a Developer on projects ranging from 2D pixel-art multiplayer
+            football games to awareness-driven bullet hells. As the Founder &amp; President of
+            the Bumedya Media Club, I lead a creative community producing fanzines, podcasts
+            and digital content.</p>
+          <p>My curiosity also leads me into the depths of criminal psychology and
+            security, which fuels my interest in building more complex and immersive
+            narratives. Whether I'm working with Unity, Unreal Engine, or a simple pen and paper, I am
+            dedicated to crafting worlds that leave an impact.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="room wrap" aria-labelledby="room-title">
+      <div class="room__card">
+        <div class="room__text">
+          <p class="label">Side quest</p>
+          <h2 id="room-title">There's a room behind this page.</h2>
+          <p>A small 3D space I built in Three.js: a corridor, a lamp, a computer with my projects on it.
+            Best with headphones and a keyboard.</p>
+          <a class="btn btn--warm" href="/world/">Step inside <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="room__window" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      </div>
+    </section>
+
+    <section id="contact" class="ground" aria-labelledby="contact-title">
+      <div class="ground__hills" aria-hidden="true">
+        <svg class="hl hl--far" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice">
+          <path d="M0 168C200 108 380 118 560 148C760 184 900 98 1120 108C1280 116 1380 148 1440 158V320H0Z"/>
+          <g class="house">
+            <rect class="house__wall" x="548" y="130" width="28" height="20" rx="1"/>
+            <path class="house__roof" d="M543 132L562 116L581 132Z"/>
+            <rect class="house__window" x="556" y="136" width="7" height="7"/>
+          </g>
+          <g class="tree">
+            <rect x="1006" y="96" width="7" height="34" rx="2"/>
+            <circle cx="1010" cy="86" r="22"/><circle cx="994" cy="98" r="15"/><circle cx="1027" cy="97" r="16"/>
+          </g>
+        </svg>
+        <svg class="hl hl--mid" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice">
+          <path d="M0 222C180 172 360 192 520 216C700 242 860 172 1060 182C1240 192 1360 226 1440 216V320H0Z"/>
+          <g class="tree">
+            <rect x="786" y="172" width="8" height="36" rx="2"/>
+            <circle cx="790" cy="160" r="26"/><circle cx="770" cy="174" r="17"/><circle cx="811" cy="172" r="18"/>
+          </g>
+        </svg>
+        <svg class="hl hl--near" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice">
+          <path d="M0 274C220 238 420 252 640 274C860 294 1060 242 1260 252C1360 257 1410 268 1440 272V320H0Z"/>
+        </svg>
+      </div>
+      <div class="meadow">
+        <div class="wrap">
+          <p class="label">04 — Contact</p>
+          <h2 id="contact-title" class="contact__title">Need a level designed, or one more developer on the team?</h2>
+          <a class="contact__mail" href="mailto:hbegumdonmez@icloud.com">hbegumdonmez@icloud.com</a>
+          <ul class="contact__links">
+            <li><a class="btn btn--warm" href="/assets/begum-donmez-cv.pdf" download>Download CV</a></li>
+            <li><a href="https://www.linkedin.com/in/hatice-begüm-dönmez-84b723258/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/begumdonmez" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://begumdonmez.itch.io" target="_blank" rel="noopener">itch.io</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="soil">
+    <svg class="soil__edge" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 22C120 10 240 30 360 20C480 10 600 28 720 18C840 8 960 30 1080 20C1200 10 1320 26 1440 16V40H0Z"/>
+    </svg>
+    <div class="wrap soil__inner">
+      <p>© 2026 Begüm Dönmez</p>
+      <a href="#main">Back to the sky <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <script src="/js/site.js" defer></script>
 </body>
 </html>
