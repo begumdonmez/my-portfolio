@@ -57,7 +57,6 @@ export const GAMES = [
 
 // Empty cabinets that fill the hall until more games arrive.
 export const SOON = [
-  { id: 'soon-2', side: 'left', slot: 2 },
   { id: 'soon-3', side: 'right', slot: 2 },
 ]
 
@@ -76,7 +75,10 @@ export function cabinetTransform({ side, slot }) {
 }
 
 // Doors in the side walls that lead to special rooms.
-export const DOORS = [{ id: 'xox', title: 'XOX Odası', side: 'right', slot: 1, colors: ['#2de2e6', '#f706cf'] }]
+export const DOORS = [
+  { id: 'xox', title: 'XOX Odası', side: 'right', slot: 1, colors: ['#2de2e6', '#f706cf'], sign: ['X O X', 'ODASI'] },
+  { id: 'trivia', title: 'Trivia Stüdyosu', side: 'left', slot: 2, colors: ['#ffe66d', '#ff7a45'], sign: ['TRIVIA', 'SHOW'] },
+]
 
 // Doors sit flush in the wall, facing the aisle like the cabinets do.
 export function doorTransform({ side, slot }) {

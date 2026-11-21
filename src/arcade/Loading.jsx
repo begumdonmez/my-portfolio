@@ -9,11 +9,11 @@ const TIPS = [
 
 // Full-screen loading card shown while the arcade's assets download.
 // `ready` = everything the scene needs has loaded.
-export default function Loading({ ready, onDone }) {
+export default function Loading({ ready, onDone, tips = TIPS, title = 'LOADING' }) {
   const { progress } = useProgress()
   const [minTime, setMinTime] = useState(false)
   const [hidden, setHidden] = useState(false)
-  const [tip] = useState(() => TIPS[Math.floor(Math.random() * TIPS.length)])
+  const [tip] = useState(() => tips[Math.floor(Math.random() * tips.length)])
   const done = ready && minTime
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function Loading({ ready, onDone }) {
   return (
     <div className={`arc-loading ${done ? 'arc-loading--out' : ''}`} role="status" aria-live="polite">
       <div className="arc-loading__coin" aria-hidden />
-      <p className="arc-loading__title">LOADING</p>
+      <p className="arc-loading__title">{title}</p>
       <div className="arc-loading__bar" aria-hidden>
         {Array.from({ length: blocks }, (_, i) => (
           <span key={i} className={i < filled ? 'on' : ''} />

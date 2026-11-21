@@ -5,6 +5,8 @@ import { useXox } from './store'
 import { BOARD, CYAN, PINK, ROBO_POS, ROOM, YELLOW, cellPos, roboHand } from './layout'
 import RoomGrid from './RoomGrid'
 import Robo from './Robo'
+import Effects from './Effects'
+import { fx } from './fx'
 import { neonSignTexture } from '../textures'
 import { sfx } from '../sound'
 
@@ -29,7 +31,16 @@ function ViewCamera() {
     if (portrait) want.set(pointer.x * 0.2, 2.25 + pointer.y * 0.1, 2.7)
     else want.set(0.5 + pointer.x * 0.35, 2.6 + pointer.y * 0.2, 2.6)
     camera.position.lerp(want, 1 - Math.exp(-dt * 3))
+    // impact shake: a quick jolt that settles
+    const v = fx.shake.value
+    fx.shake.value *= Math.exp(-dt * 7)
+    const t = performance.now() / 1000
+    if (v > 0.002) {
+      camera.position.x += Math.sin(t * 63) * v * 0.07
+      camera.position.y += Math.cos(t * 51) * v * 0.06
+    }
     camera.lookAt(look)
+    if (v > 0.002) camera.rotateZ(Math.sin(t * 37) * v * 0.015)
   })
 
   useEffect(() => {
@@ -44,9 +55,10 @@ const easeOut = (k) => 1 - Math.pow(1 - k, 3)
 const THROW_FROM = new THREE.Vector3(0.5, 1.4, 1.5) // just below the camera
 
 // X flies in from the visitor and spins onto the wall; O is drawn by ROBO's beam.
-function Mark({ index, mark, glow }) {
+function Mark({ index, mark, lit }) {
   const g = useRef()
   const born = useRef(null)
+  const litAt = useRef(null)
   const cell = useMemo(() => new THREE.Vector3(...cellPos(index)), [index])
   const from = useMemo(() => THROW_FROM.clone().sub(cell), [cell])
 
@@ -66,13 +78,16 @@ function Mark({ index, mark, glow }) {
       const s = k < 1 ? 1 + 2.2 * Math.pow(k - 1, 3) + 1.2 * Math.pow(k - 1, 2) : 1
       g.current.scale.setScalar(Math.max(0.001, s))
     }
-    if (glow) {
-      const p = 1 + Math.sin(clock.elapsedTime * 10) * 0.06
+    if (lit) {
+      // pop when lit, then a steady pulse
+      const since = clock.elapsedTime - (litAt.current ??= clock.elapsedTime)
+      const pop = Math.max(0, 1 - since / 0.25) * 0.35
+      const p = 1 + pop + Math.sin(clock.elapsedTime * 10) * 0.06
       g.current.scale.set(p, p, 1)
-    }
+    } else litAt.current = null
   })
 
-  const color = glow ? '#ffffff' : mark === 'X' ? PINK : CYAN
+  const color = lit ? '#ffffff' : mark === 'X' ? PINK : CYAN
   return (
     <group position={cellPos(index)}>
       <group ref={g} position={[0, 0, 0.08]} scale={mark === 'O' ? 0.001 : 1}>
@@ -134,6 +149,29 @@ function Beam() {
   )
 }
 
+// a faint X that follows your pointer over empty cells
+function Ghost({ index }) {
+  const g = useRef()
+  const mats = useRef([])
+  useFrame(({ clock }) => {
+    const t = clock.elapsedTime
+    const o = 0.22 + Math.sin(t * 6) * 0.08
+    mats.current.forEach((m) => m && (m.opacity = o))
+    g.current.rotation.z = Math.sin(t * 2) * 0.08
+    g.current.scale.setScalar(0.88 + Math.sin(t * 6) * 0.03)
+  })
+  return (
+    <group ref={g} position={[cellPos(index)[0], cellPos(index)[1], BOARD.z + 0.06]}>
+      {[Math.PI / 4, -Math.PI / 4].map((r, k) => (
+        <mesh key={r} rotation={[0, 0, r]}>
+          <boxGeometry args={[0.98, 0.13, 0.02]} />
+          <meshBasicMaterial ref={(m) => (mats.current[k] = m)} color={PINK} transparent depthWrite={false} toneMapped={false} />
+        </mesh>
+      ))}
+    </group>
+  )
+}
+
 // ---------- the board on the wall
 function Board() {
   const board = useXox((s) => s.board)
@@ -148,7 +186,22 @@ function Board() {
     return () => (document.body.style.cursor = '')
   }, [hover, canPlay, board])
 
-  const winning = outcome?.line ?? []
+  // winning cells light up one by one as the effects play out
+  const [lit, setLit] = useState([])
+  const [showLine, setShowLine] = useState(false)
+  useEffect(() => {
+    const offs = [
+      fx.on('winCell', ({ index }) => setLit((l) => [...l, index])),
+      fx.on('win', () => setShowLine(true)),
+    ]
+    return () => offs.forEach((off) => off())
+  }, [])
+  useEffect(() => {
+    if (!outcome) {
+      setLit([])
+      setShowLine(false)
+    }
+  }, [outcome])
 
   return (
     <group>
@@ -206,10 +259,11 @@ function Board() {
               toneMapped={false}
             />
           </mesh>
-          {v && <Mark index={i} mark={v} glow={winning.includes(i)} />}
+          {v && <Mark index={i} mark={v} lit={lit.includes(i)} />}
+          {!v && hover === i && canPlay && <Ghost index={i} />}
         </group>
       ))}
-      {outcome?.line && <WinLine key={outcome.line.join()} line={outcome.line} />}
+      {outcome?.line && showLine && <WinLine key={outcome.line.join()} line={outcome.line} />}
     </group>
   )
 }
@@ -271,6 +325,7 @@ export default function XoxRoom() {
       <Board />
       {portrait ? <Robo {...ROBO_PORTRAIT} /> : <Robo position={ROBO_POS} />}
       <Beam />
+      <Effects />
       <ambientLight intensity={0.35} color="#8f80ff" />
       <hemisphereLight args={['#6a5cff', '#120a1e', 0.5]} />
       <pointLight position={[ROBO_POS[0] - 0.5, 3, ROBO_POS[2] + 2]} color="#c9b8ff" intensity={8} distance={6} />

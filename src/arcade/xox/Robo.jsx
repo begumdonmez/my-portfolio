@@ -3,6 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import { RoundedBox } from '@react-three/drei'
 import * as THREE from 'three'
 import { useXox } from './store'
+import { fx } from './fx'
 import { CYAN, PINK, YELLOW, roboHand } from './layout'
 
 // ROBO: a hovering robot next to the wall board. Its face is a little
@@ -16,7 +17,7 @@ function faceTexture(mood) {
   const ctx = c.getContext('2d')
   ctx.fillStyle = '#05040c'
   ctx.fillRect(0, 0, 256, 160)
-  const color = { idle: CYAN, blink: CYAN, think: YELLOW, happy: '#7dff8a', sad: '#7aa7ff', wow: PINK }[mood]
+  const color = { idle: CYAN, blink: CYAN, think: YELLOW, happy: '#7dff8a', sad: '#7aa7ff', wow: PINK, squint: '#ff4d6d' }[mood]
   ctx.fillStyle = color
   ctx.strokeStyle = color
   ctx.shadowColor = color
@@ -56,6 +57,17 @@ function faceTexture(mood) {
     ctx.beginPath()
     ctx.arc(128, 140, 22, Math.PI * 1.2, Math.PI * 1.8)
     ctx.stroke()
+  } else if (mood === 'squint') {
+    // narrowed eyes under angry brows, flat mouth
+    px(56, 70, 38, 10)
+    px(162, 70, 38, 10)
+    ctx.beginPath()
+    ctx.moveTo(48, 44)
+    ctx.lineTo(100, 60)
+    ctx.moveTo(208, 44)
+    ctx.lineTo(156, 60)
+    ctx.stroke()
+    px(104, 120, 48, 8)
   } else if (mood === 'wow') {
     for (const x of [75, 181]) {
       ctx.beginPath()
@@ -75,7 +87,7 @@ function faceTexture(mood) {
   return tex
 }
 
-const MOODS = ['idle', 'blink', 'think', 'happy', 'sad', 'wow']
+const MOODS = ['idle', 'blink', 'think', 'happy', 'sad', 'wow', 'squint']
 
 export default function Robo({ position, scale = 1 }) {
   const mood = useXox((s) => s.mood)
@@ -91,9 +103,17 @@ export default function Robo({ position, scale = 1 }) {
   const jet = useRef()
   const point = useRef(0) // 1 right after ROBO plays, fades out
 
+  const flinch = useRef(0) // jolts when your X slams into the wall
   useEffect(() => {
     if (last !== null && board[last] === 'O') point.current = 1
   }, [last, board])
+  useEffect(
+    () =>
+      fx.on('impact', ({ mark }) => {
+        if (mark === 'X') flinch.current = 1
+      }),
+    []
+  )
 
   useFrame(({ clock }, dt) => {
     const t = clock.elapsedTime
@@ -102,16 +122,21 @@ export default function Robo({ position, scale = 1 }) {
     const sad = mood === 'sad'
     const think = mood === 'think'
     point.current = Math.max(0, point.current - dt * 1.2)
+    flinch.current = Math.max(0, flinch.current - dt * 3)
+    const jolt = flinch.current * flinch.current
 
     root.current.position.y = 0.35 + (happy ? Math.abs(Math.sin(t * 8)) * 0.25 : Math.sin(t * 1.6) * 0.06)
     // turn toward the board while thinking / playing, toward you otherwise
-    const turn = think || point.current > 0 ? -0.75 : happy ? 0 : -0.3
+    const squint = mood === 'squint'
+    const turn = think || point.current > 0 ? -0.75 : happy || squint ? 0 : -0.3
     root.current.rotation.y = THREE.MathUtils.damp(root.current.rotation.y, turn, 4, dt)
     root.current.rotation.z = THREE.MathUtils.damp(root.current.rotation.z, happy ? Math.sin(t * 8) * 0.08 : 0, 6, dt)
 
-    const tiltZ = think ? Math.sin(t * 2.2) * 0.14 : 0
-    const tiltX = sad ? 0.35 : mood === 'wow' ? -0.15 : 0
-    head.current.rotation.z = THREE.MathUtils.damp(head.current.rotation.z, tiltZ, 6, dt)
+    const tiltZ = think ? Math.sin(t * 2.2) * 0.14 : mood === 'squint' ? 0.12 + Math.sin(t * 1.5) * 0.04 : 0
+    // squinting: leans in and glares at you with a slow suspicious tilt
+    const tiltX = sad ? 0.35 : mood === 'wow' ? -0.15 : squint ? 0.14 : 0
+    head.current.rotation.z = THREE.MathUtils.damp(head.current.rotation.z, tiltZ, 6, dt) + Math.sin(t * 40) * jolt * 0.12
+    root.current.position.x = jolt * 0.12
     head.current.rotation.x = THREE.MathUtils.damp(head.current.rotation.x, tiltX, 6, dt)
 
     // board-side arm: raised to point while playing, waving when it wins
@@ -122,7 +147,7 @@ export default function Robo({ position, scale = 1 }) {
     const blink = mood === 'idle' && t % 3.7 < 0.12
     const face = faces[blink ? 'blink' : mood]
     if (faceMat.current.map !== face) faceMat.current.map = face
-    bulb.current.color.set(think ? (Math.sin(t * 12) > 0 ? YELLOW : '#4a3a00') : happy ? '#7dff8a' : sad ? '#7aa7ff' : PINK)
+    bulb.current.color.set(think ? (Math.sin(t * 12) > 0 ? YELLOW : '#4a3a00') : happy ? '#7dff8a' : sad ? '#7aa7ff' : squint ? '#ff2f4d' : PINK)
     jet.current.scale.y = 0.85 + Math.sin(t * 30) * 0.1
   })
 

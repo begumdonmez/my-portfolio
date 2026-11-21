@@ -11,6 +11,8 @@ import Loading from './Loading'
 import Door from './Door'
 import XoxRoom from './xox/XoxRoom'
 import XoxOverlay from './xox/XoxOverlay'
+import TriviaRoom from './trivia/TriviaRoom'
+import TriviaOverlay from './trivia/TriviaOverlay'
 import { DOORS, GAMES, SOON, cabinetTransform } from './games'
 import { input, useArcade } from './store'
 import { sfx } from './sound'
@@ -150,8 +152,10 @@ export default function ArcadePage() {
                   ))}
                   <Player />
                 </group>
-              ) : (
+              ) : room === 'xox' ? (
                 <XoxRoom />
+              ) : (
+                <TriviaRoom />
               )}
               <Ready onReady={onReady} />
             </Suspense>
@@ -162,7 +166,8 @@ export default function ArcadePage() {
         )}
       </div>
 
-      {inside && !inHall && <XoxOverlay />}
+      {inside && room === 'xox' && <XoxOverlay />}
+      {inside && room === 'trivia' && <TriviaOverlay />}
       {inside && inHall && (
         <>
           <button className="arc-exit" onClick={() => navigate('/')}>

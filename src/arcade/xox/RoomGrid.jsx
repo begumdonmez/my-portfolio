@@ -2,6 +2,7 @@ import { useEffect, useMemo } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import { useXox } from './store'
+import { fx } from './fx'
 import { BOARD, CYAN, PINK, ROOM, cellPos } from './layout'
 
 // The room's walls, floor and ceiling are one neon grid that reacts to the game:
@@ -34,6 +35,7 @@ const fragmentShader = /* glsl */ `
   uniform vec3 uWinN;        // plane through the winning line
   uniform float uWinD;
   uniform float uWinT;       // start time, <0 = no win
+  uniform vec3 uWinCol;
   varying vec2 vUv;
   varying vec3 vWorld;
 
@@ -85,8 +87,7 @@ const fragmentShader = /* glsl */ `
       float wd = abs(dot(vWorld, uWinN) - uWinD);
       float band = exp(-wd * wd * 18.0) * smoothstep(0.0, 0.25, age);
       float pulse = 0.75 + 0.25 * sin(uTime * 9.0);
-      vec3 gold = vec3(1.0, 0.86, 0.35);
-      col += gold * band * (0.35 + line * 3.0) * pulse;
+      col += uWinCol * band * (0.35 + line * 3.0) * pulse;
     }
 
     gl_FragColor = vec4(col, 1.0);
@@ -104,6 +105,7 @@ function sharedUniforms() {
     uWinN: { value: new THREE.Vector3(0, 1, 0) },
     uWinD: { value: 0 },
     uWinT: { value: -1 },
+    uWinCol: { value: new THREE.Color('#ffd95a') },
   }
 }
 
@@ -150,26 +152,26 @@ export default function RoomGrid() {
       shared.uRip.value[i].set(pos[0], pos[1], pos[2], clock.elapsedTime)
       shared.uRipCol.value[i].set(color)
     }
-    return useXox.subscribe((s, prev) => {
-      if (s.last !== null && s.last !== prev.last && s.board[s.last]) {
-        ripple(cellPos(s.last), s.board[s.last] === 'X' ? PINK : CYAN)
-      }
-      if (s.outcome && !prev.outcome) {
-        if (s.outcome.line) {
-          const a = new THREE.Vector3(...cellPos(s.outcome.line[0]))
-          const c = new THREE.Vector3(...cellPos(s.outcome.line[2]))
-          const dir = c.clone().sub(a).normalize()
-          const n = dir.cross(new THREE.Vector3(0, 0, 1)).normalize()
-          shared.uWinN.value.copy(n)
-          shared.uWinD.value = n.dot(a)
-          shared.uWinT.value = clock.elapsedTime
-          ripple(cellPos(s.outcome.line[1]), '#ffe66d')
-        } else {
-          ripple(cellPos(4), '#ffffff') // draw: one calm wave from the middle
-        }
-      }
-      if (!s.outcome && prev.outcome) shared.uWinT.value = -1
-    })
+    // ripples start when a mark lands, the band when the win sequence finishes
+    const offs = [
+      fx.on('impact', ({ index, mark }) => ripple(cellPos(index), mark === 'X' ? PINK : CYAN)),
+      fx.on('win', ({ line, mark }) => {
+        const a = new THREE.Vector3(...cellPos(line[0]))
+        const c = new THREE.Vector3(...cellPos(line[2]))
+        const n = c.clone().sub(a).normalize().cross(new THREE.Vector3(0, 0, 1)).normalize()
+        shared.uWinN.value.copy(n)
+        shared.uWinD.value = n.dot(a)
+        shared.uWinT.value = clock.elapsedTime
+        shared.uWinCol.value.set(mark === 'X' ? '#ffd95a' : '#ff2f6d')
+        ripple(cellPos(line[1]), mark === 'X' ? '#ffe66d' : '#ff3b6b')
+        if (mark === 'X') ripple(cellPos(line[1]), '#ffffff')
+      }),
+      fx.on('draw', () => ripple(cellPos(4), '#ffffff')), // one calm wave from the middle
+      useXox.subscribe((s, prev) => {
+        if (!s.outcome && prev.outcome) shared.uWinT.value = -1
+      }),
+    ]
+    return () => offs.forEach((off) => off())
   }, [shared, clock])
 
   useFrame(({ clock }) => {

@@ -1,6 +1,5 @@
 import { create } from 'zustand'
-import { result, robotMove } from './logic'
-import { sfx } from '../sound'
+import { result, robotMove, winsAt } from './logic'
 
 // You are X, ROBO is O. Who starts alternates every round.
 const YOU = 'X'
@@ -14,8 +13,10 @@ const LINES = {
   },
   think: ['Hmm…', 'Hesaplıyorum… bip.', 'İlginç hamle.', 'Bir saniye…', 'Devrelerim ısınıyor…'],
   robotWins: ['Bip bop! Kazandım!', 'Makineler 1, insanlar 0.', 'Tekrar dene, insan.'],
+  streak: ['Yine mi?! Bu bir seri mi?', 'Devrelerim pes ediyor…', 'Biri fişimi çeksin!'],
   youWin: ['İmkânsız… devrelerim yandı!', 'Peki… bu seferlik.', 'Nasıl yaptın bunu?!'],
   draw: ['Berabere. Saygı duyuyorum.', 'Kimse kazanamadı. Klasik.', 'Denk rakipleriz demek.'],
+  blocked: ['Hıh! Fark ettin demek.', 'Grr… planımı bozdun.', 'Bunu unutmayacağım.', 'Gözüm üstünde, insan.'],
   yourTurn: ['Sıra sende.', 'Hadi bakalım.', 'Senin hamlen.', 'Bakalım ne yapacaksın.'],
   robotStarts: ['Bu sefer ben başlıyorum.', 'Sıra bende. Hazır mısın?'],
 }
@@ -34,15 +35,15 @@ export const useXox = create((set, get) => ({
   level: 'medium',
   starter: YOU,
   turn: YOU,
-  mood: 'idle', // idle | think | happy | sad | wow
+  mood: 'idle', // idle | think | happy | sad | wow | squint
   say: LINES.hello.medium,
   score: { you: 0, robo: 0, draw: 0 },
+  streak: 0, // your wins in a row
 
   // apply a move and settle the round if it ended
   place(i, mark) {
     const board = [...get().board]
     board[i] = mark
-    mark === YOU ? sfx.placeX() : sfx.placeO()
     const r = result(board)
     if (!r) {
       set({ board, last: i, turn: mark === YOU ? ROBO : YOU })
@@ -50,30 +51,38 @@ export const useXox = create((set, get) => ({
     }
     const score = { ...get().score }
     let mood, say
+    let streak = get().streak
     if (r.mark === YOU) {
       score.you++
+      streak = get().streak + 1
       mood = 'sad'
-      say = pick(LINES.youWin)
-      sfx.win()
+      say = streak >= 3 ? pick(LINES.streak) : pick(LINES.youWin)
     } else if (r.mark === ROBO) {
       score.robo++
+      streak = 0
       mood = 'happy'
       say = pick(LINES.robotWins)
-      sfx.lose()
     } else {
       score.draw++
       mood = 'wow'
       say = pick(LINES.draw)
-      sfx.draw()
     }
-    set({ board, last: i, outcome: r, score, mood, say, turn: null })
+    set({ board, last: i, outcome: r, score, streak, mood, say, turn: null })
     return true
   },
 
   play(i) {
     const s = get()
     if (s.turn !== YOU || s.outcome || s.board[i]) return
+    const blocked = winsAt(s.board, i, ROBO) // you just took ROBO's winning cell
     if (s.place(i, YOU)) return
+    if (blocked) {
+      // let it glare at you for a moment before it thinks again
+      clear()
+      set({ mood: 'squint', say: pick(LINES.blocked) })
+      timer = setTimeout(() => get().robotTurn(), 1300)
+      return
+    }
     s.robotTurn()
   },
 
@@ -105,6 +114,7 @@ export const useXox = create((set, get) => ({
       mood: 'idle',
       say: LINES.hello[level],
       score: { you: 0, robo: 0, draw: 0 },
+      streak: 0,
     })
   },
 
@@ -114,3 +124,5 @@ export const useXox = create((set, get) => ({
   },
   stop: clear,
 }))
+
+if (import.meta.env.DEV && typeof window !== 'undefined') window.__xox = useXox

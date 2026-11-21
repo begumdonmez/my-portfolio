@@ -53,6 +53,14 @@ function perfect(b, me) {
   return pick(moves) // vary between equally good moves so games differ
 }
 
+// would `mark` win by playing cell i?
+export function winsAt(b, i, mark) {
+  if (b[i]) return false
+  const next = [...b]
+  next[i] = mark
+  return result(next)?.mark === mark
+}
+
 // a move that completes a line for `mark`, if there is one
 function finishing(b, mark) {
   for (const i of empty(b)) {

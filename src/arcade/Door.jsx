@@ -65,10 +65,10 @@ export default function Door({ door }) {
   const sign = useMemo(
     () =>
       neonSignTexture([
-        { text: 'X O X', color: c2, size: 230, y: 0.42 },
-        { text: 'ODASI', color: c1, size: 110, y: 0.82 },
+        { text: door.sign[0], color: c2, size: door.sign[0].length > 5 ? 190 : 230, y: 0.42 },
+        { text: door.sign[1], color: c1, size: 110, y: 0.82 },
       ]),
-    [c1, c2]
+    [c1, c2, door.sign]
   )
   const glow = useMemo(() => glowTexture(c1), [c1])
   const uniforms = useMemo(
