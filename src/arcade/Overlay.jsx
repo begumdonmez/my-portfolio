@@ -127,6 +127,11 @@ function Info({ game }) {
           <span key={t}>#{t}</span>
         ))}
       </div>
+      {game.link && (
+        <a className="arc-link" href={game.link} target="_blank" rel="noreferrer">
+          itch.io'da gör ↗
+        </a>
+      )}
       <BackButton />
     </div>
   )

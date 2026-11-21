@@ -51,7 +51,7 @@ export const FILMS = [
     loop: false,
     tools: ['Unity', 'C#', 'Bullet Hell'],
     text:
-      'Madde bağımlılığına dikkat çekmek için geliştirdiğimiz, hızlı mekanikleri ve tematik hikâyesiyle etkileyici bir 2D bullet hell oyunu. 4 kişilik ekipte oyun geliştirici olarak çalıştım.',
+      'Madde bağımlılığına dikkat çekmek için geliştirdiğimiz, hızlı mekanikleri ve tematik hikâyesiyle etkileyici bir 2D bullet hell oyunu. 5 kişilik ekipte oyun geliştirici olarak çalıştım.',
   },
   {
     id: 'kimkam',

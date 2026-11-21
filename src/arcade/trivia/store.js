@@ -57,8 +57,8 @@ export const useTrivia = create((set, get) => ({
 
   start() {
     clear()
-    // a couple of questions about Begüm in every game, the rest mixed
-    const own = shuffle(QUESTIONS.filter((q) => q.cat === 'BEGÜM')).slice(0, 2)
+    // three questions about Begüm in every game, the rest mixed
+    const own = shuffle(QUESTIONS.filter((q) => q.cat === 'BEGÜM')).slice(0, 3)
     const rest = shuffle(QUESTIONS.filter((q) => q.cat !== 'BEGÜM')).slice(0, ROUND - own.length)
     const list = shuffle([...own, ...rest]).map((q) => {
       const order = shuffle([0, 1, 2, 3])

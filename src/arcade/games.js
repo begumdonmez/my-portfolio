@@ -1,8 +1,7 @@
 // Every playable cabinet in the arcade. Add a game by adding an entry here.
 // `side`/`slot` decide where it stands in the hall (slot 0 is nearest the door).
 //
-// TODO(Begüm): fill in role / duration / team for each game, and check the
-// descriptions — they were carried over from the old site.
+// Texts, roles, teams and links come from the old portfolio site.
 export const GAMES = [
   {
     id: 'sultanahmet',
@@ -17,14 +16,15 @@ export const GAMES = [
     side: 'left',
     slot: 0,
     description:
-      "Sultanahmet'in tarih katmanlarını 3D olarak keşfettiğin interaktif bir WebGL deneyimi. Yeniden kurulan sokaklarda yürü, gizli detayları bul, tarihi objelerle etkileşime gir.",
-    tags: ['Unity', 'WebGL', 'Tarih', '3D Keşif'],
-    stats: { Motor: 'Unity', Platform: 'Web (WebGL)' },
+      "Kentsel Kültür ve Estetik dersi için hazırladığım eğitici bir proje: Sultanahmet Meydanı'nın farklı tarihî dönemlerdeki mimari değişimini Unity ile görselleştiriyor. Meydanda yürü, dönemler arasında geç.",
+    tags: ['Unity', 'C#', 'Tarih', '3D Keşif'],
+    stats: { Rol: 'Geliştirici', Motor: 'Unity', Ders: 'Kentsel Kültür ve Estetik' },
+    link: 'https://begumdonmez.itch.io/sultanahmet',
   },
   {
     id: 'santas',
     title: "Santa's Workers",
-    subtitle: 'Game Jam',
+    subtitle: 'Ice Breaking Jam',
     colors: ['#e63946', '#2a9d8f'],
     cover: '/arcade/covers/santas.jpg',
     video: null,
@@ -32,10 +32,10 @@ export const GAMES = [
     buildSize: [960, 600],
     side: 'left',
     slot: 1,
-    description:
-      "Noel Baba'nın yardımcılarına mini oyunlarla yardım ettiğin bir yılbaşı oyunu. Oyuncak üret, ren geyiklerini yönet, bulmacaları çöz.",
-    tags: ['Unity', 'WebGL', 'Game Jam'],
-    stats: { Motor: 'Unity', Platform: 'Web (WebGL)', Tür: 'Game Jam' },
+    description: "Ice Breaking Jam için Noel Baba'nın cüceleriyle yaptığımız tatlı bir oyun. Jam'in teması: Denge.",
+    tags: ['Unity', 'C#', 'Game Jam', 'Denge'],
+    stats: { Rol: 'Oyun Geliştirici', Ekip: '3 kişi', Tasarım: 'Süha Taşcı', '2D Sanat': 'Fatma Beril Bilgen' },
+    link: 'https://begumdonmez.itch.io/noel-babann-evi',
   },
   {
     id: 'ballerino',
@@ -49,9 +49,10 @@ export const GAMES = [
     side: 'right',
     slot: 0,
     description:
-      'Kart destesiyle oynanan, piksel sanat tarzında bir futbol aksiyon oyunu. Kartlarını seç, şutunu çek, rakibini alt et.',
-    tags: ['Unity', 'WebGL', 'Online', 'Pixel Art'],
-    stats: { Motor: 'Unity', Platform: 'Web (WebGL)', Ekip: '3 kişi' },
+      'Stratejik kart mekanikleri olan, 2D piksel sanat tarzında çevrim içi çok oyunculu bir futbol oyunu. Gerçek zamanlı senkronizasyon ve rekabetçi oynanış için Photon kullandık.',
+    tags: ['Unity', 'C#', 'Photon', 'Pixel Art'],
+    stats: { Rol: 'Oyun Geliştirici', Ekip: '3 kişi', Tasarım: 'Bora Berk Coşgun', '2D Sanat': 'Yiğit İbrahim Erkal' },
+    link: 'https://begumdonmez.itch.io/ballerino-online',
   },
 ]
 

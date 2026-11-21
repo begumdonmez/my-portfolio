@@ -1,5 +1,5 @@
 // What hangs in the museum and where. Texts come from the old portfolio
-// (translated); TODO(Begüm): check them, and add 3D models to the pedestals.
+// (translated). TODO(Begüm): add 3D models to the pedestals.
 
 export const ROOM = { halfWidth: 6.5, height: 5.6, front: 4, back: -32 }
 
@@ -68,7 +68,7 @@ export const EXHIBITS = [
   { id: 'kadraj5', img: '/museum/kadraj5.jpg', group: 'kadraj', sub: 'Sayı 5 · Sonbahar', wall: 'right', at: -13.8, h: 1.3, text: 'Rengârenk, sonbahar temalı sayımız.' },
   { id: 'kadraj6', img: '/museum/kadraj6.jpg', group: 'kadraj', sub: 'Sayı 6', wall: 'right', at: -16.6, h: 1.3, text: 'Her sayıyı daha özel yapmak için elimizden geleni yaptık. Bu sayıda Spotify hesabımız üzerinden okurlarla etkileşime girmek istedim.' },
   { id: 'bumedya', img: '/museum/bumedya.jpg', group: 'bumedya', sub: 'Ramazan Sayısı', wall: 'right', at: -19.6, h: 1.7 },
-  { id: 'kepler', img: '/museum/kepler.png', group: 'posters', sub: 'GStellar Recon: Kepler', wall: 'right', at: -22.6, h: 1.25, text: 'Stratejik oynanışa sahip 2D kuşbakışı bir kule savunma oyunu. 6 kişilik ekipte oyun geliştirici olarak çalıştım.' },
+  { id: 'kepler', img: '/museum/kepler.png', group: 'posters', sub: 'GStellar Recon: Kepler', wall: 'right', at: -22.6, h: 1.25, text: 'Stratejik oynanışa sahip 2D kuşbakışı bir kule savunma oyunu. 7 kişilik ekipte oyun geliştirici olarak çalıştım.' },
   { id: 'ecoguardian', img: '/museum/ecoguardian.png', group: 'posters', sub: 'Eco Guardian', wall: 'right', at: -25.1, h: 1.2, text: 'Kirliliğin yaban hayatına etkisini etkileşimli oynanışla gösteren, çevre bilinci odaklı 2D kuşbakışı bir prototip.' },
   { id: 'addiction', img: '/museum/addiction.png', group: 'posters', sub: 'Addiction', wall: 'right', at: -27.6, h: 1.2, text: 'Madde bağımlılığına dikkat çekmek için geliştirdiğimiz 2D bullet hell oyunu. Fragmanı sinemada!' },
   { id: 'kimkam', img: '/museum/kimkam.jpg', group: 'posters', sub: 'Kim Kam Olmak İster?', wall: 'right', at: -30, h: 1.2, text: 'Türk mitolojisinden ilham alan bir bilgi yarışması oyunu. Fragmanı sinemada!' },

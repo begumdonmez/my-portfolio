@@ -1208,3 +1208,11 @@
     animation: none !important;
   }
 }
+
+.arc-link {
+  display: block;
+  width: max-content;
+  margin: -6px auto 16px;
+  font: 14px/1 var(--pixel);
+  color: var(--c1);
+}

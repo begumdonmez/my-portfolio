@@ -1,10 +1,23 @@
 // Question bank for ZORP's trivia show. The first option is always the
 // correct one; options are shuffled when a round starts.
 //
-// TODO(Begüm): add questions about yourself (favourite tools, first game,
-// hometown…). Every question in the BEGÜM category makes the room double as
-// a playful "about me".
+// The BEGÜM questions double as a playful "about me"; their facts come from
+// the old portfolio site.
 export const QUESTIONS = [
+  // ---- about Begüm
+  { cat: 'BEGÜM', q: 'Begüm hangi üniversitede okuyor?', a: ['Beykoz Üniversitesi', 'Boğaziçi Üniversitesi', 'Bilkent Üniversitesi', 'İTÜ'] },
+  { cat: 'BEGÜM', q: 'Begüm hangi bölümde okuyor?', a: ['Dijital Oyun Tasarımı', 'Bilgisayar Mühendisliği', 'Grafik Tasarım', 'Mimarlık'] },
+  { cat: 'BEGÜM', q: 'Begüm hangi kulübün kurucusu ve başkanı?', a: ['Bumedya Medya Kulübü', 'Satranç Kulübü', 'Robotik Kulübü', 'Tiyatro Kulübü'] },
+  { cat: 'BEGÜM', q: 'Begüm sektörde hangi tür oyunlarda level designer olarak çalıştı?', a: ['Match-3', 'FPS', 'Yarış', 'MMORPG'] },
+  { cat: 'BEGÜM', q: "Begüm'ün üretme tutkusu nereden başladı?", a: ['Yazmak ve hikâye anlatmak', 'Resim yapmak', 'Müzik', 'Fotoğrafçılık'] },
+  { cat: 'BEGÜM', q: 'Oyunlar dışında Begüm’ün merak ettiği alanlardan biri hangisi?', a: ['Kriminal psikoloji', 'Astroloji', 'Dalış', 'Bahçecilik'] },
+  { cat: 'BEGÜM', q: 'Begüm ses tasarımında hangi programı kullanıyor?', a: ['Reaper', 'FL Studio', 'Ableton Live', 'GarageBand'] },
+  { cat: 'BEGÜM', q: 'Ballerino Online’ın çevrim içi oynanışı için ne kullanıldı?', a: ['Photon', 'Steamworks', 'Firebase', 'WebRTC'] },
+  { cat: 'BEGÜM', q: "Addiction oyunu neye dikkat çekmek için yapıldı?", a: ['Madde bağımlılığına', 'İklim krizine', 'Sosyal medyaya', 'Uykusuzluğa'] },
+  { cat: 'BEGÜM', q: 'Kim Kam Olmak İster? hangi mitolojiden ilham alıyor?', a: ['Türk mitolojisi', 'Yunan mitolojisi', 'İskandinav mitolojisi', 'Mısır mitolojisi'] },
+  { cat: 'BEGÜM', q: "Santa's Workers hangi jam için yapıldı?", a: ['Ice Breaking Jam', 'Global Game Jam', "Ludum Dare", 'GMTK Jam'] },
+  { cat: 'BEGÜM', q: 'Begüm’ün editörlüğünü yaptığı öğrenci fanzininin adı ne?', a: ['Kadraj', 'Objektif', 'Çerçeve', 'Odak'] },
+
   // ---- Begüm's games (facts from the arcade cabinets)
   { cat: 'BEGÜM', q: 'Ballerino Online aslında hangi spor üzerine bir oyun?', a: ['Futbol', 'Bale', 'Basketbol', 'Tenis'] },
   { cat: 'BEGÜM', q: 'Ballerino Online kaç kişilik bir ekiple yapıldı?', a: ['3', '1', '5', '12'] },
