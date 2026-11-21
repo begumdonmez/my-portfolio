@@ -7,6 +7,8 @@ import GoldenStars from './GoldenStars'
 import CameraSpace from './CameraSpace'
 import Earth from './Earth'
 import ArcadePlanet from './ArcadePlanet'
+import CinemaPlanet from './CinemaPlanet'
+import MuseumPlanet from './MuseumPlanet'
 import { Environment, Lightformer } from '@react-three/drei'
 import { scroll, range, ease } from './scroll'
 
@@ -45,7 +47,7 @@ function CameraRig({ entered, reducedMotion }) {
   return <pointLight ref={light} color="#c9bfff" intensity={70} distance={30} decay={1.5} />
 }
 
-export default function Scene({ entered, onReady, onEnterArcade, reducedMotion, isMobile }) {
+export default function Scene({ entered, onReady, onTravel, reducedMotion, isMobile }) {
   return (
     <Canvas
       className="scene"
@@ -70,8 +72,10 @@ export default function Scene({ entered, onReady, onEnterArcade, reducedMotion, 
       <CameraRig entered={entered} reducedMotion={reducedMotion} />
       <Particles count={isMobile ? 1400 : 3200} />
       <GoldenStars />
-      {/* reached around the middle of the scroll, floating off to the side */}
-      <ArcadePlanet position={isMobile ? [2.6, 3.6, -60] : [7.5, 2.4, -62]} onEnter={onEnterArcade} />
+      {/* the places you can visit, passed one after another while scrolling */}
+      <MuseumPlanet position={isMobile ? [-2.4, 3.2, -40] : [-7, 2.6, -42]} onEnter={() => onTravel('/muze')} />
+      <CinemaPlanet position={isMobile ? [-2.2, -2.8, -50] : [-9, -1.6, -53]} onEnter={() => onTravel('/sinema')} />
+      <ArcadePlanet position={isMobile ? [2.6, 3.6, -60] : [7.5, 2.4, -62]} onEnter={() => onTravel('/arcade')} />
       <CameraSpace>
         <Earth isMobile={isMobile} />
       </CameraSpace>

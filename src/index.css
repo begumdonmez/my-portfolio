@@ -104,6 +104,15 @@ body.is-locked {
   right: clamp(1.25rem, 3vw, 2.25rem);
   bottom: clamp(1.25rem, 3vw, 2.25rem);
   z-index: 8;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  max-width: calc(100vw - 2.5rem);
+  animation: space-nav-in 0.8s ease both;
+}
+
+.space-nav button {
   padding: 0.7rem 1.1rem;
   font: 500 0.85rem/1 var(--font-display);
   letter-spacing: 0.06em;
@@ -114,10 +123,9 @@ body.is-locked {
   backdrop-filter: blur(6px);
   cursor: pointer;
   transition: background 0.2s ease, box-shadow 0.2s ease;
-  animation: space-nav-in 0.8s ease both;
 }
 
-.space-nav:hover {
+.space-nav button:hover {
   background: rgba(177, 77, 255, 0.35);
   box-shadow: 0 0 18px rgba(214, 120, 255, 0.5);
 }

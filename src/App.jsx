@@ -4,6 +4,8 @@ import SpacePage from './pages/SpacePage'
 
 // Each planet is its own chunk, downloaded only when you travel there.
 const ArcadePage = lazy(() => import('./arcade/ArcadePage'))
+const CinemaPage = lazy(() => import('./cinema/CinemaPage'))
+const MuseumPage = lazy(() => import('./museum/MuseumPage'))
 
 export default function App() {
   return (
@@ -15,6 +17,22 @@ export default function App() {
           element={
             <Suspense fallback={<div className="route-fallback" />}>
               <ArcadePage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/sinema"
+          element={
+            <Suspense fallback={<div className="route-fallback" />}>
+              <CinemaPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/muze"
+          element={
+            <Suspense fallback={<div className="route-fallback" />}>
+              <MuseumPage />
             </Suspense>
           }
         />

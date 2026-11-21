@@ -75,11 +75,11 @@ export default function SpacePage() {
     return () => timers.forEach(clearTimeout)
   }, [sceneReady, minTimeDone, quick])
 
-  // fade to black, then open the arcade
-  const enterArcade = () => {
+  // fade to black, then travel to a planet
+  const travel = (path) => {
     if (leaving) return
     setLeaving(true)
-    setTimeout(() => navigate('/arcade'), 700)
+    setTimeout(() => navigate(path), 700)
   }
 
   return (
@@ -87,7 +87,7 @@ export default function SpacePage() {
       <Scene
         entered={phase !== 'loading'}
         onReady={() => setSceneReady(true)}
-        onEnterArcade={enterArcade}
+        onTravel={travel}
         reducedMotion={reducedMotion}
         isMobile={isMobile}
       />
@@ -97,9 +97,11 @@ export default function SpacePage() {
       <div className="grain" aria-hidden />
       <Hero visible={heroVisible} />
       {heroVisible && (
-        <button className="space-nav" onClick={enterArcade}>
-          🕹 Arcade
-        </button>
+        <nav className="space-nav" aria-label="Gezegenler">
+          <button onClick={() => travel('/arcade')}>🕹 Arcade</button>
+          <button onClick={() => travel('/sinema')}>🎬 Sinema</button>
+          <button onClick={() => travel('/muze')}>🏛 Müze</button>
+        </nav>
       )}
       <Intro phase={phase} />
       <div className={`page-fade ${leaving ? 'page-fade--on' : ''}`} aria-hidden />
